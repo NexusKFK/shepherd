@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Docs: a "What it does" overview in the READMEs, a guide to working with a coding agent (`docs/agent-guide.md`, `docs/agent-guide.en.md`) and `AGENTS.md` with development rules for agents.
+- `tools/check_sources.py` checks every data file the app reads, with the app's own loaders, and exits with status 1 when a file is unusable.
+
 ## 1.4.0 (2026-10-18)
 
 - The interface is now in English, Simplified Chinese and Traditional Chinese. It follows the macOS language by default; switch it in Settings or on the first-run walkthrough. Engine messages and alerts are translated too.

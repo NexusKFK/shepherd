@@ -20,3 +20,5 @@ jobs:
         run: python3 tools/i18n_check.py en && python3 tools/i18n_check.py zh-Hant
       - name: Demo data builds
         run: python3 -m workbench.demo --out "$RUNNER_TEMP/demo"
+      - name: Demo data passes the source check
+        run: python3 tools/check_sources.py --source-home "$RUNNER_TEMP/demo/sources"

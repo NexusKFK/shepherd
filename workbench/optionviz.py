@@ -1,4 +1,4 @@
-"""Option payoff charts: plan cards written by the assistant, plus the options already held.
+"""Option payoff charts: plan cards (JSON files you write), plus the options already held.
 
 Cards live as JSON files in ~/tools/option_plans/ (override with SHEPHERD_OPTION_PLANS). The app only
 draws them: a card is a plan the user may or may not take, so nothing here enters heat, exposure, VaR or

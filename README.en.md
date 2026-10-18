@@ -17,6 +17,15 @@ It records, calculates and reminds. It never places orders, never logs in to a b
 
 > All screenshots come from the built-in demo; every account, position and price is randomly generated.
 
+## What it does
+
+- **Sizing.** Set how much one trade may lose (1R); every plan turns its stop distance into a share or contract count. A plan carries its thesis, invalidation and exits, and must use 0.9R–1R before it can be marked ready.
+- **Portfolio risk.** Heat (R lost if every stop is hit at once), a linear −5% market scenario, sector gap stress, historical VaR, and per-position delta, beta, volatility and industry concentration.
+- **Holdings and records.** Positions from several broker accounts in one table, with option combos expandable into legs. Scaled entries and exits are recorded as fills; a mistaken fill can be undone while the original stays in the audit trail. Schwab trade confirmations are parsed into fills for you to verify.
+- **Option payoff charts.** For planned and held options: drag the date, volatility and price range, with delta, daily time decay and round-trip spread cost listed.
+- **Optional modules.** Macro light (scales new-position caps with the market backdrop), weekly watch (weekly bars and alert conditions for broad-market ETFs), pre-market checklist, calendar (earnings, macro data, option expiries) and paper book (simulated trades that never place orders). Turn on only what you use.
+- **Local and traceable.** The ledger is a SQLite file on your Mac, holdings snapshots keep their history, and a full backup is one click.
+
 ## R in one table
 
 | | Value | Where it comes from |
@@ -67,6 +76,18 @@ Shepherd does not fetch data itself. Start with the ledger alone (plans and fill
 - a holdings snapshot JSON, imported under **Data → Import holdings JSON…** — see [`examples/holdings-template.json`](examples/holdings-template.json);
 - daily closes for Beta, the market scenario and VaR: `python3 tools/fetch_market_data.py AAPL MSFT` (Yahoo chart endpoint; SPY and the S&P 500 are added automatically);
 - one JSON file per optional module, documented in [docs/data-formats.md](docs/data-formats.md). `python3 -m workbench.demo --out /tmp/shepherd-demo` writes a complete set of examples.
+
+The author's own files are produced daily by scripts a coding agent wrote; those scripts are tied to personal accounts and are not in this repository.
+
+## Working with a coding agent
+
+Every input is a JSON file in a documented format and the app only reads it, so Shepherd pairs well with a coding agent (Claude Code, Codex, Cursor and the like): the agent writes data files and scripts, Shepherd does the arithmetic, and you decide.
+
+- Have the agent turn a broker export into a holdings snapshot, or write daily data scripts for the macro light, weekly watch and paper book.
+- Have it draft option plan cards from live quotes; check the payoff chart and max loss on the **Option plans** page before you trade.
+- Have it read the ledger read-only and review your trades in R.
+
+Only the app writes the ledger, and you confirm every plan and fill. After writing files the agent can run `python3 tools/check_sources.py`, which flags any file the app cannot use. The division of work, the boundaries and a ready-to-copy prompt are in [docs/agent-guide.en.md](docs/agent-guide.en.md); [AGENTS.md](AGENTS.md) holds the development rules for agents.
 
 ## Sizing rules (the author's choices)
 

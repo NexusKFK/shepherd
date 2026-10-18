@@ -1,6 +1,6 @@
 import SwiftUI
 
-// 期权计划：计划卡（~/tools/option_plans/*.json，由助手写入）与账本里已持有的期权，
+// 期权计划：计划卡（~/tools/option_plans/*.json，用户自己写的 JSON）与账本里已持有的期权，
 // 经 workbench/optionviz.py 整理后放进 state["option_plans"]。
 // 图上的曲线在界面里用 OptionMath 现算（日期、波动率、价格范围滑块即时生效，鼠标悬停读数），
 // Python 只给出腿、成本、波动率这些原料。计划卡只是「可能做的计划」，持仓期权来自账本；
