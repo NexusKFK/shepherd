@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 552" width="1200" height="552" font-family="-apple-system, 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', 'Noto Sans CJK TC', 'Segoe UI', sans-serif" role="img" aria-labelledby="title">
+<title id="title">Shepherd 的工作流程</title>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d9690b"/></marker></defs>
+<text x="24" y="50" font-size="15" font-weight="600" fill="#1f2328" text-anchor="start">資料都在本機</text>
+<rect x="24" y="72" width="230" height="88" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="40" y="110" font-size="15" font-weight="600" fill="#1f2328" text-anchor="start">本機帳本</text>
+<text x="40" y="134" font-size="12" font-weight="normal" fill="#59636e" text-anchor="start">SQLite</text>
+<rect x="24" y="180" width="230" height="88" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="40" y="218" font-size="15" font-weight="600" fill="#1f2328" text-anchor="start">持倉快照</text>
+<text x="40" y="242" font-size="12" font-weight="normal" fill="#59636e" text-anchor="start">JSON · 可選</text>
+<rect x="24" y="288" width="230" height="88" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="40" y="326" font-size="15" font-weight="600" fill="#1f2328" text-anchor="start">日線</text>
+<text x="40" y="350" font-size="12" font-weight="normal" fill="#59636e" text-anchor="start">market-data.json · 可選</text>
+<rect x="24" y="396" width="230" height="88" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="40" y="434" font-size="15" font-weight="600" fill="#1f2328" text-anchor="start">模組資料檔案</text>
+<text x="40" y="458" font-size="12" font-weight="normal" fill="#59636e" text-anchor="start">可選</text>
+<path d="M254 116 H268" stroke="#d0d7de" stroke-width="2" fill="none"/>
+<path d="M254 224 H268" stroke="#d0d7de" stroke-width="2" fill="none"/>
+<path d="M254 332 H268" stroke="#d0d7de" stroke-width="2" fill="none"/>
+<path d="M254 440 H268" stroke="#d0d7de" stroke-width="2" fill="none"/>
+<path d="M268 116 V440" stroke="#d0d7de" stroke-width="2" fill="none"/>
+<path d="M268 442 H286" stroke="#d9690b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="290" y="52" font-size="14" font-weight="700" fill="#d9690b" text-anchor="start">開倉前</text>
+<rect x="290" y="66" width="266" height="100" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<circle cx="316" cy="96" r="13" fill="#d9690b"/>
+<text x="316" y="101" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<text x="338" y="102" font-size="17" font-weight="600" fill="#1f2328" text-anchor="start">定 1R</text>
+<text x="310" y="130" font-size="13" font-weight="normal" fill="#59636e" text-anchor="start">淨值 × 單筆風險</text>
+<text x="310" y="150" font-size="13" font-weight="normal" fill="#59636e" text-anchor="start">例：100,000 × 2% = 2,000</text>
+<path d="M560 116 H596" stroke="#d9690b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="600" y="66" width="266" height="100" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<circle cx="626" cy="96" r="13" fill="#d9690b"/>
+<text x="626" y="101" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<text x="648" y="102" font-size="17" font-weight="600" fill="#1f2328" text-anchor="start">寫計畫</text>
+<text x="620" y="130" font-size="13" font-weight="normal" fill="#59636e" text-anchor="start">理由 · 失效條件</text>
+<text x="620" y="150" font-size="13" font-weight="normal" fill="#59636e" text-anchor="start">進場價 · 停損價</text>
+<path d="M870 116 H906" stroke="#d9690b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="910" y="66" width="266" height="100" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<circle cx="936" cy="96" r="13" fill="#d9690b"/>
+<text x="936" y="101" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+<text x="958" y="102" font-size="17" font-weight="600" fill="#1f2328" text-anchor="start">App 算數量</text>
+<text x="930" y="130" font-size="13" font-weight="normal" fill="#59636e" text-anchor="start">數量 = 1R ÷ 每股風險</text>
+<text x="930" y="150" font-size="13" font-weight="normal" fill="#59636e" text-anchor="start">0.9R–1R 才能執行</text>
+<text x="290" y="208" font-size="14" font-weight="700" fill="#d9690b" text-anchor="start">開倉後</text>
+<rect x="290" y="222" width="266" height="100" rx="10" fill="none" stroke="#8c959f" stroke-width="1.5" stroke-dasharray="6 5"/>
+<circle cx="316" cy="252" r="13" fill="#8c959f"/>
+<text x="316" y="257" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+<text x="338" y="258" font-size="17" font-weight="600" fill="#59636e" text-anchor="start">你在券商下單</text>
+<text x="310" y="286" font-size="13" font-weight="normal" fill="#59636e" text-anchor="start">App 不下單，也不連券商</text>
+<path d="M560 272 H596" stroke="#d9690b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="600" y="222" width="266" height="100" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<circle cx="626" cy="252" r="13" fill="#d9690b"/>
+<text x="626" y="257" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">5</text>
+<text x="648" y="258" font-size="17" font-weight="600" fill="#1f2328" text-anchor="start">登記成交</text>
+<text x="620" y="286" font-size="13" font-weight="normal" fill="#59636e" text-anchor="start">分批進出都行</text>
+<text x="620" y="306" font-size="13" font-weight="normal" fill="#59636e" text-anchor="start">誤登記可撤銷，留痕</text>
+<path d="M870 272 H906" stroke="#d9690b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="910" y="222" width="266" height="100" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<circle cx="936" cy="252" r="13" fill="#d9690b"/>
+<text x="936" y="257" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">6</text>
+<text x="958" y="258" font-size="17" font-weight="600" fill="#1f2328" text-anchor="start">覆盤</text>
+<text x="930" y="286" font-size="13" font-weight="normal" fill="#59636e" text-anchor="start">盈虧按 R 記</text>
+<path d="M1043 170 V186 H423 V218" stroke="#d9690b" stroke-width="2" fill="none" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="290" y="366" font-size="14" font-weight="700" fill="#d9690b" text-anchor="start">App 一直替你盯著</text>
+<rect x="290" y="380" width="886" height="124" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="310" y="398" width="271" height="40" rx="20" fill="#fff1e0" stroke="#f0b37e"/>
+<text x="445.5" y="424" font-size="14" font-weight="500" fill="#1f2328" text-anchor="middle">熱度：全部停損同時打到虧幾 R</text>
+<rect x="597" y="398" width="271" height="40" rx="20" fill="#fff1e0" stroke="#f0b37e"/>
+<text x="732.5" y="424" font-size="14" font-weight="500" fill="#1f2328" text-anchor="middle">大盤 −5% 情境</text>
+<rect x="884" y="398" width="271" height="40" rx="20" fill="#fff1e0" stroke="#f0b37e"/>
+<text x="1019.5" y="424" font-size="14" font-weight="500" fill="#1f2328" text-anchor="middle">類股跳空壓力</text>
+<rect x="310" y="448" width="271" height="40" rx="20" fill="#fff1e0" stroke="#f0b37e"/>
+<text x="445.5" y="474" font-size="14" font-weight="500" fill="#1f2328" text-anchor="middle">歷史 VaR</text>
+<rect x="597" y="448" width="271" height="40" rx="20" fill="#fff1e0" stroke="#f0b37e"/>
+<text x="732.5" y="474" font-size="14" font-weight="500" fill="#1f2328" text-anchor="middle">到期與財報日曆</text>
+<rect x="884" y="448" width="271" height="40" rx="20" fill="#fff1e0" stroke="#f0b37e"/>
+<text x="1019.5" y="474" font-size="14" font-weight="500" fill="#1f2328" text-anchor="middle">資料新鮮度</text>
+<text x="600.0" y="536" font-size="13" font-weight="normal" fill="#59636e" text-anchor="middle">只記帳、算數、提醒；不下單，不連券商，不呼叫 AI</text>
+</svg>

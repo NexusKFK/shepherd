@@ -1,0 +1,20 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python engine tests
+        run: python3 -m unittest discover -p 'test_*.py' -v
+      - name: Swift app compiles
+        run: |
+          swiftc -continue-building-after-errors -swift-version 5 -target "$(uname -m)-apple-macos14.0" -parse-as-library \
+            native/Sources/Shepherd/*.swift -o /tmp/Shepherd -framework AppKit -framework SwiftUI -framework Charts
+          swiftc -target "$(uname -m)-apple-macos14.0" workbench/macos/PdfText.swift -o /tmp/pdf_text -framework PDFKit
+      - name: Demo data builds
+        run: python3 -m workbench.demo --out "$RUNNER_TEMP/demo"

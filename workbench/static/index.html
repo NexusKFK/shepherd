@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Shepherd</title>
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="brand" href="#trade"
+        ><img src="/icon.png" alt="" width="38" height="38" /><span
+          >Shepherd<small>交易工作台</small></span
+        ></a
+      >
+      <div class="nav-label">工作空间</div>
+      <nav aria-label="主导航">
+        <button data-route="trade" class="nav active">
+          <span class="nav-icon">◫</span>交易<span class="nav-key">01</span>
+        </button>
+        <button data-route="risk" class="nav">
+          <span class="nav-icon">◷</span>风险<span class="nav-key">02</span>
+        </button>
+        <button data-route="calendar" class="nav">
+          <span class="nav-icon">▦</span>日历<span class="nav-key">03</span>
+        </button>
+      </nav>
+      <div class="side-bottom">
+        <span class="local-dot"></span>本机工作空间
+        <p>记录保存在这台 Mac</p>
+        <button id="backup" class="text-button">
+          备份交易记录 <span>↗</span></button
+        ><button id="theme" class="text-button">
+          切换浅色外观 <span>◐</span>
+        </button>
+      </div>
+    </aside>
+    <main>
+      <header class="topbar">
+        <div id="breadcrumb">交易 / 盘前准备</div>
+        <div class="top-actions">
+          <span id="clock" class="muted"></span
+          ><button id="reload" class="button subtle">↻ 重新读取快照</button>
+        </div>
+      </header>
+      <div id="app" aria-live="polite">
+        <div class="empty loading">正在读取本机交易资料…</div>
+      </div>
+      <footer id="source-line"></footer>
+    </main>
+    <dialog id="dialog" aria-labelledby="dialog-title">
+      <div id="dialog-content"></div>
+    </dialog>
+    <div id="toast" role="status" class="toast" hidden></div>
+    <script src="/app.js"></script>
+  </body>
+</html>

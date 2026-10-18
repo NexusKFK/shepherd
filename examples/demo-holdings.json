@@ -1,0 +1,26 @@
+{
+  "asof": "Synthetic demo · 收盘价 2026-09-22",
+  "accounts": [
+    {
+      "broker": "Example Broker",
+      "nlv": 10000
+    }
+  ],
+  "positions": [
+    {
+      "id": "demo-1",
+      "sym": "DEMO",
+      "label": "Synthetic stock position",
+      "broker": "Example Broker",
+      "kind": "stock",
+      "side": "long",
+      "qty": 10,
+      "mult": 1,
+      "open": 100,
+      "mark": 105,
+      "confirm": false
+    }
+  ],
+  "quotes": {},
+  "plans": []
+}

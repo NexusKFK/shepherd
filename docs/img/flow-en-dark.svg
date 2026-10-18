@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 552" width="1200" height="552" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-labelledby="title">
+<title id="title">How Shepherd works</title>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f0883e"/></marker></defs>
+<text x="24" y="50" font-size="15" font-weight="600" fill="#e6edf3" text-anchor="start">Data stays on your Mac</text>
+<rect x="24" y="72" width="230" height="88" rx="10" fill="#161b22" stroke="#30363d"/>
+<text x="40" y="110" font-size="15" font-weight="600" fill="#e6edf3" text-anchor="start">Local ledger</text>
+<text x="40" y="134" font-size="12" font-weight="normal" fill="#9198a1" text-anchor="start">SQLite</text>
+<rect x="24" y="180" width="230" height="88" rx="10" fill="#161b22" stroke="#30363d"/>
+<text x="40" y="218" font-size="15" font-weight="600" fill="#e6edf3" text-anchor="start">Holdings snapshot</text>
+<text x="40" y="242" font-size="12" font-weight="normal" fill="#9198a1" text-anchor="start">JSON · optional</text>
+<rect x="24" y="288" width="230" height="88" rx="10" fill="#161b22" stroke="#30363d"/>
+<text x="40" y="326" font-size="15" font-weight="600" fill="#e6edf3" text-anchor="start">Daily bars</text>
+<text x="40" y="350" font-size="12" font-weight="normal" fill="#9198a1" text-anchor="start">market-data.json · optional</text>
+<rect x="24" y="396" width="230" height="88" rx="10" fill="#161b22" stroke="#30363d"/>
+<text x="40" y="434" font-size="15" font-weight="600" fill="#e6edf3" text-anchor="start">Module data files</text>
+<text x="40" y="458" font-size="12" font-weight="normal" fill="#9198a1" text-anchor="start">optional</text>
+<path d="M254 116 H268" stroke="#30363d" stroke-width="2" fill="none"/>
+<path d="M254 224 H268" stroke="#30363d" stroke-width="2" fill="none"/>
+<path d="M254 332 H268" stroke="#30363d" stroke-width="2" fill="none"/>
+<path d="M254 440 H268" stroke="#30363d" stroke-width="2" fill="none"/>
+<path d="M268 116 V440" stroke="#30363d" stroke-width="2" fill="none"/>
+<path d="M268 442 H286" stroke="#f0883e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="290" y="52" font-size="14" font-weight="700" fill="#f0883e" text-anchor="start">Before the trade</text>
+<rect x="290" y="66" width="266" height="100" rx="10" fill="#161b22" stroke="#30363d"/>
+<circle cx="316" cy="96" r="13" fill="#f0883e"/>
+<text x="316" y="101" font-size="14" font-weight="700" fill="#0d1117" text-anchor="middle">1</text>
+<text x="338" y="102" font-size="17" font-weight="600" fill="#e6edf3" text-anchor="start">Set 1R</text>
+<text x="310" y="130" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="start">net value × risk per trade</text>
+<text x="310" y="150" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="start">e.g. 100,000 × 2% = 2,000</text>
+<path d="M560 116 H596" stroke="#f0883e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="600" y="66" width="266" height="100" rx="10" fill="#161b22" stroke="#30363d"/>
+<circle cx="626" cy="96" r="13" fill="#f0883e"/>
+<text x="626" y="101" font-size="14" font-weight="700" fill="#0d1117" text-anchor="middle">2</text>
+<text x="648" y="102" font-size="17" font-weight="600" fill="#e6edf3" text-anchor="start">Write the plan</text>
+<text x="620" y="130" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="start">thesis · invalidation</text>
+<text x="620" y="150" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="start">entry · stop</text>
+<path d="M870 116 H906" stroke="#f0883e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="910" y="66" width="266" height="100" rx="10" fill="#161b22" stroke="#30363d"/>
+<circle cx="936" cy="96" r="13" fill="#f0883e"/>
+<text x="936" y="101" font-size="14" font-weight="700" fill="#0d1117" text-anchor="middle">3</text>
+<text x="958" y="102" font-size="17" font-weight="600" fill="#e6edf3" text-anchor="start">App sizes it</text>
+<text x="930" y="130" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="start">qty = 1R ÷ risk per share</text>
+<text x="930" y="150" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="start">ready only at 0.9R–1R</text>
+<text x="290" y="208" font-size="14" font-weight="700" fill="#f0883e" text-anchor="start">After the trade</text>
+<rect x="290" y="222" width="266" height="100" rx="10" fill="none" stroke="#6e7681" stroke-width="1.5" stroke-dasharray="6 5"/>
+<circle cx="316" cy="252" r="13" fill="#6e7681"/>
+<text x="316" y="257" font-size="14" font-weight="700" fill="#0d1117" text-anchor="middle">4</text>
+<text x="338" y="258" font-size="17" font-weight="600" fill="#9198a1" text-anchor="start">You place the order</text>
+<text x="310" y="286" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="start">at your broker; the app</text>
+<text x="310" y="306" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="start">never trades</text>
+<path d="M560 272 H596" stroke="#f0883e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="600" y="222" width="266" height="100" rx="10" fill="#161b22" stroke="#30363d"/>
+<circle cx="626" cy="252" r="13" fill="#f0883e"/>
+<text x="626" y="257" font-size="14" font-weight="700" fill="#0d1117" text-anchor="middle">5</text>
+<text x="648" y="258" font-size="17" font-weight="600" fill="#e6edf3" text-anchor="start">Record fills</text>
+<text x="620" y="286" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="start">scale in and out</text>
+<text x="620" y="306" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="start">corrections keep a trail</text>
+<path d="M870 272 H906" stroke="#f0883e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="910" y="222" width="266" height="100" rx="10" fill="#161b22" stroke="#30363d"/>
+<circle cx="936" cy="252" r="13" fill="#f0883e"/>
+<text x="936" y="257" font-size="14" font-weight="700" fill="#0d1117" text-anchor="middle">6</text>
+<text x="958" y="258" font-size="17" font-weight="600" fill="#e6edf3" text-anchor="start">Review</text>
+<text x="930" y="286" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="start">results counted in R</text>
+<path d="M1043 170 V186 H423 V218" stroke="#f0883e" stroke-width="2" fill="none" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="290" y="366" font-size="14" font-weight="700" fill="#f0883e" text-anchor="start">The app keeps watching</text>
+<rect x="290" y="380" width="886" height="124" rx="10" fill="#161b22" stroke="#30363d"/>
+<rect x="310" y="398" width="271" height="40" rx="20" fill="#2a1a0c" stroke="#7a4a1d"/>
+<text x="445.5" y="424" font-size="14" font-weight="500" fill="#e6edf3" text-anchor="middle">Heat: R lost if every stop hits</text>
+<rect x="597" y="398" width="271" height="40" rx="20" fill="#2a1a0c" stroke="#7a4a1d"/>
+<text x="732.5" y="424" font-size="14" font-weight="500" fill="#e6edf3" text-anchor="middle">−5% market scenario</text>
+<rect x="884" y="398" width="271" height="40" rx="20" fill="#2a1a0c" stroke="#7a4a1d"/>
+<text x="1019.5" y="424" font-size="14" font-weight="500" fill="#e6edf3" text-anchor="middle">Sector gap stress</text>
+<rect x="310" y="448" width="271" height="40" rx="20" fill="#2a1a0c" stroke="#7a4a1d"/>
+<text x="445.5" y="474" font-size="14" font-weight="500" fill="#e6edf3" text-anchor="middle">Historical VaR</text>
+<rect x="597" y="448" width="271" height="40" rx="20" fill="#2a1a0c" stroke="#7a4a1d"/>
+<text x="732.5" y="474" font-size="14" font-weight="500" fill="#e6edf3" text-anchor="middle">Expiry &amp; earnings calendar</text>
+<rect x="884" y="448" width="271" height="40" rx="20" fill="#2a1a0c" stroke="#7a4a1d"/>
+<text x="1019.5" y="474" font-size="14" font-weight="500" fill="#e6edf3" text-anchor="middle">Data freshness</text>
+<text x="600.0" y="536" font-size="13" font-weight="normal" fill="#9198a1" text-anchor="middle">Records, calculates, reminds. No orders, no broker login, no AI.</text>
+</svg>

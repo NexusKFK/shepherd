@@ -1,0 +1,29 @@
+{
+  "asof": "手工整理 ｜ 收盘价 2026-10-16",
+  "accounts": [
+    {"id": "券商A", "name": "券商 A 主账户", "nlv": 60000, "cash": 21000},
+    {"id": "券商B", "name": "券商 B", "nlv": 40000, "cash": 15000}
+  ],
+  "positions": [
+    {
+      "id": "ko", "broker": "券商A", "sym": "KO", "label": "正股 120 股", "group": "",
+      "kind": "stock", "side": "long", "qty": 120, "mult": 1, "open": 62.10, "mark": 68.00,
+      "trigs": [{"kind": "止损", "basis": "und", "level": 64.5, "dir": "<=", "level0": 58.9, "moves": [{}],
+                 "text": "KO 收盘 ≤ 64.5 → 卖出"}]
+    },
+    {
+      "id": "bil", "broker": "券商A", "sym": "BIL", "label": "正股 300 股", "group": "现金停放（免判据）",
+      "kind": "stock", "side": "long", "qty": 300, "mult": 1, "open": 91.40, "mark": 91.50
+    },
+    {
+      "id": "amd-c", "broker": "券商B", "sym": "AMD", "label": "Jun18'27 180C", "group": "",
+      "kind": "option", "side": "long", "qty": 2, "mult": 100, "open": 9.40, "mark": 7.10,
+      "expiry": "2027-06-18", "right": "C", "strike": 180, "delta": 0.38, "delta_status": "ok",
+      "delta_asof": "2026-10-16", "delta_source": "券商期权链",
+      "trigs": [{"kind": "止损", "basis": "und", "level": 150, "dir": "<=", "text": "AMD 收盘 ≤ 150 → 平掉这两张"}]
+    }
+  ],
+  "quotes": {"KO": 68.00, "BIL": 91.50, "AMD": 165.00, "SPY": 646.00},
+  "benchmarkQuote": {"symbol": "SPX", "price": 6480.0, "day": "2026-10-16", "source": "手工"},
+  "plans": []
+}

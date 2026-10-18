@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.DS_Store
+.pytest_cache/
+.app-build/
+.build/
+native/.build/
+workbench/macos/pdf_text
+dist/
