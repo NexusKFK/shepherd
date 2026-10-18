@@ -157,7 +157,7 @@ struct BudgetCard: View {
     @ViewBuilder private func trendLine(_ title: String, _ state: String, _ text: String) -> some View {
         if !text.isEmpty {
             HStack(alignment: .firstTextBaseline, spacing: 10) {
-                Text(title).font(.caption.weight(.semibold)).foregroundStyle(MacroStyle.color(state)).frame(width: 34, alignment: .leading)
+                Text(title).font(.caption.weight(.semibold)).foregroundStyle(MacroStyle.color(state)).frame(width: Translator.shared.language == "en" ? 74 : 34, alignment: .leading)
                 Text(text).font(.callout).lineLimit(2)
             }
         }
@@ -216,7 +216,7 @@ struct UpcomingCard: View {
                 let days = Int(item["days"].n ?? 99)
                 HStack(alignment: .firstTextBaseline, spacing: 10) {
                     Text(countdown(days)).font(.caption.weight(.semibold)).monospacedDigit()
-                        .foregroundStyle(days <= 1 ? PortfolioStyle.warn : Color.secondary).frame(width: 46, alignment: .leading)
+                        .foregroundStyle(days <= 1 ? PortfolioStyle.warn : Color.secondary).frame(width: Translator.shared.language == "en" ? 70 : 46, alignment: .leading)
                     VStack(alignment: .leading, spacing: 1) {
                         Text(item["name"].s.replacingOccurrences(of: "日期待确认", with: "")).font(.callout).lineLimit(2)
                             .foregroundStyle(item["tentative"].b ? Color.secondary : .primary)

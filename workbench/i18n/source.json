@@ -1,0 +1,9789 @@
+[
+ {
+  "key": " 条",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": " 笔",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift",
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "App 读取本机已有资料，不自动连接券商拉取实时账户。导入只更换快照来源，不生成成交。",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "{0} · {1} 条持仓",
+  "placeholders": 2,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "{0} 份",
+  "placeholders": 1,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "上游损坏或缺失时，最近留存版本会显著标为历史参考，不当作实时持仓。",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "交易账本 · SQLite",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift",
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "交易账本、来源快照与历史版本分开保存。升级或替换 App 不会覆盖账户资料。",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "使用本机采集源",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift",
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "保存交易计划、逐笔成交、期初余额、风险标准、复盘、日历、审计和持仓快照历史。原持仓接入前仍可查看，只有确认后才生成账本记录。",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "券商确认单投喂箱",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift",
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "历史快照",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "原始文件只读，核对入账后保留文件指纹与来源。确认单并不等同于完整的当前持仓，不能用某一张回单覆盖整个账户。",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "在 Finder 查看数据目录",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift",
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "导入持仓 JSON…",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift",
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "导出完整备份",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift",
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "已登记成交",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "当前持仓来源",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift",
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "打开设置…",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "持仓快照历史",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "数据与留存",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift",
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "本机计划",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "来源持仓",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "查看快照",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "每次读取发现内容变化，就保存一个新历史版本。以前未保存的旧版本无法补造。",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "界面语言、外观、1R 和模块都在设置里（⌘,）。",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "设置",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift",
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "还没有有效快照；成功读取后自动留存。",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "首次留存 ",
+  "placeholders": 0,
+  "where": [
+   "DataView.swift"
+  ]
+ },
+ {
+  "key": "Call 正、Put 负；系统再乘多空方向、数量及合约乘数。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "YYYY-MM-DD（可选时留空）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "。这里只登记券商已经发生的成交，不发送订单。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "。选择新持仓时填写计划字段；并入已有计划时沿用其合约与账户。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "买入 / 做多",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "事件名称",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "交易复盘",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "交易理由与触发条件",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "仅在确认同一次操作后填写同一编号；不同时间分别记录。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "今天的交易笔记",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "余额核对日期",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "例如 2026-09-23T10:00:00-04:00",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "保存在本机 · 不发送券商订单",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "保存草稿",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "保持观察 · 暂不可执行",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "入场",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "入场价 / 每份权利金",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "全局 1R",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "共同风险主题",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "关联标的（可选）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "净值是冻结的定仓预算基准，不随快照自动改变；修改只用于后续计划。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "券商 / 账户",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "卖出 / 做空",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "卖方定义风险结构：每组最大亏损",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "取消",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "只撤销最近一条非期初登记，原记录与更正原因保留在审计中。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "合约乘数",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "同批操作编号",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "因子簇（同涨同跌的一组）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "复盘 / 后续处理记录",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "失效条件",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "TradingViews.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "完整合约 / 结构说明",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "完整计划数量（可留空）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "实际成交价格",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "实际成交数量",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "已写清交易计划与风险预算",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "已在券商核对实际数量和成本，接入的是期初余额",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "已有计划的成交方向",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "已核对今天的重要事件",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "已核对平均成本",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "已核对持仓与数据时间",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "已核对持仓数量",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "已核对账户、完整证券/合约、方向、数量、价格、费用与日期",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "已核对费用（未知不能填 0）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "已核对这是另一笔真实成交，不是重复邮件",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "当前失效条件",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "必须是已核对的定义风险结构；裸卖期权不适用。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "成交价格",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "成交数量",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "econf.py",
+   "store.py"
+  ]
+ },
+ {
+  "key": "成交日期",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "成交说明",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "所有实际开仓共用全局 1R；先保存草稿，满足 0.9R–1R 才能标记待执行。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "接入保存期初余额与后续成交，不推断过去的交易，不把快照当成新下单。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "放弃修改",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "放弃尚未保存的修改？",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "数据日期",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "数据来源与核对凭据",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "新建交易计划",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "方向",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "OptionPlansView.swift",
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "日期",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "时间与时区",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "更正上一条错误登记",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "更正原因",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "期权 / 定义风险结构",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "期权到期日",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "本次费用（USD）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "来源：",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "标的代码",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "标的价格（非期权权利金）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "核对并接入 · ",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "核对并登记确认单",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "根据真实买卖方向判断",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "每份买方合约 Delta（-1 到 1）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "添加日历事件",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "留空采用系统目标；部分成交单独登记。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "登记为新持仓",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "登记到",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "登记真实入场成交",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "登记真实退出成交",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "盘前检查与笔记",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "目标 {0} 单位 · 完整计划 {1} 单位 · 1R {2}",
+  "placeholders": 3,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "确认保存",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "确认后的定仓净值（美元）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "符合完整开仓标准",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "精确成交时间（带时区，可留空）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "统一 1R 标准",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "统一单笔风险（%）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "继续编辑",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "编辑交易计划",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "缺失数据保持未知。这些标注不改变真实成交和成本。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "股票 / ETF",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "股票失效价",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "行业",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "RiskView.swift",
+   "application.py"
+  ]
+ },
+ {
+  "key": "补充风险数据 · ",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "计划名称",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "计划复核日",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "计划风险 {0} · 名义金额 {1}",
+  "placeholders": 2,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "计算完整目标仓位",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "请完成勾选的核对项后再保存。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "请选择…",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "账户别名",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "费用与滑点预留（美元）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "资产类型",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "退出",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "退出安排",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift",
+   "TradingViews.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "默认 2%，上限 4%；已冻结计划沿用原始 1R。",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
+  "key": "内置计算引擎缺失，请运行 build-workbench.sh 构建完整 App。",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "已保存到本机",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "已取消",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift",
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "已导出账本、审计与持仓快照历史",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "已平仓",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift",
+   "PaperView.swift",
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "已忽略",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "已更正",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "已登记",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "已自动入账",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "应用资源缺失，请重新安装。",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "待执行",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "待核对",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift",
+   "HoldingsOverview.swift",
+   "OverviewView.swift",
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "持仓中",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift",
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "数据响应过大",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "未知",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift",
+   "application.py"
+  ]
+ },
+ {
+  "key": "演示打不开：",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "演示数据生成失败：",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "草稿",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "解析失败",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "计算引擎响应编号不匹配",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "计算引擎已退出或超时；请重新读取。记录仍保存在本机。",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "计算引擎未启动",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "选择包含 positions 与 accounts 的持仓快照；会复制到 App 数据目录并保留原文件。",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "部分登记",
+  "placeholders": 0,
+  "where": [
+   "Engine.swift"
+  ]
+ },
+ {
+  "key": "% 净值",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "Delta 美元",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift",
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 条合约腿",
+  "placeholders": 1,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "{0} 条持仓记录",
+  "placeholders": 1,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "{0} 条组合汇总",
+  "placeholders": 1,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "{0} 笔已接入账本",
+  "placeholders": 1,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "价格",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift",
+   "econf.py"
+  ]
+ },
+ {
+  "key": "价格与止损位置",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "免判据持仓：你裁定不设止损，不计入热度。",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "全部记录",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "全部账户",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "到期 ",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "原始备注与来源",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "合约 / 到期",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "多头",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "开仓成本对快照价，不是今日盈亏；期权按乘数计",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "当前显示历史持仓，请核对来源日期。",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "当前热度",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "快照价",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "快照净值 · ",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "成本",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift",
+   "HoldingsView.swift"
+  ]
+ },
+ {
+  "key": "成本 ",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "成本 / 快照价",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "所属组合热度",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "持仓",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift",
+   "OptionPlansView.swift",
+   "ShepherdApp.swift",
+   "overview.py"
+  ]
+ },
+ {
+  "key": "持仓 / 账户",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "搜索标的、合约或组合",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "数据待补",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "数量",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift",
+   "HoldingsView.swift",
+   "econf.py"
+  ]
+ },
+ {
+  "key": "无止损正股单列市值，不计入热度。",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "旧价",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "显示",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "未计入",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "本轮没取到价，沿用账本：",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "来源未标注",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "查看交易记录",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "核对并接入账本",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "止损",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift",
+   "PaperView.swift",
+   "demo.py",
+   "exposure.py",
+   "sources.py"
+  ]
+ },
+ {
+  "key": "止损 {0}",
+  "placeholders": 1,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "汇总",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "没有匹配的持仓",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "浮盈",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "浮盈合计 ",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "浮盈按快照价 · 组合汇总不重复计量",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "点选查看详情 · 点表头排序 · 展开组合查看合约腿",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "状态",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "空头",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "类型",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift",
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "组合展开",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "补充 Delta / 批次",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "见合约腿",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "该行的成本与价格保留原始快照口径；敞口和热度请查看合约腿。",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "账户",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift",
+   "HoldingsView.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "账户、合约与风险资料集中查看",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "风险价格日期 ",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "关闭",
+  "placeholders": 0,
+  "where": [
+   "HoldingsView.swift",
+   "Onboarding.swift",
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "历史持仓快照",
+  "placeholders": 0,
+  "where": [
+   "HoldingsView.swift"
+  ]
+ },
+ {
+  "key": "只读历史记录，不代表当前账户；查看不会覆盖现在的持仓。",
+  "placeholders": 0,
+  "where": [
+   "HoldingsView.swift"
+  ]
+ },
+ {
+  "key": "合约",
+  "placeholders": 0,
+  "where": [
+   "HoldingsView.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "标的",
+  "placeholders": 0,
+  "where": [
+   "HoldingsView.swift",
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": " · 200 日线 ",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": " · 50 日线 ",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": " · 数据 ",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": " · 火苗 ",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": " · 红灯释放第一步",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "% · 13 周背离速度 ",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "R · 桶上限 ×",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "{0} 生效 {1} · 当周 {2}",
+  "placeholders": 3,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "{0}（相对 200 日线；200 日线{1}）",
+  "placeholders": 2,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "上升",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "下降",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "不高",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "保护不便宜",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "保护便宜（VIX<20）",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "保护：",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "口径与五个系各管什么",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "宏观灯 · 新开仓的预算",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "宏观面板不可用，上限按静态值。",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "广度读数暂不可用：",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "广度：站上 200 日线 ",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "方向看趋势：顺风逢低买 · 逆风反弹减多仓（裸空只做 PA 确认）· 过渡等方向。大小看灯。",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "无",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "OverviewView.swift",
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "未确认档：",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "热度上限 ",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "燃料",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "红",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "demo.py"
+  ]
+ },
+ {
+  "key": "线上 ",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "线下 ",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "绿",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "demo.py"
+  ]
+ },
+ {
+  "key": "趋势证据：",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "过渡",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "OverviewView.swift",
+   "demo.py"
+  ]
+ },
+ {
+  "key": "近 12 周",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "逆风",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "OverviewView.swift",
+   "demo.py"
+  ]
+ },
+ {
+  "key": "释放1",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "释放第一步：",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "顺风",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "OverviewView.swift",
+   "demo.py"
+  ]
+ },
+ {
+  "key": "高",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "黄",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift",
+   "demo.py"
+  ]
+ },
+ {
+  "key": "（标普 ",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "（第 {0} 分位，{1}）· 只显示，未验证",
+  "placeholders": 2,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "；第二步：",
+  "placeholders": 0,
+  "where": [
+   "MacroLight.swift"
+  ]
+ },
+ {
+  "key": "1R = 定仓净值 × 单笔风险比例。之后每一笔新计划都按这个 1R 反推数量：打到止损，亏的就是 1R。",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift",
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "= +3R：盈利也按 R 记，不同大小的交易能放在一起比",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "= 1R ÷ 每股风险，向下取整；仓位 {0}，占净值 {1}%",
+  "placeholders": 2,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "= 入场 {0} − 止损 {1}",
+  "placeholders": 2,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "= 净值 {0} × {1}%",
+  "placeholders": 2,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "R 是什么",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "R 是你每一笔交易愿意亏的钱。先定 1R，再用止损的远近决定买多少：止损近就多买，止损远就少买。这样无论哪一笔被止损，亏的都是同样的 1R。",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "{0} 股",
+  "placeholders": 1,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "≈ −1R，亏多少事先就知道",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "上一步",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "下一步：定你的 R",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "仓位大小由止损距离算出来，不是凭感觉。止损放得很近时数量会很大，这时要留意名义金额占净值的比例。",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "价格阶梯：止损是负 1R，入场是 0，往上每多一个每股风险就是多 1R",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "先定好你的 1R",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "入场 0R",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "入场价",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "净值",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "单笔风险",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "完成",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "定你的 R",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "打到止损",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "核心部分一直开着：总览、持仓、风险、交易计划、成交与复盘、数据与留存。下面这些按需打开，之后随时能在设置（⌘,）里改。",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "止损 −1R",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "止损价",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "每个模块的数据文件格式见 docs/data-formats.md。没有数据的模块打开后会如实显示「没有找到数据文件」，不会假装正常。",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "每股风险",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "沿用，下一步",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "涨到 {0}",
+  "placeholders": 1,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "演示模式 · 虚构数据",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "热度 = 所有止损同时打到会亏多少 R。Shepherd 在总览和风险页一直显示它。",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "界面语言",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift",
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "确认这个 R",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "能买",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "认识 R",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "跳空、滑点和费用会让实际亏损超过 1R；R 是计划时的预算，不是保证。",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "选你要用的模块",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": "选模块",
+  "placeholders": 0,
+  "where": [
+   "Onboarding.swift"
+  ]
+ },
+ {
+  "key": " · 到期 ",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": " 天前",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": " 天）",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": " 股（",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "% 的净成本）",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "+3 个交易日",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "+5 个交易日",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "1R 取自设置里的定仓净值和单笔风险（现在是 {0}），不随账户每天的市值自动变。",
+  "placeholders": 1,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "Delta 相当 ",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "{0} 张）",
+  "placeholders": 1,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "买",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "买价 / 卖价",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "今天",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift",
+   "PortfolioUI.swift",
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "价位",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift",
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "价格范围 ±",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "作废线",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "入场区",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift",
+   "demo.py"
+  ]
+ },
+ {
+  "key": "净成本",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "到期",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift",
+   "TradingViews.swift",
+   "sources.py"
+  ]
+ },
+ {
+  "key": "到期时盈亏",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "到期，价格越过外侧行权价",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "卖",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "合约价值",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "合约价值，美元",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "含义",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "图",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "开仓价",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift",
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "张数",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "张数 {0}",
+  "placeholders": 1,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "往返点差摩擦约 ",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "成交价 ",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "成本（净）",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "所选日期盈亏（{0}）",
+  "placeholders": 1,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "所选日期：{0}",
+  "placeholders": 1,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "把计划卡和已持有的期权画成盈亏图：拖动日期、波动率和价格范围，鼠标移到图上读数",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "报价 ",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "持仓期权（{0}）",
+  "placeholders": 1,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "无上限",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "日期：{0}",
+  "placeholders": 1,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "曲线用 Black-Scholes 估算，各腿的隐含波动率由报价或持仓标价反推，不含波动率偏斜和提前行权；实际成交价会有偏差。",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "最大亏损",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "最大盈利",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "期权计划",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift",
+   "ShepherdApp.swift",
+   "modules.py"
+  ]
+ },
+ {
+  "key": "期权计划数据不可用",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "标的价",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "标的价格 × 日期（",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "每天时间损耗 ",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "波动率每升 1 点 ",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "浮盈亏",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "浮盈亏 ",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "点击展开",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "点击收起",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "现价",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "现价不动、{0}：{1}",
+  "placeholders": 2,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "盈亏平衡价（到期）",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "盈亏（%）",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "盈亏（美元）",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "盈亏，占成本 %",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "盈亏，美元",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "目标",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift",
+   "demo.py"
+  ]
+ },
+ {
+  "key": "看涨",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "看跌",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "第 {0} 天（{1}）",
+  "placeholders": 2,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "行权价",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "表",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "计划",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "计划卡（{0}）",
+  "placeholders": 1,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "账本里没有可以画图的期权持仓。",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "还没有计划卡。把计划卡 JSON 放进 {0} 以后会出现在这里。",
+  "placeholders": 1,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "这张卡无法计算",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "隐含波动率",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "隐含波动率 ",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "（自然价 ",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "；波动率 ×",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": " · 日期待确认",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": " · 正股 {0}",
+  "placeholders": 1,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": " · 线性估算",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift",
+   "RiskOverview.swift",
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 释放第一步",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "Delta 美元 · 占快照净值 · 浮盈按快照价",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "{0} 条未计入 · 仅覆盖子集",
+  "placeholders": 1,
+  "where": [
+   "OverviewView.swift",
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "上限以内",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift",
+   "RiskOverview.swift",
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "上限只作提示",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "下次更新：",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "不便宜",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "仅覆盖 {0} / {1} 条",
+  "placeholders": 2,
+  "where": [
+   "OverviewView.swift",
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "从这里开始",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "便宜",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "保护",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "先看演示（虚构数据）",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "全部日历",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "只表示下列规则都没触发：止损位、临近到期、大类上限、未计入热度、数据过期、待核对。不代表没有风险。",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "固定值（宏观灯模块未开启）",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "大盘下跌 5%",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift",
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "大类跳空压力",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift",
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "定仓净值 ",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "定仓净值未确认",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift",
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "导入持仓 JSON",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "已计入热度",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift",
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "快照 ",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "快照净值",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "按占上限比例排序",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "接下来",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "接近上限",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift",
+   "RiskOverview.swift",
+   "overview.py"
+  ]
+ },
+ {
+  "key": "数据日期正常（绿色只表示数据不落后，不是市场信号）",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "新建一笔交易计划",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "新开仓预算",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "日历里没有之后的事件",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "日期待确认",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift",
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "暂无可比较的大类压力",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "暂无可计量的持仓",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "更新：",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "最大敞口",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "桶上限",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "没有触发任何提示规则",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "灯",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "热度上限",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "现金占净值",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "统一 1R",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift",
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "美东交易日 · 只汇总已有资料，不构成建议",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "计划按 1R 自动算数量；成交登记只记账，不会向券商下单。没有接数据的模块不会报警，可以在菜单「选择模块…」里再打开。",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "账户现金数据不完整",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift",
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "账本还是空的。你的 1R 是 ",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "达到或超过上限",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift",
+   "RiskOverview.swift",
+   "overview.py"
+  ]
+ },
+ {
+  "key": "需要处理",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "风险页详情",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "（本机时间，不含美股假日）",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": "，下面三件事任选一件。",
+  "placeholders": 0,
+  "where": [
+   "OverviewView.swift"
+  ]
+ },
+ {
+  "key": " · 复核日 ",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": " · 开仓 ",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": " · 收益 ",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": " · 较开仓 ",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": " · 预算 ",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": " 与止损线",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "1R 口径：",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "{0} · 第 {1} 天",
+  "placeholders": 2,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "估值日",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "合计盈亏（含成本）",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "多",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "定仓算法与记录",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "已平仓 ",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "平仓 ",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "开仓",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "开仓价来源：",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "持仓中占用预算",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "收盘",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "收盘价",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "日",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "期间最好／最差",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "每笔开仓时定的风险预算",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "比值",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "比值还差 ",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "毛敞口",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "盈亏（R，含成本）",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "空",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "等收盘",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "纸盘",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift",
+   "ShepherdApp.swift",
+   "modules.py"
+  ]
+ },
+ {
+  "key": "纸盘数据不可用",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "线",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "股数",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "腿收益",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "腿盈亏",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "观察用的模拟仓：按收盘价估值，不计入热度、风险和真实账本",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "距止损",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "还差 ",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "零",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "预算",
+  "placeholders": 0,
+  "where": [
+   "PaperView.swift"
+  ]
+ },
+ {
+  "key": "{0} 盈亏图",
+  "placeholders": 1,
+  "where": [
+   "PayoffChart.swift"
+  ]
+ },
+ {
+  "key": "到期  ",
+  "placeholders": 0,
+  "where": [
+   "PayoffChart.swift"
+  ]
+ },
+ {
+  "key": "标的 ",
+  "placeholders": 0,
+  "where": [
+   "PayoffChart.swift"
+  ]
+ },
+ {
+  "key": "现价 ",
+  "placeholders": 0,
+  "where": [
+   "PayoffChart.swift"
+  ]
+ },
+ {
+  "key": "（较现价 ",
+  "placeholders": 0,
+  "where": [
+   "PayoffChart.swift"
+  ]
+ },
+ {
+  "key": "M月d日 EEEE",
+  "placeholders": 0,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": "{0} 个样本",
+  "placeholders": 1,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": "{0} 天后",
+  "placeholders": 1,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": "一日损失（美元，负数为盈利）",
+  "placeholders": 0,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": "历史样本数",
+  "placeholders": 0,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": "已过",
+  "placeholders": 0,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": "损失 {0} 至 {1}",
+  "placeholders": 2,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": "损失上界",
+  "placeholders": 0,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": "损失下界",
+  "placeholders": 0,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": "明天",
+  "placeholders": 0,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": "样本数",
+  "placeholders": 0,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": "股票子组合历史一日损失直方图",
+  "placeholders": 0,
+  "where": [
+   "PortfolioUI.swift"
+  ]
+ },
+ {
+  "key": " R：减仓或买保护补齐，时点看 PA",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": " · 上限只作提示",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": " · 不设止损，不计热度",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": " · 持仓贡献",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": " · 资金比例，非风险余量",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": " 空头 Delta（如 put 的 Delta 名义）",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "Beta、覆盖与估算说明",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "{0} 条已关联组合汇总仅展示，合约腿参与计算。",
+  "placeholders": 1,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "{0} 组未计入 · 总风险未完整覆盖",
+  "placeholders": 1,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "│ 上限",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "免判据持仓 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "其余 {0} 条见下方大类明细",
+  "placeholders": 1,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "净敞口 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift",
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "利率",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift",
+   "demo.py",
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "参与 {0} / {1} 条 · 线性近似，不含 Gamma / Vega / 跳空 / 指派，不是最大损失或 VaR。",
+  "placeholders": 2,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "各行使用同一 R 刻度；负值为该情景下的风险抵减。大类压力不能相加当作全组合最大损失。",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "同一组合 · 不同市场情景",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "大类代理、敏感度与相关性",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "宽基",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift",
+   "demo.py",
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "总览",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift",
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "持仓 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "无持仓记录",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "无止损正股 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "暂无可展示的持仓贡献",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "有记录未计入敞口，查看“逐仓与模型”补充资料。",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "未分簇，未估算压力",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "未计入：",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "点选大类查看持仓贡献",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "热度明细与未计入仓位",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "现金 / 快照净值",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "科技",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift",
+   "demo.py",
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "约 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "组合风险",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "若全由",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "行情 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "补：",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "视图",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "贡献按本大类自适应刻度展示。\n已有数据的估算余量不等于可加仓额度。",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "资料过期或来源不可用 · 当前显示历史参考",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "超出上限 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "逐仓与模型",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "非科技",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift",
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "预算使用、压力来源与覆盖范围",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "黄金",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift",
+   "demo.py",
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "（宏观灯：",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "，压力 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": " / 上限 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 不是零风险",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 仅覆盖子集",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 从当前价起算",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 余量 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 余量按各子项代理 ETF 名义（敏感度 1）折算",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 占净值 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 已有批次证据",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 年化波动 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 当前形态",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 约 100% ≈ 满仓持有 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " · 还可加约 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " × 敏感度 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " 代理名义",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " 倍",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " 止损风险",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": " 的止损仍在成本之下",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "% · 代理 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "%）· 占比分母：账户快照净值 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "1 日 VaR 95%",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "Beta 加权净敞口",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "R 分母：",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "R 分母：全局定仓 1R ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "R 分母：未确认净值",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "R 未知",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 个低 R² 标的 · Beta 加权会低估这些标的的自身波动",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 只 · 你裁定不设止损，不计热度",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 只 · 只计跳空压力，不计热度",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 只免判据持仓 · 不设止损，不计热度",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 只无止损正股 · 不计热度",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 对同子项联动弱（相关 < ",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 对跨大类高联动（相关 ≥ ",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 条仓位",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 条仓位未参与（缺 Delta 或缺 Beta，不当作零）",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 条期权的原始批次未知",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 条未计入：",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "{0} 笔计入热度",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "· 相关 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "。初始止损 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "。第一次设的止损已在成本之上，没有初始风险，不算倍数",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "买入 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "免判据持仓",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "共同主题",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "冲击 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "净值 / 权重",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "卖出 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "占快照净值 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "占比按已覆盖持仓的绝对 Delta 美元计算，缺失持仓不按零风险处理。",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "历史损失情景 · 股票子组合",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "历史模拟不是最大亏损。未覆盖期权非线性、跳空与流动性风险；全组合 VaR 是否可用取决于完整估值数据。",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "参与 {0} / {1} 条仓位",
+  "placeholders": 2,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "大盘情景 · 按 R 读",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "大类跳空压力 · 按 R 读 · 只提示不拦截",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "大类（科技 / 非科技 / 黄金 / 利率 / 宽基）设上限，子项各用自己的代理与冲击后相加；压力 = 代理 ETF 历史最差单日 × 敏感度 × Delta 美元，模拟隔夜跳空、止损来不及成交。",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "对照 · 同一参与子集 · 占快照净值 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "已用热度",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "已覆盖口径余量",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "已超上限",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "年化波动",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "当前持仓形态 · 不等于同批建仓",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "总热度",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "接近上限（≥75%）",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "无止损正股",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "时间 / 缺口",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "暂无足够证据确认同批建仓的操作；当前形态仍可识别。",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "期权策略与操作批次",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "未分簇 · 不计压力",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "未确认净值",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "未确认净值，无法折算 R",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift",
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "未计入 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "标的 / 账户",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "止损在成本之上的正股 · 另有 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "止损在成本之上：被打掉仍盈利 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "止损在成本之下：被打掉相对成本亏 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "止损已锁定盈利",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "没有未处理的",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "热度明细 · 从当前价起算",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "科技与行业集中提醒 · 不限制开仓",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "绝对 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "绝对 Delta 美元（不按 Beta）",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "补充风险数据",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "补批次",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "覆盖",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "计算边界与资料缺口",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "逐仓 Delta 与 Beta",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "逐大类明细 · 子项、成员、敏感度与未计入仓位",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "（定仓净值 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "（已锁定）",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "）· 可能其实是同一类",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "）· 标签可能不准",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "）· 相关 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "，初始风险 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "，止损触发时为 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "，现浮盈 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "；从现价回吐 ",
+  "placeholders": 0,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "；已上移 {0} 次",
+  "placeholders": 1,
+  "where": [
+   "RiskView.swift"
+  ]
+ },
+ {
+  "key": "你的 1R",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "例如 100000",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "保存",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "净值是冻结的预算基准，不随每天的账户市值自动变；想改就回来改，只影响之后的新计划。",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "单笔风险比例",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "外观",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "定仓净值（美元）",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "已找到数据",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "已经待执行或持仓中的计划保留当时的 1R，不会被这里的修改追溯。",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "引导",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "打开演示（虚构数据）",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift",
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "数据",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "核心部分一直开着：总览、持仓、风险、交易计划、成交与复盘、数据与留存。下面这些按需打开。",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "模块",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "比例上限 4%。常见做法是 0.5%–2%：新手、连亏期、波动大的品种取低的一端。",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "没有确认 1R 之前，App 不会给出计划数量，也不能把计划标成待执行。",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "浅色",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "深色",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "演示",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift",
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "用持仓快照的 ",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "认识 R…",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift",
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "跟随系统",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "通用",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "风险与 1R",
+  "placeholders": 0,
+  "where": [
+   "Settings.swift"
+  ]
+ },
+ {
+  "key": "交易",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "交易计划",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift",
+   "TradingViews.swift",
+   "sources.py"
+  ]
+ },
+ {
+  "key": "今日",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "周线观察",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift",
+   "WeeklyWatchView.swift",
+   "modules.py"
+  ]
+ },
+ {
+  "key": "导出账本与快照备份",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "成交与复盘",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift",
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "操作未完成",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "操作正在保存，请稍后退出",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "放弃并退出",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "新建计划",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift",
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "日历",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift",
+   "modules.py"
+  ]
+ },
+ {
+  "key": "本机",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "正在读取本机持仓与账本",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "演示模式：账户、持仓、行情和计划全是虚构的，关闭窗口即丢弃，不碰你的真实账本。",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "盘前准备",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift",
+   "TradingViews.swift",
+   "modules.py"
+  ]
+ },
+ {
+  "key": "知道了",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "系统",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "组合",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "读取资料…",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "资料存于本机 · 成交登记不会向券商下单",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "返回",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "返回保存，或放弃这次输入。已保存的记录不会受影响。",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "还有打开的编辑表单",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "重新读取",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "重新读取资料",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": "风险",
+  "placeholders": 0,
+  "where": [
+   "ShepherdApp.swift"
+  ]
+ },
+ {
+  "key": " · 已过",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": " · 费用 ",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "30 天",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "7 天",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "[已撤销] ",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "{0} · 美东交易日",
+  "placeholders": 1,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "{0} 份待处理",
+  "placeholders": 1,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "事件",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "交易日历",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "交易理由",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "交易记录",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "今天的检查与笔记",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "全天",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "全部",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "全部计划",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "共振",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "共振依据",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "删除",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "券商确认单",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "剩余 {0} · 已实现 {1}",
+  "placeholders": 2,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "原始 1R",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "取消计划",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "填写检查与笔记",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "复盘",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "大盘背景",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "完整计划 0.9R–1R",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "宏观、财报、期权到期与计划复核；来源时间按原资料保留。",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "尚无交易计划",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "尚无复盘",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "尚无已登记成交",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "尚未填写盘前笔记",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "已完成 {0} / 3 项",
+  "placeholders": 1,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "已有持仓在“持仓”中查看。新建计划，或核对已有持仓后接入账本。",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "当前剩余风险",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "待确认",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift",
+   "overview.py"
+  ]
+ },
+ {
+  "key": "待确认日期的财报（{0}）",
+  "placeholders": 1,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "待补充",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "忽略",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "恢复处理",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "执行留痕",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "执行纪律 · ",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "投喂箱暂时没有确认单。文件来源见“数据与留存”。",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "新低",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "无可显示事实",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "日历里没有已确认事件",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "期初余额",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "查看记录",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "标记待执行",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "核对登记",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "每笔计划先定义失效条件，再用统一 1R 计算完整仓位。",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "没有可显示的观察",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "添加事件",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "登记入场",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "登记券商里已经发生的成交、撤销误登记、写复盘。App 不会向券商下单。",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "登记已经发生的成交和复盘；券商确认单解析成提案后，在这里核对入账。",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "登记退出",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "盘前观察 · ",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "盘前资料不是今天的",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "累计入场风险",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "缓存里的预估日期，需核对公司公告后再当作已确认。",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "编辑计划",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "背景",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "背景缺口",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "自定义",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "范围",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "记录复盘",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "设置统一标准",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "这个范围内没有已确认事件",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "进行中",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "重新扫描",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "  低 ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "  收 ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "  高 ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": " · 周 ATR ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": " 周",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": " 周线图",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": " 那周",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "50 周 EMA 和旧高叠加区",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "EMA 100 / 200 周  ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "EMA 20 / 50 周  ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "{0} · 第 {1} 周",
+  "placeholders": 2,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "{0} 周 EMA",
+  "placeholders": 1,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "下方旧高：",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "低 ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "历史上碰到过",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "反弹失败",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "叠加区 ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "周 EMA",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "周线观察数据不可用",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "宽基 ETF 的周线和四条周 EMA：四档观察位、预先约定的预警与升红条件，以及慢熊信号",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "已出现",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "已出现 ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "已满足",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "开 ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "慢熊信号（从历史最高收盘算起，按周收盘）",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "截至 ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "折 ATR",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "收在线下",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "旧高 ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "更低的高点、再跌破前低",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "最深停在这一档",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "未出现",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "未满足",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "本周",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "本周 ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "本周未走完",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "现值",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "碰到",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "离收盘",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "第一次碰到",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "读不到",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "距 52 周高 ",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "距最高收盘",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "近期周线低点：",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "预警与升红条件（按收完的周判断）",
+  "placeholders": 0,
+  "where": [
+   "WeeklyWatchView.swift"
+  ]
+ },
+ {
+  "key": "上游持仓不可用，展示最近留存的历史快照；不是当前账户。",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "事件编号",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "交易记录-",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "因子簇",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "外观只能选择 dark 或 light",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "宏观灯模块未开启，桶上限与热度上限按静态值。",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "已核对操作批次",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "快照需包含 positions 和 accounts 数组；请参考开源示例格式",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "总览生成失败：{0}",
+  "placeholders": 1,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "成交时点",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "成交时点须为带时区的 ISO 时间，且不能在未来",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "找不到自定义事件",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "持仓对账存在冲突，情景覆盖范围尚不完整。",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "持仓对账存在冲突，覆盖范围尚不完整：",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "持仓已变化，请重新读取后补充风险数据",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "持仓快照已变化，请刷新后核对",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "持仓快照路径",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "持仓快照过期或不可用，不能代表当前组合",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "持仓快照过期或不可用；以下敞口仅供历史参考，不能代表当前账户。",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "持仓编号",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "数据来源",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "期权计划页生成失败：{0}",
+  "placeholders": 1,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "未知操作",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "未知来源",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "标的价格",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "每份买方合约 Delta",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "每份买方合约 Delta 必须在 -1 到 1 之间；不是整仓 Delta",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "盘前检查项无效",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "盘前笔记",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "确认单文件夹读取失败",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "行情截止日 {0} 取自补充日线（{1}）；主行情包停在 {2}，本页未混用两者。",
+  "placeholders": 3,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "请先核对券商中的实际持仓与成本",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "请选择不超过 8MB 的持仓 JSON 文件",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "账户识别别名",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "风险主题",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "风险数据时间不能在未来",
+  "placeholders": 0,
+  "where": [
+   "application.py"
+  ]
+ },
+ {
+  "key": "不支持的原生操作",
+  "placeholders": 0,
+  "where": [
+   "bridge.py"
+  ]
+ },
+ {
+  "key": "找不到该历史快照",
+  "placeholders": 0,
+  "where": [
+   "bridge.py"
+  ]
+ },
+ {
+  "key": "本机操作失败；未提交的写入已回滚，请重试。",
+  "placeholders": 0,
+  "where": [
+   "bridge.py"
+  ]
+ },
+ {
+  "key": "请求参数必须为对象",
+  "placeholders": 0,
+  "where": [
+   "bridge.py"
+  ]
+ },
+ {
+  "key": "请求必须带字符串编号",
+  "placeholders": 0,
+  "where": [
+   "bridge.py"
+  ]
+ },
+ {
+  "key": "请求过大",
+  "placeholders": 0,
+  "where": [
+   "bridge.py"
+  ]
+ },
+ {
+  "key": "非有限数值",
+  "placeholders": 0,
+  "where": [
+   "bridge.py"
+  ]
+ },
+ {
+  "key": "人工核对批次：",
+  "placeholders": 0,
+  "where": [
+   "context.py"
+  ]
+ },
+ {
+  "key": "原持仓快照标的行情",
+  "placeholders": 0,
+  "where": [
+   "context.py"
+  ]
+ },
+ {
+  "key": "已核对同一回单 · {0} {1}（分钟精度）",
+  "placeholders": 2,
+  "where": [
+   "context.py"
+  ]
+ },
+ {
+  "key": "日线日期或价格不正确",
+  "placeholders": 0,
+  "where": [
+   "context.py"
+  ]
+ },
+ {
+  "key": "未注明",
+  "placeholders": 0,
+  "where": [
+   "context.py"
+  ]
+ },
+ {
+  "key": "缺少来源或日线",
+  "placeholders": 0,
+  "where": [
+   "context.py"
+  ]
+ },
+ {
+  "key": "行情口径不匹配",
+  "placeholders": 0,
+  "where": [
+   "context.py"
+  ]
+ },
+ {
+  "key": "补充行情 market-data.json 无效；未将其计入风险",
+  "placeholders": 0,
+  "where": [
+   "context.py"
+  ]
+ },
+ {
+  "key": "50 周 EMA 一带",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "CPI（演示）",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "DE {0}/{1} {2}/{3} 看涨价差（演示）",
+  "placeholders": 4,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "From: Schwab Alerts <donotreply@mail.schwab.com>\nSubject: Your trade was executed in your Schwab account ending in 000\n\nAccount ending: 000\n{0}\n\nWe executed a trade in your account.\n\nHere are the details for the trade executed on {1} in your account ending in 000:\nAction:\nBought\nQuantity:\n20\nSymbol:\nPG\nUnit price:\n$158.40\nPrincipal amount\n$3,168.00*\n\n（演示：虚构的成交通知）\n",
+  "placeholders": 2,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "IWM 215/205 卖出看跌价差",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "RSI6 31.5，第 1 天进入低位",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "RSI6 回升到 41.2",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "{0} 收盘 ≤ {1} → 卖出（收盘口径）",
+  "placeholders": 2,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "{0} ｜ 收盘价 {1}",
+  "placeholders": 2,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "上涨是不是少数股票撑着",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "两条腿等金额（演示）。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "估值",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "估值的地心引力",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "作废线（收盘跌破）",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "信用",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "信用：高收益债利差 63 个交易日走阔 ≥ 90bp",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "写一套虚构的演示数据和账本",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "出事时能跌多深",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "前高 430 附近减半，其余跟踪止损",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "医疗",
+  "placeholders": 0,
+  "where": [
+   "demo.py",
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "历史比例（演示）。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "反弹时减多仓",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "各桶上限打 75 折",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "同日大盘 +0.3%",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "回踩 50 日线",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "多 XLV 空 XLY",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "峰值后还没有确认的反弹高点",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "广度",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "开仓（演示）。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "慢熊信号说明（演示）。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "收盘回到 50 日 EMA 附近",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "收盘跌回箱体 425 以下",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "收盘跌破 372",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "收盘跌破止损价，按规则今天处理",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "标普 500",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "标普站上 200 日线",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "正股 {0} 股",
+  "placeholders": 1,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "比值 XLV÷XLY 收盘低于止损线就离场（演示）。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "波动",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "波动回落且信用不再走阔，或标普站上 50 日线",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示成交",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示数据（虚构）",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示数据：条件和数字都是虚构的，只用来展示页面。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示数据：没有历史回测依据",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示数据：灯和趋势都是虚构的。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示数据：这些观察是虚构的",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示条件。VOO {0} 对 50 周 EMA {1}",
+  "placeholders": 2,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示条件，尚未满足",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示计划卡：报价和隐含波动率都是虚构的。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示读数",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示：回踩 50 日 EMA 后放量收回。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示：回踩支撑后反弹到前高。数字全部虚构。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示：定仓净值 100,000 × 2%",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示：未计费用",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示：突破箱体后第一次回踩。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示：等回到 150 一带再看。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示：防御板块跑赢可选消费。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "演示：限价 9.80 买入 1 张。",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "火苗：恐慌有没有起来",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "现金管理 · 闲钱停放（免判据）",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "目标 480，跌破 20 日 EMA 走一半",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "确认：标普 500 周线反弹失败且距高点 ≥ 8%",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "示例券商 A",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "示例券商 A（虚构）",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "示例券商 B",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "示例券商 B（虚构）",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "科技桶 0，其他桶 ≤ 1/3",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "突破回踩",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "等方向；已有仓位按止损",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "能源",
+  "placeholders": 0,
+  "where": [
+   "demo.py",
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "能源板块同日 −1.4%",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "观察，未定入场",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "议息会议（演示）",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "资金链有没有绷紧",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "还差 {0}%（演示数据）",
+  "placeholders": 1,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "还没跌到 50 周 EMA 下方",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "连续 2 天低位，RSI6 24.8",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "逢低买（回调到位再确认）",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "重点观察：VOO 周收盘低于 {0} 就出预警",
+  "placeholders": 1,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "金融",
+  "placeholders": 0,
+  "where": [
+   "demo.py",
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "金融板块同日 +0.6%",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "非农就业（演示）",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "预警：VOO 周收盘跌破 50 周 EMA",
+  "placeholders": 0,
+  "where": [
+   "demo.py"
+  ]
+ },
+ {
+  "key": "剩余持仓按原失效条件估算风险为 {0}R，超过原始 1R",
+  "placeholders": 1,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "实际入场风险未知（原失效价可能已被穿越），无法判断是否超过原始 1R",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "实际执行超过原预算",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "已冻结标准 1R",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "已减仓的剩余持仓",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "已成交，原风险依据需要复核",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "已成交，缺少事前风险基准",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "已按计划建立持仓",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "已核对期初持仓",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "期初持仓没有事前冻结的 1R，保留真实数量；不能据此判定开仓纪律",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "沿用旧计划风险基准",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "累计入场数量超过原完整开仓计划；分批或减仓不会重置原计划",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "累计入场风险（含入场费用）为 {0}R，超过原始 1R；实际成交已如实保留",
+  "placeholders": 1,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "观察草稿",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "这笔已成事实的交易没有事前冻结的 1R，风险未知；保留成交并补充复盘",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "部分成交／分批入场",
+  "placeholders": 0,
+  "where": [
+   "discipline.py"
+  ]
+ },
+ {
+  "key": "PDF 文本提取器未找到：请用 ./build-workbench.sh 重建 App，或改投 .eml/.html/.txt",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "PDF 解析失败：",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "PDF 里没有提取到文本（可能是扫描件），请改投邮件原件 .eml",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "PDF 附件（单号以附件正文为准）",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "Schwab 成交只能并入 Schwab / thinkorswim 账户",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "[券商确认单] {0}",
+  "placeholders": 1,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "{0} · 腿{1} · {2}",
+  "placeholders": 3,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "{0}：{1}",
+  "placeholders": 2,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "发现同账户、证券、方向、日期、数量和价格的已登记成交；请核对不是重复邮件后明确确认",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "合约信息不完整，请人工核对完整合约及乘数后再登记",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "同一文件包含多个确认单号，请拆分成独立回单后再导入",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "多腿费用需要人工分配到各腿，整单佣金和费用不可在每腿重复计入",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "已核对费用（未知时请补充，确认为零时填 0）",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "平仓成交必须并入已有持仓，不能登记为新持仓",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "并入计划",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "忽略原因",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "成交买卖及开平方向与所选计划操作冲突，不能强行改为入场或退出",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "成交价",
+  "placeholders": 0,
+  "where": [
+   "econf.py",
+   "store.py"
+  ]
+ },
+ {
+  "key": "成交通知",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "找不到这份确认单或文件已变化，请先重新扫描",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "描述",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "文件超过 8MB，不太像单封确认单",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "文件超过 8MB，请拆分后导入",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "文件里没有文本",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "无单号",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "时区未注明",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "期权成交不能并入股票计划",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "未能唯一识别证券，请核对完整合约后再登记",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "来源说明",
+  "placeholders": 0,
+  "where": [
+   "econf.py",
+   "store.py"
+  ]
+ },
+ {
+  "key": "正文没有出现 Schwab 字样，请确认这是 Schwab 确认单而不是其他来源的邮件",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "没有找到 eConf# 单号",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "没有找到成交腿（Buy/Sell to Open/Close）。确认单正文可能只有查看链接，请投喂邮件原件或 PDF",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "没有解析出成交日期（需要 MM/DD/YY 格式），登记前请手工补",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "确认单到期日与计划到期日不一致",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "确认单指纹",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "确认单文件夹读取失败，请检查目录权限",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "确认单期权合约与计划合约不一致",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "确认单标的与计划标的不一致",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "确认单没写开仓/平仓，请人工指定这一腿是入场还是退出",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "确认单账户与计划账户不一致",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "第 {0} 腿与第 {1} 腿参数完全相同（转发邮件常把原件引用两遍），登记时注意别重复入账",
+  "placeholders": 2,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "第 {0} 腿没写开仓/平仓（通知类邮件常见），入账时请人工指定方向",
+  "placeholders": 1,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "第 {0} 腿缺{1}，登记前请手工核对",
+  "placeholders": 2,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "股票成交不能并入期权计划",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "自动入账状态读取失败，确认单一律按待核对显示",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "请先核对数量、价格、费用、账户与合约，再确认登记",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "请指明要登记的成交腿",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "请选择入场或退出，并核对持仓方向",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "读取失败：{0}",
+  "placeholders": 1,
+  "where": [
+   "econf.py",
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "费用信息不完整；请核对正式确认单并填写费用，不能把未提供的费用当成零",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "这一腿与计划的登记方向不符；请人工核对",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "这一腿已登记或已撤销；请在交易记录中更正，不能重复导入",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "这一腿是卖出开仓，与多头计划不符；请人工核对",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "这份确认单已忽略，请先点恢复处理",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "这份确认单已由自动入账记进持仓账本，不能再在这里登记",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "这是更正或取消通知，请先在交易记录中核对原成交并更正，不能作为新增成交导入",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "邮件有多份 PDF，请分别保存附件后逐份导入",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "邮件里没有可解析的正文（只有图片或空正文），请改从 schwab.com 导出",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "Beta 是市场敏感度，不等于个股波动；请结合相关性、R² 和年化波动率。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "Beta 样本 ",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "Call 的 long-contract Delta 应为正值，需核对符号口径",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "Delta {0} × 距止损 {1}（线性，偏保守）",
+  "placeholders": 2,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "Delta 与标的价格不在同一天，未纳入当前敞口",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "Dollar Delta 是方向性敞口，不是资金占用；跨标的用美元敞口汇总，不把股数直接相加。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "ETF · 行业穿透未知",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "GLD 最差单日 −10.3%",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "IGV 最差单日 −11.8%（2020-03-16）；2026 年与半导体相关仅 0.2",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "Put 的 long-contract Delta 应为负值，需核对符号口径",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "QQQ 最差单日 −12.0%（2020-03-16）；MAGS 历史太短，用 QQQ 代理",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "R² < {0} 的标的大盘解释力有限，Beta 加权会低估这些标的的自身波动。",
+  "placeholders": 1,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "SMH 最差单日 −14.4%（2020-03-16）；半导体、存储与硬件",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "SPY 代理",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "SPY 最差单日 −10.9%（2020-03-16）",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "TLT 最差单日 −6.7%（2020-03-17）",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "XLE 最差单日 −20.1%（2020-03-09）",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "XLF 最差单日 −16.7%（2008-12-01）",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "XLI 最差单日 −11.3%（2020-03-16）",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "XLP 最差单日 −9.4%（2020-03-12）；可选消费无 XLP 行情时按波动率比放大",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "XLV 最差单日 −9.9%",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "{0} 股 × 距止损 {1}（{2} → {3}）",
+  "placeholders": 4,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "±1% 是当前 Delta 的线性市场情景，不是 VaR、最大亏损或收益预测；未反映 Gamma、Vega 和跳空。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "−5%/−10% 等较大波动下期权 Delta 会明显变化，线性估算误差更大。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "上限只做提示，不阻止开仓；R 的分母是全局定仓 1R。单笔 2R 是单笔止损风险上限，与这里的大类跳空上限是两道闸。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "两层结构：大类（科技 / 非科技 / 黄金 / 利率 / 宽基）设上限；子项（软件、硬件、M7、金融、消费……）各用自己的代理与冲击，只展示不单独设上限。标签可在“补充风险数据”里逐个改（填子项名）。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "主题未知",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "仅覆盖子集：缺 Delta 或缺 Beta 的仓位不参与计算，也不当作零风险。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "代理本身",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "信息技术",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "免判据",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "共同日收益不足 {0} 个（现有 {1}）",
+  "placeholders": 2,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "到期上行尾部净卖出 Call，理论亏损无上限",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "半导体",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "占比分母是账户快照净值；R 的分母是全局定仓 1R（确认的定仓净值 × 标准风险比例），两者不同。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "压力情景 = 子项代理 ETF 1999 年以来最差单日跌幅，模拟隔夜跳空、止损来不及成交；不是预测，也不是最大亏损。同一大类内各子项线性相加（真崩盘时一起跌）。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "可选消费",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "各大类在系统性暴跌时会一起跌，大类压力不能相加当作全组合最坏情况；全组合请看大盘情景。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "合约、现价、数量、乘数或币种不完整，无法校验组合收益边界",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "同日期对日收益 OLS（含截距）· 最近最多 252 个共同样本 / 最少 60 个 · 年化波动率 = 样本标准差 × √252",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "基准收益无足够方差，无法回归 Beta",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "基准未知",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "基准用持仓快照里同一时刻的 SPX 点位（{0}，盘中），Beta 仍按截至 {1} 的完整日线回归。",
+  "placeholders": 2,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "大盘因子本身；全组合最坏情况看大盘情景",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "宏观，单独计",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "宽基指数",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "对 {0} 回归 β（{1} 个样本）",
+  "placeholders": 2,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "工业",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "已超过 4 天",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "当前没有持仓行，无可估算的敞口。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "必需消费",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "总热度 = 所有止损同时被打掉时的亏损，从当前价起算；这是「满仓」的口径。只提示不拦截。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "持仓、Delta 与价格可能来自不同时间；以下保留各行来源和时间，缺失时间不可视作实时行情。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "持仓快照 SPX 点位",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "持仓数量或方向不完整",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "持仓数量或状态待核对",
+  "placeholders": 0,
+  "where": [
+   "exposure.py",
+   "risk.py"
+  ]
+ },
+ {
+  "key": "持仓行情",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "按同到期合约收益折点计算 · 从当前净值起算；不含提前指派及费用",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "按标的止损但缺标的价",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "按自身价止损但缺现价",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "敏感度优先用对代理 ETF 的日收益回归 β；缺代理行情时用波动率比（β 的上界，偏保守）。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "敞口基于过期或不可用的快照/行情，仅供历史参考。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "无可用 SPX/SPY 基准历史，市场加权风险暂不可用。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "无止损 · 权利金现值（最多亏完）",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "日线收盘",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "时间在未来",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "时间未知",
+  "placeholders": 0,
+  "where": [
+   "exposure.py",
+   "sources.py"
+  ]
+ },
+ {
+  "key": "有仓位无法估算或亏损无上限，未计入热度，不当作零风险。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "有仓位缺 Delta 美元，未计入所在大类的压力，不当作零风险。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "期权 Delta ",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "期权合约乘数不完整",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "期权按标的止损用 Delta 线性估算，买方以权利金现值封顶；无止损的买方期权按权利金全亏计。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "期权缺 Delta，无法估算到止损的亏损",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "未分簇",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "权利金现值封顶（线性估算 {0}）",
+  "placeholders": 1,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "标的价格 ",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "标的价格与基准价格不在同一天，保留该日 Dollar Delta，未纳入当前 Beta 加权汇总",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "没有止损的正股不计入热度（它们的风险在跳空压力里），单独列出；标了「免判据」的持仓按你的裁定不设止损，另列一栏。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "波动率比 {0}%/{1}%（β 上界，偏保守）",
+  "placeholders": 2,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "消费",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "现价已在止损之外，需要立即处理",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "硬件",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "科技成长",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "科技成长主题（非纯科技）",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "约 100% ≈ 满仓持有 {0}（Beta 加权净敞口 ÷ 账户快照净值）；这是中性参照，不是上限或建议。",
+  "placeholders": 1,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "线性近似：{0} 变动 × Σ(Delta美元 × Beta)。不含 Gamma/Vega/跳空/指派，不是最大损失或 VaR。",
+  "placeholders": 1,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "缺 Delta 美元",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "缺 Delta，按权利金现值（上限）",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "缺少有效到期日，无法校验组合收益边界",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "缺少有效的每份期权 Delta（不得当作零）",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "缺少标的价格",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "缺少足够的真实 SPX 日线，使用 SPY 收益代理；等效 Delta 单位为 SPY 股，不是 SPX 点，不做固定十倍换算。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "缺当前 Beta 加权",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "缺行情，按 1 倍计",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "股票持仓市价",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "股票股数",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "自身价 {0} → 止损 {1}",
+  "placeholders": 2,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "行业/主题为可编辑的示例标签，仅用于集中风险提示，不限制投机仓位；ETF 未获得成分权重时不声称已穿透。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "行业未知",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "行情历史日期未知、在未来或超过 4 天，不能视作当前风险。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "覆盖不完整：合计和集中比例仅代表已覆盖持仓，缺失项不是零风险。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "资产类型或现价不完整",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "资产类型暂不支持 Delta 换算",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "跨到期日、标的、账户或乘数组合，不能用单一期末收益确定最大亏损",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "软件",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "软件、硬件、M7 合并计上限；三者在真崩盘时一起跌",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "通信服务",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "金融/能源最差单日比 QQQ 还深，不是防御",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "防御",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "非美元持仓缺少统一汇率，未纳入美元敞口",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "，仅供历史参考",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "，未纳入当前敞口",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "：请先在全局风险设置中确认定仓净值。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "宏观面板数据停在 {0}（{1} 天前），未采用；桶上限与热度上限按静态值。",
+  "placeholders": 2,
+  "where": [
+   "macro.py"
+  ]
+ },
+ {
+  "key": "宏观面板文件缺字段，桶上限与热度上限按静态值。",
+  "placeholders": 0,
+  "where": [
+   "macro.py"
+  ]
+ },
+ {
+  "key": "宏观面板文件读取失败，桶上限与热度上限按静态值。",
+  "placeholders": 0,
+  "where": [
+   "macro.py"
+  ]
+ },
+ {
+  "key": "没有找到宏观面板文件（{0}），桶上限与热度上限按静态值。",
+  "placeholders": 1,
+  "where": [
+   "macro.py"
+  ]
+ },
+ {
+  "key": "几只宽基 ETF 的周线和四条周 EMA，列出预先约定的预警条件。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "到期日和复核日自动来；宏观日历与财报日期需要数据文件（可选）。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "券商确认单导入",
+  "placeholders": 0,
+  "where": [
+   "modules.py",
+   "store.py"
+  ]
+ },
+ {
+  "key": "只观察、不下单的模拟交易，按收盘估值，不进真实账本和风险统计。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "宏观数据、财报、期权到期和计划复核日排在一张议程里；也能手动加事件。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "宏观灯",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "已持有的期权自动画；计划卡是你自己写的 JSON 文件（可选）。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "把 Schwab 成交确认邮件解析成成交提案，人工核对后入账。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "把期权计划卡和已持有的期权画成可拖动的盈亏图（日期、波动率、价格范围）。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "检查清单不需要数据；盘前观察需要每日生成的数据文件（可选）。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "模块设置格式不正确",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "每天开盘前的检查清单和笔记；有盘前观察文件时一并列出。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "用一盏红黄绿灯调节新开仓的总热度上限和每个板块的上限，只管新仓的大小。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "需要周线观察数据文件。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "需要宏观面板数据文件（每周更新）。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "需要把确认邮件存进投喂文件夹（可配 Mail 规则自动存）。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "需要纸盘估值数据文件。",
+  "placeholders": 0,
+  "where": [
+   "modules.py"
+  ]
+ },
+ {
+  "key": "1R 不可用，图表没有折算 R。",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "1R 不可用，未折算 R",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "right 只能是 C 或 P",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "{0} 不是数字",
+  "placeholders": 1,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "{0} 不是有限数字",
+  "placeholders": 1,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "{0} 必须是正数",
+  "placeholders": 1,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "{0} 持仓期权（{1}，{2}）",
+  "placeholders": 3,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "{0} 的行权价或方向无法识别",
+  "placeholders": 1,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "{0}{1} 没有波动率，也无法由报价反推",
+  "placeholders": 2,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "到期日未知",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "到期日缺失或已过",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "到期（{0}）",
+  "placeholders": 1,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "卡片给定",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "持仓快照里没有标的价格",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "持仓期权图生成失败：{0}",
+  "placeholders": 1,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "持有 {0} 个交易日",
+  "placeholders": 1,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "持有 {0} 个交易日，波动率降 {1} 点",
+  "placeholders": 2,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "最近的到期日已经过去，卡片需要更新",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "标价无法反推，暂按 50% 占位",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "标的现价",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "没有任何一条腿",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "没有数量不为 0 的腿",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "沿用卡片整体波动率",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "由报价反推",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "由持仓标价反推",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "第 {0} 条腿：{1}",
+  "placeholders": 2,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "缺少 entry_price，且各腿没有 price 或 bid/ask 可合成",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "计划卡文件夹还不存在，目前只显示持仓期权。",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "顶层不是对象",
+  "placeholders": 0,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "Beta 样本或价格日期不齐",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "{0} {1}：{2}",
+  "placeholders": 3,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "{0} 份券商确认单待核对",
+  "placeholders": 1,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "{0} 天后到期",
+  "placeholders": 1,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "{0} 条持仓待核对",
+  "placeholders": 1,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "{0} 组未计入热度",
+  "placeholders": 1,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "{0}压力 {1} / {2} R {3}",
+  "placeholders": 4,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "{0}数据 {1} · {2}",
+  "placeholders": 3,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "{0}数据：{1}",
+  "placeholders": 2,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "今天到期",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "共 {0} 条成交腿，自动入账没有处理",
+  "placeholders": 1,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "多头 {0} 张",
+  "placeholders": 1,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "多头 {0} 张 · 快照价 {1} · 权利金现值约 {2}",
+  "placeholders": 3,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "大盘情景仅覆盖 {0} / {1} 条",
+  "placeholders": 2,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "宏观",
+  "placeholders": 0,
+  "where": [
+   "overview.py",
+   "sources.py"
+  ]
+ },
+ {
+  "key": "宏观灯已把上限 {0}→{1} R",
+  "placeholders": 2,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "宏观面板不可用",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "定仓净值未确认，热度与情景无法折算成 R",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "已过到期日",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "持仓与账本对账有冲突",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "无止损正股 {0}",
+  "placeholders": 1,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "明天到期",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "未接入持仓快照（可选：在「数据与留存」导入持仓 JSON）",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "未接入日线（可选：风险页的 Beta、VaR 要用，格式见 docs/data-formats.md）",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "来源不可用，显示历史留存",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "每个交易日两次：开盘校准（美东 09:45）和收盘（美东 16:05）",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "每个交易日收盘后（美东 16:05）随持仓快照写入",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "每个交易日美东 08:45 生成，用前一个交易日的收盘",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "每个交易日美东收盘后（19:50）。趋势格每天更新；灯按收完的一周确认，连续两周同色才换档，每周看一次即可",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "没有盘前资料",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "没有行情日期",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "漏了 {0} 期（应有基于 {1} 收盘的一期）",
+  "placeholders": 2,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "盘前",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "盘前检查 {0} / {1} 未完成",
+  "placeholders": 2,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "盘前资料过期",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "盘前资料：",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "空头 {0} 张 · 临近到期留意指派",
+  "placeholders": 1,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "落后 {0} 个交易日",
+  "placeholders": 1,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "行情",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
+  "key": "不可用",
+  "placeholders": 0,
+  "where": [
+   "paper.py",
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "复核日 {0}",
+  "placeholders": 1,
+  "where": [
+   "paper.py"
+  ]
+ },
+ {
+  "key": "没有找到纸盘估值文件（{0}）。格式见 docs/data-formats.md。",
+  "placeholders": 1,
+  "where": [
+   "paper.py"
+  ]
+ },
+ {
+  "key": "纸盘 {0} 到复核日",
+  "placeholders": 1,
+  "where": [
+   "paper.py"
+  ]
+ },
+ {
+  "key": "纸盘 {0} 已触发离场",
+  "placeholders": 1,
+  "where": [
+   "paper.py"
+  ]
+ },
+ {
+  "key": "纸盘估值停在 {0}（{1} 天前），以下是旧数。",
+  "placeholders": 2,
+  "where": [
+   "paper.py"
+  ]
+ },
+ {
+  "key": "纸盘估值文件缺字段。",
+  "placeholders": 0,
+  "where": [
+   "paper.py"
+  ]
+ },
+ {
+  "key": "纸盘估值文件读取失败。",
+  "placeholders": 0,
+  "where": [
+   "paper.py"
+  ]
+ },
+ {
+  "key": "纸盘数据：",
+  "placeholders": 0,
+  "where": [
+   "paper.py"
+  ]
+ },
+ {
+  "key": "组合汇总的合约腿关联不完整，需核对；未计入风险",
+  "placeholders": 0,
+  "where": [
+   "position_display.py"
+  ]
+ },
+ {
+  "key": "组合汇总，仅展示；风险按合约腿计量",
+  "placeholders": 0,
+  "where": [
+   "position_display.py"
+  ]
+ },
+ {
+  "key": "见各腿\\s+([A-Za-z0-9_-]+(?:\\s*[/,、]\\s*[A-Za-z0-9_-]+)+)",
+  "placeholders": 0,
+  "where": [
+   "position_display.py"
+  ]
+ },
+ {
+  "key": "1 个交易日",
+  "placeholders": 0,
+  "where": [
+   "risk.py"
+  ]
+ },
+ {
+  "key": "不足 253 根同口径日线",
+  "placeholders": 0,
+  "where": [
+   "risk.py"
+  ]
+ },
+ {
+  "key": "共同的一日收益样本不足 252 个，暂不计算",
+  "placeholders": 0,
+  "where": [
+   "risk.py"
+  ]
+ },
+ {
+  "key": "历史模拟 · 最近 252 个共同交易日 · 固定当前数量",
+  "placeholders": 0,
+  "where": [
+   "risk.py"
+  ]
+ },
+ {
+  "key": "持仓数量不完整",
+  "placeholders": 0,
+  "where": [
+   "risk.py"
+  ]
+ },
+ {
+  "key": "持仓方向不完整",
+  "placeholders": 0,
+  "where": [
+   "risk.py"
+  ]
+ },
+ {
+  "key": "期权缺少可重估的波动率与合约行情",
+  "placeholders": 0,
+  "where": [
+   "risk.py"
+  ]
+ },
+ {
+  "key": " 财报日期待确认",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "TradingView · 已有日报日线",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0} 到期日无效",
+  "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0} 日线不完整",
+  "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0} 有重复市场代码，未合并",
+  "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0}：{1}，来源不可用",
+  "placeholders": 2,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0}：关联持仓已不在新快照中，请核对是否已在券商平仓",
+  "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0}：快照与本机计划均有持仓，尚未关联；风险暂不计入该计划",
+  "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0}：新快照数量与本机成交记录不一致，请核对",
+  "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0}：本机已平仓，但新快照仍有余额，请核对",
+  "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "价格或日期不合法",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "到期日已过，需核对平仓或行权结果",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "复核",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "宏观日历存在无效记录",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "宏观日历未完整覆盖未来 90 天，空白日期不代表没有事件",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "宏观日历格式不正确",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "尚无财报日缓存，可手动登记已确认日期",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "已有财报缓存 · 需核对公司公告",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "常规时段、仅拆股调整；不含股息再投资",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "持仓快照",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "持仓快照格式不正确",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "持仓第 {0} 行损坏",
+  "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "收盘价 (\\d{4}-\\d{2}-\\d{2})",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "日线行情包格式不正确",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "期权到期",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "未读取",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "没有可用的日线行情包",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "现有宏观日历",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "盘前摘要尚未生成",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "盘前摘要格式不正确",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "盘前摘要行格式不正确",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "盘前资料日期无法识别，不能视作今日资料",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "盘前资料超过 4 天未更新，以下仅供历史参考",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "行情价格口径无法识别",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "行情日期无法识别",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "计划失效价 {0}",
+  "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "财报",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "账户净值未齐全，风险占总净值比例暂不可用",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0} 已有未结束交易「{1}」；核对是否同一交易的跨账户／换腿操作，不能借新计划重置 1R",
+  "placeholders": 2,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "{0}不能为空且最多 {1} 字",
+  "placeholders": 2,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "{0}必须是大于等于 {1} 的有限数值",
+  "placeholders": 2,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "{0}最多 {1} 字",
+  "placeholders": 2,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "不支持的交易方向或资产类型",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "不支持的资产类型或方向",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "不能把未来日期登记为已成交",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "买方期权按全部权利金损失定仓",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "交易记录已更新，请刷新后重试",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "从券商确认单 eConf#{0} 导入，判据待补",
+  "placeholders": 1,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "从原持仓快照接入",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "余额核对日期不能在未来",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "做多的失效价应低于入场价；做空应高于入场价",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "入场价到失效价的距离；跳空和滑点可能使实际亏损更高",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "入场成交价必须大于零",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "全局标准单笔风险超过 3%，请留意多笔交易同时失效的损失",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "全局风险设置已更新，请刷新后重试",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "关联标的",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "券商账户标识",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "单号",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "单笔风险比例超过 3%",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "只能撤销最近一条尚未更正的成交，期初余额需要单独核对",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "同账户同向证券已有未结束计划「{0}」，请在原计划登记分批或加仓，共用原始 1R",
+  "placeholders": 1,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "名义仓位超过填写的账户净值",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "名义仓位超过组合净值；不要为了凑满 1R 强行使用杠杆，应核对可用资金或保持观察",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "失效价",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "完整开仓计划不足 0.9R，保持观察；预先分批仍应填写完整目标数量",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "完整开仓计划数量",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "完整开仓计划数量必须是整数；分批成交另行登记",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "完整开仓计划超过 1R，不能进入待执行",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "定仓数值过大，请核对输入",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "定仓未预留交易费用与滑点；成交费用计入实际执行风险，止损不保证成交价格",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "已有成交的计划保留原始依据；请在交易记录中补充复盘",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "当前状态不能执行此操作",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "当前风险预算不足以建立 1 个单位",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "待执行计划已冻结原始 1R 与依据；需要改变计划请取消后另建",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "成交日期不能早于这笔交易已登记的成交",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "成交类型不正确",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "成交请求编号",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "手工登记",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "找不到这笔交易计划",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "按你填写的每组最大亏损；必须是已确认的定义风险结构",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "接入已核对的期初持仓余额；不是新成交",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "整数单位与标准 1R 不适配，向下取整后不足 90%；保持观察，不向上超预算",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "日期格式应为 YYYY-MM-DD",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "时间",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "期权成交数量必须是整数",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "期权持仓数量必须是整数",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "期权计划需要到期日与完整合约／结构说明",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "标准 1R 扣除费用与滑点预留后不足以建立 1 个单位，保持观察",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "标准单笔风险比例不能超过 4%；只能在全局设置中调整",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "标准风险比例",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "标的代码格式不正确",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "标题",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "此持仓已经接入，请在持仓记录中管理",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "每组最大亏损",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "确认单防重编号",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "组合净值",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "计划入场价",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "计划已在另一窗口修改，请刷新后重试",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "计划已更新，请刷新后重试",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "记录已更新，请刷新后重试",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "请先在全局风险设置中确认组合净值，再计算标准 1R",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "请先完成计划和定仓，再登记入场成交",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "请填写{0}",
+  "placeholders": 1,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "请补齐交易理由、失效条件、退出安排和账户",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "账户净值",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "费用",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "费用与滑点预留为人工估计；实际成交价格与费用用于执行偏差，止损不保证成交价格",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "这条确认单成交已经登记过",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "退出数量不能超过本计划剩余持仓",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "重复请求与已保存的成交不一致",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "预估费用与滑点预留",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "预估费用与滑点预留已超过标准 1R，请核对成本或保持观察",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "风险比例",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "风险比例不能超过 100%",
+  "placeholders": 0,
+  "where": [
+   "store.py"
+  ]
+ },
+ {
+  "key": "1:2 卖方比例价差（Ratio spread）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "2:1 买方比例价差（Backspread）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "不等翼蝶式（Broken-wing butterfly）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "不等量比例价差（Ratio spread）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "买入",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "仅描述当前持仓形态；不代表同一时间建仓，不合并原始交易或重置风险预算。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "仅确认 2:1 数量形态；缺少入场内外在价值证据，不能认证 ZEBRA。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "券商、账户或标的不完整，不能证明属于同一操作",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "卖出",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "反向",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "合约乘数不同，不能按标准策略数量比例认证。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "合约净数量为零",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "同一操作需同券商、同账户、同标的，并有明确操作 ID 或精确成交时间；不同时间保留为不同批次。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "垂直价差（Vertical）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "宽跨式（Strangle）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "对角价差（Diagonal）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "当前结构可能由多次操作形成；来源分组、同一天成交与相近时间不证明同时建仓。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "当前腿组合不符合已支持的标准形态，保留为自定义结构。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "日历价差（Calendar）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "未知 / 自定义结构",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "来源分组标签：",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "正向",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "没有明确操作 ID 或带时区的精确成交时间；同日/来源分组不能证明同时建仓",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "秃鹰价差（Condor）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "策略识别只描述合约形态；没有波动或一段时间没有价格变化，不构成违规。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "缺少完整的 Call/Put、行权价、到期日或数量；来源标签不代替腿明细。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "至少一腿持仓待核对；形态识别不确认数量正确。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "至少一腿持仓待核对；识别结果只供复核。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "蝶式（Butterfly）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "账户标识缺失，当前结构可能跨账户，需核对。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "跨式（Straddle）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "铁蝶（Iron butterfly）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "铁鹰（Iron condor）",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "；标签本身不是成交证据。",
+  "placeholders": 0,
+  "where": [
+   "strategies.py"
+  ]
+ },
+ {
+  "key": " · 按约定提请把宏观灯升红",
+  "placeholders": 0,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "RSP 和 CAPE 已符合 · 还要再跌 {0}%（约 {1} 个周 ATR） · 同一周 RSP 要收在 {2} 以上",
+  "placeholders": 3,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "{0} 本周第一次碰到 {1} 周 EMA {2}",
+  "placeholders": 3,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "升红条件满足：",
+  "placeholders": 0,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "周线条件读不到：",
+  "placeholders": 0,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "周线观察停在 {0}（{1} 天前），以下是旧数。",
+  "placeholders": 2,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "周线观察文件缺字段。",
+  "placeholders": 0,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "周线观察文件读取失败。",
+  "placeholders": 0,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "周线观察：",
+  "placeholders": 0,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "周线预警：",
+  "placeholders": 0,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "没有找到周线观察数据文件（{0}）。格式见 docs/data-formats.md。",
+  "placeholders": 1,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "这段回调里第一次 · 历史上上涨回调碰到这一档的比例 {0}%",
+  "placeholders": 1,
+  "where": [
+   "weekly_watch.py"
+  ]
+ },
+ {
+  "key": "重点观察：VUG 周收盘低于 {0} 就出预警",
+  "placeholders": 1,
+  "where": [
+   "weekly_watch.py"
+  ]
+ }
+]

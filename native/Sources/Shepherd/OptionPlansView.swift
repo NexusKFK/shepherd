@@ -12,6 +12,8 @@ struct OptionPlansView: View {
     var cards: [J] { plans["cards"].items }
     var held: [J] { plans["held"].items }
     var shown: [J] { mode == 0 ? cards : held }
+    var emptyCardsNote: String { let dir = plans["dir"].s; return "还没有计划卡。把计划卡 JSON 放进 \(dir) 以后会出现在这里。" }
+    var oneRNote: String { let oneR = usd0(plans["one_r"].n); return "1R 取自设置里的定仓净值和单笔风险（现在是 \(oneR)），不随账户每天的市值自动变。" }
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -27,12 +29,12 @@ struct OptionPlansView: View {
                     Label(text, systemImage: "info.circle").font(.callout).foregroundStyle(.secondary)
                 }
                 if shown.isEmpty {
-                    Text(mode == 0 ? "还没有计划卡。助手把计划写进 " + plans["dir"].s + " 以后会出现在这里。" : "账本里没有可以画图的期权持仓。")
+                    Text(mode == 0 ? emptyCardsNote : "账本里没有可以画图的期权持仓。")
                         .font(.callout).foregroundStyle(.secondary).card()
                 }
                 ForEach(shown, id: \.id) { OptionCard(card: $0, today: plans["today"].s) }
                 Notes(values: ["曲线用 Black-Scholes 估算，各腿的隐含波动率由报价或持仓标价反推，不含波动率偏斜和提前行权；实际成交价会有偏差。",
-                               "1R 取自 Shepherd 的定仓设置（现在是 " + usd0(plans["one_r"].n) + "），和聊天里按最新净值算的数字可能不同。"])
+                               oneRNote])
             }.padding(20)
         }
     }
@@ -153,15 +155,18 @@ struct OptionCard: View {
                    noteColor: isHeld ? pnlTint(card["unrealized"].n) : nil)
             Metric(label: "最大亏损", value: lossText, note: lossNote, valueColor: .red)
             Metric(label: "最大盈利", value: profitText, note: "到期，价格越过外侧行权价", valueColor: .green)
-            Metric(label: "盈亏平衡价（到期）", value: bes, note: "现价不动、" + dayText + "：" + signedUSD(nowPnl), noteColor: pnlTint(nowPnl))
+            Metric(label: "盈亏平衡价（到期）", value: bes, note: unchangedNote(nowPnl), noteColor: pnlTint(nowPnl))
         }
     }
+
+    func unchangedNote(_ pnl: Double) -> String { let day = dayText, value = signedUSD(pnl); return "现价不动、\(day)：\(value)" }
 
     // MARK: 控件
     var dayText: String {
         guard let m = model else { return "" }
         if days >= m.firstDTE { return "到期" }
-        return days == 0 ? "今天" : "第 \(Int(days)) 天（" + dateLabel(Int(days)) + "）"
+        let n = Int(days), date = dateLabel(n)
+        return days == 0 ? "今天" : "第 \(n) 天（\(date)）"
     }
     func dateLabel(_ add: Int) -> String {
         let f = DateFormatter(); f.dateFormat = "yyyy-MM-dd"; f.locale = Locale(identifier: "en_US_POSIX"); f.timeZone = TimeZone(identifier: "UTC")
@@ -181,12 +186,12 @@ struct OptionCard: View {
                 Spacer()
                 Picker("", selection: $metric) {
                     Text("盈亏（美元）").tag(0); Text("盈亏（%）").tag(1); Text("合约价值").tag(2)
-                }.pickerStyle(.segmented).frame(width: 270).labelsHidden()
+                }.pickerStyle(.segmented).labelsHidden().fixedSize()
                 Picker("", selection: $showTable) { Text("图").tag(false); Text("表").tag(true) }
-                    .pickerStyle(.segmented).frame(width: 90).labelsHidden()
+                    .pickerStyle(.segmented).labelsHidden().fixedSize()
             }
             HStack(spacing: 22) {
-                slider("日期：" + dayText, value: $days, range: 0...max(m.firstDTE, 1), step: 1)
+                slider(dateSliderTitle, value: $days, range: 0...max(m.firstDTE, 1), step: 1)
                 slider("价格范围 ±" + num(.number(rangePct), digits: 0) + "%", value: $rangePct, range: 5...40, step: 1)
                 slider("隐含波动率 " + num(.number(m.averageIV * ivScale * 100), digits: 1) + "%（×" + num(.number(ivScale)) + "）", value: $ivScale, range: 0.5...2.0, step: 0.05)
                 if !isHeld {
@@ -217,6 +222,9 @@ struct OptionCard: View {
         return (s * (1 - rangePct / 100))...(s * (1 + rangePct / 100))
     }
     func levelColor(_ kind: String) -> Color { optionLevelColor(kind) }
+    var dateSliderTitle: String { let day = dayText; return "日期：\(day)" }
+    var selectedDateLegend: String { let day = dayText; return "所选日期：\(day)" }
+    var selectedDateHead: String { let day = dayText; return "所选日期盈亏（\(day)）" }
     var showSelected: Bool { guard let m = model else { return false }; return days < m.firstDTE }
 
     func chart(_ m: OptModel) -> some View {
@@ -230,7 +238,7 @@ struct OptionCard: View {
         let kinds: [(String, String, Color)] = [("invalid", "作废线", Color.red), ("target", "目标", Color.green), ("entry", "入场区", PortfolioStyle.data)]
         return HStack(spacing: 14) {
             legendItem(Color.primary, "到期")
-            if showSelected { legendItem(Color.orange, "所选日期：" + dayText) }
+            if showSelected { legendItem(Color.orange, selectedDateLegend) }
             ForEach(kinds, id: \.0) { item in
                 if card["levels"].items.contains(where: { $0["kind"].s == item.0 }) { legendItem(item.2.opacity(0.8), item.1) }
             }
@@ -320,7 +328,7 @@ struct OptionCard: View {
         }.font(.caption).foregroundStyle(.secondary).monospacedDigit()
     }
     func levelsTable(_ m: OptModel) -> some View {
-        let heads = ["价位", "含义", "到期时盈亏", "所选日期盈亏（" + dayText + "）"]
+        let heads = ["价位", "含义", "到期时盈亏", selectedDateHead]
         return Grid(alignment: .leading, horizontalSpacing: 18, verticalSpacing: 5) {
             GridRow { ForEach(heads, id: \.self) { Text($0).font(.caption).foregroundStyle(.secondary) } }
             ForEach(Array(card["levels"].items.enumerated()), id: \.offset) { _, l in

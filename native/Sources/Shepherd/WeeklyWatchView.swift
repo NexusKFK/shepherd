@@ -37,7 +37,7 @@ struct WeeklyWatchView: View {
                             ForEach(Array(watch["slow_bear"].items.enumerated()), id: \.offset) { _, row in
                                 GridRow(alignment: .firstTextBaseline) {
                                     Text(row["name"].s).font(.callout.weight(.semibold))
-                                    Text(signedPct(row["drop_pct"].n, digits: 1) + " · 第 " + num(row["weeks_since_peak"], digits: 0) + " 周")
+                                    Text(weeksText(row))
                                         .font(.callout).monospacedDigit()
                                     WeeklyMarkerCell(m: row["m2"])
                                     WeeklyMarkerCell(m: row["m4"])
@@ -301,4 +301,9 @@ struct WeeklyCandleChart: View {
         var y = box.minY + 8
         for (k, t) in resolved.enumerated() { ctx.draw(t, at: CGPoint(x: box.minX + 8, y: y), anchor: .topLeading); y += sizes[k].height + 2 }
     }
+}
+
+private func weeksText(_ row: J) -> String {
+    let drop = signedPct(row["drop_pct"].n, digits: 1), n = num(row["weeks_since_peak"], digits: 0)
+    return "\(drop) · 第 \(n) 周"
 }

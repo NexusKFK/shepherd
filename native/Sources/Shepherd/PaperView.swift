@@ -64,7 +64,7 @@ struct PaperTradeCard: View {
                     .font(.callout).foregroundStyle(PortfolioStyle.warn)
             } else {
                 HStack(spacing: 20) {
-                    fact("开仓", trade["entry_day"].s + " · 第 " + num(trade["held_days"], digits: 0) + " 天")
+                    fact("开仓", heldText(trade))
                     fact("预算", num(trade["budget_r"]) + "R（" + usd0(trade["budget_usd"].n) + "）")
                     fact("毛敞口", usd0(trade["gross"].n) + " · 收益 " + signedPct(trade["ret_on_gross_pct"].n, digits: 2))
                     fact(trade["ratio_name"].s, num(trade["ratio"], digits: 5) + " · 较开仓 " + signedPct(trade["ratio_vs_entry_pct"].n, digits: 2))
@@ -156,4 +156,9 @@ struct PaperTradeCard: View {
             }
         }
     }
+}
+
+private func heldText(_ trade: J) -> String {
+    let day = trade["entry_day"].s, n = num(trade["held_days"], digits: 0)
+    return "\(day) · 第 \(n) 天"
 }

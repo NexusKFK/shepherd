@@ -16,5 +16,7 @@ jobs:
           swiftc -continue-building-after-errors -swift-version 5 -target "$(uname -m)-apple-macos14.0" -parse-as-library \
             native/Sources/Shepherd/*.swift -o /tmp/Shepherd -framework AppKit -framework SwiftUI -framework Charts
           swiftc -target "$(uname -m)-apple-macos14.0" workbench/macos/PdfText.swift -o /tmp/pdf_text -framework PDFKit
+      - name: Translation tables are complete
+        run: python3 tools/i18n_check.py en && python3 tools/i18n_check.py zh-Hant
       - name: Demo data builds
         run: python3 -m workbench.demo --out "$RUNNER_TEMP/demo"

@@ -22,7 +22,7 @@ body:
     attributes:
       label: 版本 · Version
       description: 侧栏左下角的版本号，以及 macOS 版本。
-      placeholder: "Shepherd 1.3.0 · macOS 15.5"
+      placeholder: "Shepherd 1.4.0 · macOS 15.5"
     validations:
       required: true
   - type: textarea

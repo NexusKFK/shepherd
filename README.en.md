@@ -11,9 +11,9 @@
 
 Shepherd is a native macOS app that does the arithmetic of position sizing before you trade. You decide how much one trade may lose (1R); Shepherd turns the distance to your stop into a share count, and afterwards keeps telling you how many R you would lose if every stop were hit at once ("heat").
 
-It records, calculates and reminds. It never places orders, never logs in to a broker, gives no buy/sell advice and calls no AI model. Everything stays on your Mac. The interface is in Chinese.
+It records, calculates and reminds. It never places orders, never logs in to a broker, gives no buy/sell advice and calls no AI model. Everything stays on your Mac. The interface is in English, Simplified Chinese and Traditional Chinese; it follows the system language and can be changed in Settings (⌘,).
 
-<p align="center"><img src="docs/img/overview.png" width="900" alt="Shepherd overview"></p>
+<p align="center"><img src="docs/img/overview-en.png" width="900" alt="Shepherd overview: budget for new entries, needs action, up next, net value and 1R"></p>
 
 > All screenshots come from the built-in demo; every account, position and price is randomly generated.
 
@@ -29,6 +29,8 @@ It records, calculates and reminds. It never places orders, never logs in to a b
 
 A near stop buys more shares, a far stop fewer, so every stopped-out trade costs the same 1R. The first launch walks through this with an interactive example and asks you to set your own 1R before any plan can be sized.
 
+<p align="center"><img src="docs/img/onboarding-r-en.png" width="760" alt="First-run walkthrough: what R is"></p>
+
 ## How it works
 
 Before the trade you set 1R and write the plan, and the app sizes it. You place the order at your broker and record the fill. The whole time, the app watches heat and risk.
@@ -40,22 +42,29 @@ Before the trade you set 1R and write the plan, and the app sizes it. You place 
 
 ## Getting started
 
-1. Download `Shepherd-v1.3.0-macOS-arm64.zip` from [Releases](../../releases), unzip, and drag `Shepherd.app` into Applications. Apple silicon only, macOS 14 or later.
+1. Download `Shepherd-v1.4.0-macOS-arm64.zip` from [Releases](../../releases), unzip, and drag `Shepherd.app` into Applications. Apple silicon only, macOS 14 or later.
 2. The app is not notarized. On first launch open **System Settings → Privacy & Security** and click **Open Anyway**. If it still refuses, run `xattr -dr com.apple.quarantine /Applications/Shepherd.app`.
 3. Follow the three-step walkthrough: what R is, set your R, pick modules.
-4. To see everything populated: **File → 打开演示（虚构数据）** opens a second window on invented data that is discarded when closed.
+4. To see everything populated: **File → Open demo (invented data)** opens a second window on invented data that is discarded when closed.
+5. Language, appearance, 1R and modules live in **Settings**: press ⌘, or click the gear at the top right of the toolbar.
 
 ## Core pages and optional modules
 
-Always on: Overview, Holdings, Risk (heat, a −5% market scenario, sector gap stress, historical VaR), Trade plans (thesis, invalidation, exits; sized to 0.9R–1R), Fills & review, Data & retention.
+Always on: Overview, Holdings, Risk (heat, a −5% market scenario, sector gap stress, historical VaR), Trade plans (thesis, invalidation, exits; sized to 0.9R–1R), Fills & review, Data.
 
-Optional, chosen on first run and changeable under **File → 选择模块…**: Calendar, Option plans (interactive payoff charts), Pre-market checklist, Macro light (scales the heat and sector caps for new risk), Weekly watch, Paper book, Schwab confirmation import. A module that is off disappears from the sidebar, raises nothing on the overview and drops its freshness dot.
+<p align="center"><img src="docs/img/risk-en.png" width="900" alt="Risk page"></p>
+
+Optional, chosen on first run and changeable in **Settings → Modules**: Calendar, Option plans (interactive payoff charts), Pre-market checklist, Macro light (scales the heat and sector caps for new risk), Weekly watch, Paper book, Schwab confirmation import. A module that is off disappears from the sidebar, raises nothing on the overview and drops its freshness dot.
+
+<p align="center"><img src="docs/img/onboarding-modules-en.png" width="760" alt="First-run walkthrough: choose modules"></p>
+
+<p align="center"><img src="docs/img/option-plans-en.png" width="900" alt="Option plans: draggable payoff chart"></p>
 
 ## Data
 
 Shepherd does not fetch data itself. Start with the ledger alone (plans and fills entered in the app), then add what you need:
 
-- a holdings snapshot JSON, imported under 数据与留存 — see [`examples/holdings-template.json`](examples/holdings-template.json);
+- a holdings snapshot JSON, imported under **Data → Import holdings JSON…** — see [`examples/holdings-template.json`](examples/holdings-template.json);
 - daily closes for Beta, the market scenario and VaR: `python3 tools/fetch_market_data.py AAPL MSFT` (Yahoo chart endpoint; SPY and the S&P 500 are added automatically);
 - one JSON file per optional module, documented in [docs/data-formats.md](docs/data-formats.md). `python3 -m workbench.demo --out /tmp/shepherd-demo` writes a complete set of examples.
 

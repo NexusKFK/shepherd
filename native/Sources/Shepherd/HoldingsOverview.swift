@@ -129,13 +129,13 @@ struct HoldingsView: View {
     func pnlColor(_ value: Double?) -> Color { pnlTint(value) }
     var holdingsTable: some View {
         Table(nodes, children: \.children, selection: $selected, sortOrder: $sortOrder) {
-            TableColumn("持仓 / 账户", value: \.sym) { row in
+            TableColumn(L("持仓 / 账户"), value: \.sym) { row in
                 VStack(alignment: .leading, spacing: 3) {
                     Text(row.position["sym"].s).font(.callout.weight(.semibold))
                     Text(row.position["broker"].s).font(.caption).foregroundStyle(.secondary)
                 }.padding(.vertical, 4)
             }.width(min: 90, ideal: 105)
-            TableColumn("合约 / 到期") { row in
+            TableColumn(L("合约 / 到期")) { row in
                 VStack(alignment: .leading, spacing: 3) {
                     Text(row.position["label"].s.isEmpty ? "股票 / ETF" : row.position["label"].s).lineLimit(2).help(row.position["label"].s)
                     if row.position["display_only"].b { Text("\(row.position["component_ids"].items.count) 条合约腿").font(.caption).foregroundStyle(.secondary) }
@@ -145,13 +145,13 @@ struct HoldingsView: View {
                     }
                 }
             }.width(min: 120, ideal: 175)
-            TableColumn("数量") { row in
+            TableColumn(L("数量")) { row in
                 VStack(alignment: .trailing, spacing: 3) {
                     Text(num(row.position["qty"])).monospacedDigit()
                     Text(row.position["side"].s == "short" ? "空头" : "多头").font(.caption).foregroundStyle(.secondary)
                 }.frame(maxWidth: .infinity, alignment: .trailing)
             }.width(54)
-            TableColumn("成本 / 快照价") { row in
+            TableColumn(L("成本 / 快照价")) { row in
                 VStack(alignment: .trailing, spacing: 3) {
                     HStack(spacing: 3) {
                         if row.position["mark_stale"].b {
@@ -164,21 +164,21 @@ struct HoldingsView: View {
                 .help(row.position["mark_stale"].b ? "本轮没取到价，沿用账本：" + row.position["mark_missing_reason"].s
                       : row.position["mark_source"].s.isEmpty ? "来源未标注" : row.position["mark_source"].s)
             }.width(min: 90, ideal: 102)
-            TableColumn("浮盈", value: \.pnlSort) { row in
+            TableColumn(L("浮盈"), value: \.pnlSort) { row in
                 VStack(alignment: .trailing, spacing: 3) {
                     Text(signedUSD(row.pnl)).monospacedDigit().foregroundStyle(pnlColor(row.pnl))
                     Text(signedPct(row.pnlPct))
                         .font(.caption).monospacedDigit().foregroundStyle(.secondary)
                 }.frame(maxWidth: .infinity, alignment: .trailing)
             }.width(min: 80, ideal: 92)
-            TableColumn("Delta 美元", value: \.absDelta) { row in
+            TableColumn(L("Delta 美元"), value: \.absDelta) { row in
                 VStack(alignment: .trailing, spacing: 3) {
                     Text(row.position["display_only"].b ? "见合约腿" : usd0(row.delta))
                         .monospacedDigit().foregroundStyle(row.position["display_only"].b ? Color.secondary : .primary)
                     if let pct = row.nlvPct { Text(num(.number(pct), digits: 1) + "% 净值").font(.caption).monospacedDigit().foregroundStyle(.secondary) }
                 }.frame(maxWidth: .infinity, alignment: .trailing)
             }.width(min: 96, ideal: 112)
-            TableColumn("状态") { row in
+            TableColumn(L("状态")) { row in
                 if let flag = flag(row.position) {
                     Text(flag.text).font(.caption).foregroundStyle(flag.warn ? PortfolioStyle.warn : Color.secondary)
                         .help(exposure(row.position)["issues"].strings.joined(separator: "；"))
@@ -256,12 +256,12 @@ struct PositionPriceLevels: View {
         VStack(alignment: .leading, spacing: 6) {
             Text("价格与止损位置").font(.caption).foregroundStyle(.secondary)
             Chart(levels) { level in
-                PointMark(x: .value("价格", level.price), y: .value("类型", level.id))
+                PointMark(x: .value("价格", level.price), y: .value("类型", L(level.id)))
                     .symbolSize(45).foregroundStyle(level.id.hasPrefix("止损") ? PortfolioStyle.warn : .blue)
-                    .accessibilityLabel(level.id).accessibilityValue(num(.number(level.price)))
+                    .accessibilityLabel(L(level.id)).accessibilityValue(num(.number(level.price)))
             }.chartXScale(domain: domain).frame(height: CGFloat(max(2, levels.count)) * 27 + 30)
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 115), alignment: .leading)], alignment: .leading, spacing: 4) {
-                ForEach(levels) { level in Text(level.id + " " + num(.number(level.price))).font(.caption2).monospacedDigit() }
+                ForEach(levels) { level in Text(L(level.id) + " " + num(.number(level.price))).font(.caption2).monospacedDigit() }
             }
         }
     }

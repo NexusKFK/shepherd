@@ -62,7 +62,7 @@ struct MacroLightCard: View {
                             Text("近 12 周").font(.caption).foregroundStyle(.secondary)
                             ForEach(Array(value["history"].items.enumerated()), id: \.offset) { _, h in
                                 RoundedRectangle(cornerRadius: 2).fill(MacroStyle.color(h["effective"].s)).frame(width: 12, height: 12)
-                                    .help(h["week"].s + " 生效 " + h["effective"].s + " · 当周 " + h["raw"].s)
+                                    .help(weekHelp(h))
                             }
                         }.padding(.top, 4)
                         Notes(values: noteLines)
@@ -107,7 +107,7 @@ struct TrendGrid: View {
                         Text(t["proxy"].s + (t["vs_ma200_pct"].n.map { " · " + ($0 >= 0 ? "线上 " : "线下 ") + num(.number(abs($0)), digits: 1) + "%" } ?? ""))
                             .font(.caption2).foregroundStyle(.secondary).monospacedDigit().lineLimit(1)
                     }
-                }.help(t["rule"].s + "（相对 200 日线；200 日线" + (t["ma200_rising"].b ? "上升" : "下降") + "）")
+                }.help(trendHelp(t))
             }
         }
     }
@@ -117,7 +117,8 @@ struct BreadthLine: View {
     let value: J
     var line: String {
         let head: String = "广度：站上 200 日线 " + num(value["pct_above_200"], digits: 0) + "% · 13 周背离速度 " + num(value["div13"], digits: 0)
-        let tail: String = "（第 " + num(value["div13_pctile"], digits: 0) + " 分位，" + value["label"].s + "）· 只显示，未验证"
+        let pctile = num(value["div13_pctile"], digits: 0), label = value["label"].s
+        let tail: String = "（第 \(pctile) 分位，\(label)）· 只显示，未验证"
         return head + tail
     }
     var body: some View {
@@ -131,4 +132,14 @@ struct BreadthLine: View {
             Text("广度读数暂不可用：" + value["error"].s).font(.caption).foregroundStyle(.secondary)
         }
     }
+}
+
+private func weekHelp(_ h: J) -> String {
+    let week = h["week"].s, effective = h["effective"].s, raw = h["raw"].s
+    return "\(week) 生效 \(effective) · 当周 \(raw)"
+}
+
+private func trendHelp(_ t: J) -> String {
+    let rule = t["rule"].s, direction = t["ma200_rising"].b ? "上升" : "下降"
+    return "\(rule)（相对 200 日线；200 日线\(direction)）"
 }

@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.4.0 (2026-10-18)
+
+- The interface is now in English, Simplified Chinese and Traditional Chinese. It follows the macOS language by default; switch it in Settings or on the first-run walkthrough. Engine messages and alerts are translated too.
+- A Settings window (⌘, or the gear in the toolbar) with four tabs: General (language, appearance, demo, walkthrough), Risk & 1R, Modules, and Data (ledger location, backup, holdings source, confirmation inbox).
+- Appearance can be set to match the system, dark or light.
+- The demo keeps its own language and appearance, so trying them there never changes the real app.
+- The fill form only asks to discard changes after something was actually edited.
+
+中文：界面支持简体中文、繁体中文和英文，默认跟随系统语言，引擎提示和告警一起翻译。新增设置窗口（⌘, 或工具栏齿轮）：通用、风险与 1R、模块、数据四页；外观可选跟随系统、深色或浅色；演示窗口的语言和外观单独保存；登记成交表单只有真的改过才会问是否放弃。
+
 ## 1.3.0 (2026-10-18)
 
 First public release.

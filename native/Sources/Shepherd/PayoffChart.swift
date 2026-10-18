@@ -65,6 +65,7 @@ struct PayoffChart: View {
         return Array(Set(xs)).sorted()
     }
 
+    var chartLabel: String { let title = name; return "\(title) 盈亏图" }
     var body: some View {
         GeometryReader { geo in
             Canvas { ctx, size in draw(ctx, size) }
@@ -80,7 +81,7 @@ struct PayoffChart: View {
                 }
         }
         .frame(height: 300)
-        .accessibilityElement().accessibilityLabel(name + " 盈亏图")
+        .accessibilityElement().accessibilityLabel(chartLabel)
     }
 
     func draw(_ context: GraphicsContext, _ size: CGSize) {
@@ -176,7 +177,7 @@ struct PayoffChart: View {
         var lines: [(Text, Bool)] = [
             (Text("标的 " + num(.number(hx)) + "（较现价 " + signedPct((hx / model.spot - 1) * 100, digits: 1) + "）").font(.caption.weight(.semibold)).foregroundStyle(.primary), false),
             (Text("到期  " + fmt(atExpiry)).font(.caption).monospacedDigit().foregroundStyle(.primary), false)]
-        if showSelected { lines.append((Text(dayText + "  " + fmt(atDay)).font(.caption).monospacedDigit().foregroundStyle(.orange), true)) }
+        if showSelected { lines.append((Text(verbatim: L(dayText) + "  " + fmt(atDay)).font(.caption).monospacedDigit().foregroundStyle(.orange), true)) }
         let resolved = lines.map { ctx.resolve($0.0) }
         let sizes = resolved.map { $0.measure(in: CGSize(width: 600, height: 100)) }
         let w = (sizes.map(\.width).max() ?? 0) + 16, h = sizes.map(\.height).reduce(0, +) + 16 + CGFloat(max(sizes.count - 1, 0)) * 2

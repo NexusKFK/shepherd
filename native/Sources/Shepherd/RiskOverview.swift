@@ -28,7 +28,7 @@ struct RiskView: View {
                     VStack(alignment: .trailing, spacing: 8) {
                         Text("1R " + usd(heat["one_r"])).font(.headline).monospacedDigit()
                         Picker("视图", selection: $detail) { Text("总览").tag(false); Text("逐仓与模型").tag(true) }
-                            .pickerStyle(.segmented).labelsHidden().frame(width: 210)
+                            .pickerStyle(.segmented).labelsHidden().fixedSize()
                     }
                 }.padding(24).padding(.bottom, -8)
                 if detail { RiskModelDetails() }

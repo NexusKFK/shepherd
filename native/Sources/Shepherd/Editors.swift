@@ -102,7 +102,7 @@ struct NativeEditor: View {
     @ViewState private var dirty = false
     @ViewState private var confirmDiscard = false
     init(spec: EditorSpec) { self.spec = spec; _values = ViewState(initialValue: spec.seed.mapValues(\.s)) }
-    func binding(_ key: String) -> Binding<String> { Binding(get:{values[key] ?? ""},set:{values[key]=$0;dirty=true;result = .null}) }
+    func binding(_ key: String) -> Binding<String> { Binding(get:{values[key] ?? ""},set:{ if (values[key] ?? "") != $0 { values[key]=$0;dirty=true;result = .null } }) }
     func payload() -> [String:J] {
         var payload = spec.fixed
         for f in spec.fields {
@@ -137,7 +137,7 @@ struct NativeEditor: View {
                                 Text(field.label).font(.callout)
                                 TextEditor(text:binding(field.key)).frame(minHeight:75).font(.body).border(.quaternary)
                             case .toggle:
-                                Toggle(field.label,isOn:Binding(get:{values[field.key]=="true"},set:{values[field.key]=$0 ? "true":"false";dirty=true}))
+                                Toggle(field.label,isOn:Binding(get:{values[field.key]=="true"},set:{ let v = $0 ? "true":"false"; if values[field.key] != v { values[field.key]=v;dirty=true } }))
                             case .choice(let options):
                                 Picker(field.label,selection:binding(field.key)) { ForEach(options,id:\.0) { key,label in Text(label).tag(key) } }
                             default:

@@ -12,7 +12,6 @@ struct OnboardingView: View {
     @ViewState private var enabled: [String: Bool] = [:]
     @ViewState private var saving = false
     private var policy: J { model.state["risk_policy"] }
-    private var catalog: [J] { model.state["modules"]["catalog"].items }
     private var onboarded: Bool { model.state["modules"]["onboarded"].b }
     private let titles = ["认识 R", "定你的 R", "选模块"]
 
@@ -29,6 +28,8 @@ struct OnboardingView: View {
                 }
                 Spacer()
                 if Engine.demo { Text("演示模式 · 虚构数据").font(.caption).foregroundStyle(.orange) }
+                Picker("", selection: $model.language) { ForEach(AppLanguage.allCases) { Text(verbatim: $0.title).tag($0) } }
+                    .labelsHidden().frame(width: 170).help("界面语言")
             }.padding(.horizontal, 28).padding(.vertical, 16)
             Divider()
             ScrollView {
@@ -59,37 +60,15 @@ struct OnboardingView: View {
 
     // MARK: step 2 — set R
     private var policyConfirmed: Bool { policy["nlv"].n != nil }
-    private var nlvValue: Double? { Double(nlv.replacingOccurrences(of: ",", with: "")).flatMap { $0 > 0 ? $0 : nil } }
+    private var nlvValue: Double? { RPolicyFields.parse(nlv) }
     private var changed: Bool { nlvValue != policy["nlv"].n || abs(riskPct - (policy["risk_pct"].n ?? 2)) > 0.0001 }
-    private var oneR: Double? { nlvValue.map { $0 * riskPct / 100 } }
     private var setR: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text("先定好你的 1R").font(.title2.weight(.semibold))
             Text("1R = 定仓净值 × 单笔风险比例。之后每一笔新计划都按这个 1R 反推数量：打到止损，亏的就是 1R。")
                 .foregroundStyle(.secondary)
-            VStack(alignment: .leading, spacing: 14) {
-                HStack(alignment: .firstTextBaseline) {
-                    Text("定仓净值（美元）").frame(width: 150, alignment: .leading)
-                    TextField("例如 100000", text: $nlv).textFieldStyle(.roundedBorder).frame(width: 180).monospacedDigit()
-                    if let snap = model.state["snapshot"]["nlv"].n, nlvValue != snap {
-                        Button("用持仓快照的 " + dollars(snap)) { nlv = String(format: "%.0f", snap) }.buttonStyle(.link)
-                    }
-                }
-                HStack(alignment: .firstTextBaseline) {
-                    Text("单笔风险比例").frame(width: 150, alignment: .leading)
-                    Slider(value: $riskPct, in: 0.25...4, step: 0.25).frame(width: 260)
-                    Text(String(format: "%.2g%%", riskPct)).monospacedDigit().frame(width: 50, alignment: .leading)
-                }
-                HStack(alignment: .firstTextBaseline) {
-                    Text("你的 1R").frame(width: 150, alignment: .leading)
-                    Text(oneR.map { dollars($0) } ?? "—").font(.title.weight(.semibold)).monospacedDigit().foregroundStyle(.orange)
-                }
-            }.card()
-            Notes(values: [
-                "净值是冻结的预算基准，不随每天的账户市值自动变；想改就回来改，只影响之后的新计划。",
-                "比例上限 4%。常见做法是 0.5%–2%：新手、连亏期、波动大的品种取低的一端。",
-                "已经待执行或持仓中的计划保留当时的 1R，不会被这里的修改追溯。",
-                "没有确认 1R 之前，App 不会给出计划数量，也不能把计划标成待执行。"])
+            RPolicyFields(nlv: $nlv, riskPct: $riskPct)
+            Notes(values: RPolicyFields.notes)
         }
     }
 
@@ -97,24 +76,9 @@ struct OnboardingView: View {
     private var pickModules: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("选你要用的模块").font(.title2.weight(.semibold))
-            Text("核心部分一直开着：总览、持仓、风险、交易计划、成交与复盘、数据与留存。下面这些按需打开，之后随时能在菜单「选择模块…」里改。")
+            Text("核心部分一直开着：总览、持仓、风险、交易计划、成交与复盘、数据与留存。下面这些按需打开，之后随时能在设置（⌘,）里改。")
                 .foregroundStyle(.secondary)
-            ForEach(Array(catalog.enumerated()), id: \.offset) { _, m in
-                HStack(alignment: .top, spacing: 14) {
-                    Toggle("", isOn: Binding(get: { enabled[m["key"].s] ?? false }, set: { enabled[m["key"].s] = $0 }))
-                        .toggleStyle(.switch).labelsHidden()
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack(spacing: 8) {
-                            Text(m["title"].s).font(.headline)
-                            if m["data_found"].b { Text("已找到数据").font(.caption2).padding(.horizontal, 6).padding(.vertical, 2)
-                                .background(Capsule().fill(Color.green.opacity(0.18))).foregroundStyle(.green) }
-                        }
-                        Text(m["summary"].s).font(.callout)
-                        Text(m["needs"].s).font(.caption).foregroundStyle(.secondary)
-                    }
-                    Spacer(minLength: 0)
-                }.card(padding: 12)
-            }
+            ModuleToggles(enabled: $enabled)
             Text("每个模块的数据文件格式见 docs/data-formats.md。没有数据的模块打开后会如实显示「没有找到数据文件」，不会假装正常。")
                 .font(.caption).foregroundStyle(.secondary)
         }
@@ -184,14 +148,14 @@ struct RExplainer: View {
     }
     private func row(_ label: String, _ value: Binding<Double>, _ range: ClosedRange<Double>, _ step: Double, _ text: String) -> some View {
         HStack {
-            Text(label).frame(width: 64, alignment: .leading)
+            Text(label).frame(width: Translator.shared.language == "en" ? 96 : 64, alignment: .leading)
             Slider(value: value, in: range, step: step)
             Text(text).monospacedDigit().frame(width: 76, alignment: .trailing)
         }
     }
     private func line(_ label: String, _ value: String, _ note: String) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 12) {
-            Text(label).foregroundStyle(.secondary).frame(width: 84, alignment: .leading)
+            Text(label).foregroundStyle(.secondary).frame(width: Translator.shared.language == "en" ? 112 : 84, alignment: .leading)
             Text(value).font(.headline).monospacedDigit().frame(width: 110, alignment: .leading)
             Text(note).font(.callout).foregroundStyle(.secondary).frame(maxWidth: .infinity, alignment: .leading)
         }

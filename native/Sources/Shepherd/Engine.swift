@@ -173,6 +173,22 @@ final class Engine: @unchecked Sendable {
     @Published var historical: J?
     /// First-run walkthrough step (0 认识 R, 1 定你的 R, 2 选模块); nil when closed.
     @Published var onboarding: Int?
+    /// Interface language; changing it reloads the table and redraws every view (they all read the model).
+    @Published var appearance: AppAppearance = AppAppearance.saved {
+        didSet { AppLanguage.defaults.set(appearance.rawValue, forKey: AppAppearance.defaultsKey); appearance.apply() }
+    }
+    /// Copies a holdings JSON into the data folder; the original file is left untouched.
+    func importSnapshot() {
+        let panel = NSOpenPanel(); panel.allowedContentTypes = [.json]; panel.canChooseDirectories = false; panel.allowsMultipleSelection = false
+        panel.message = L("选择包含 positions 与 accounts 的持仓快照；会复制到 App 数据目录并保留原文件。")
+        if panel.runModal() == .OK, let url = panel.url { action("import-snapshot", ["path": .string(url.path)]) }
+    }
+    @Published var language: AppLanguage = AppLanguage.saved {
+        didSet {
+            AppLanguage.defaults.set(language.rawValue, forKey: AppLanguage.defaultsKey)
+            Translator.shared.load(language.resolved)
+        }
+    }
     let engine = Engine()
     var positions: [J] { state["positions"].items }
     var plans: [J] { state["plans"].items }

@@ -38,10 +38,15 @@ func daysBetween(_ from: String, _ to: String) -> Int? {
     guard let a = isoDay.date(from: String(from.prefix(10))), let b = isoDay.date(from: String(to.prefix(10))) else { return nil }
     return Calendar(identifier: .gregorian).dateComponents([.day], from: a, to: b).day
 }
-func countdown(_ days: Int) -> String { days <= 0 ? (days == 0 ? "今天" : "已过") : days == 1 ? "明天" : "\(days) 天后" }
+func countdown(_ days: Int) -> String { L(days <= 0 ? (days == 0 ? "今天" : "已过") : days == 1 ? "明天" : "\(days) 天后") }
 func dayLabel(_ iso: String) -> String {
     guard let d = isoDay.date(from: String(iso.prefix(10))) else { return iso }
-    let f = DateFormatter(); f.locale = Locale(identifier: "zh_CN"); f.timeZone = TimeZone(identifier: "UTC"); f.dateFormat = "M月d日 EEEE"
+    let f = DateFormatter(); f.timeZone = TimeZone(identifier: "UTC")
+    switch Translator.shared.language {   // the date line follows the interface language, not the Mac's region
+    case "en": f.locale = Locale(identifier: "en_US"); f.dateFormat = "EEEE, MMM d"
+    case "zh-Hant": f.locale = Locale(identifier: "zh_TW"); f.dateFormat = "M月d日 EEEE"
+    default: f.locale = Locale(identifier: "zh_CN"); f.dateFormat = "M月d日 EEEE"
+    }
     return f.string(from: d)
 }
 func shortDay(_ iso: String) -> String { iso.count >= 10 ? String(iso.dropFirst(5).prefix(5)) : iso }

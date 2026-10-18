@@ -16,12 +16,12 @@ struct RiskModelDetails:View {
         }
         Panel(title:"逐仓 Delta 与 Beta"){
             Table(exposure["rows"].items,selection:$selected){
-                TableColumn("标的 / 账户"){p in VStack(alignment:.leading){Text(p["symbol"].s).bold();Text(p["broker"].s).font(.caption).foregroundStyle(.secondary)}}.width(min:80,ideal:100)
-                TableColumn("Delta 美元"){p in VStack(alignment:.leading){Text(usd(p["dollar_delta"])).monospacedDigit();Text("Delta "+num(p["position_delta"])).font(.caption)}}.width(min:100,ideal:120)
-                TableColumn("净值 / 权重"){p in VStack(alignment:.leading){Text(pct(p["nlv_pct"]));Text("绝对 "+pct(p["gross_share_pct"])).font(.caption)}}.width(min:90,ideal:100)
-                TableColumn("Beta / R²"){p in VStack(alignment:.leading){Text(num(p["beta"]));Text("R² "+num(p["r_squared"])).font(.caption)}}.width(85)
-                TableColumn("年化波动"){p in Text(pct(p["annualized_vol_pct"]))}.width(90)
-                TableColumn("时间 / 缺口"){p in VStack(alignment:.leading){Text(p["price_asof"].s);Text(p["issues"].strings.joined(separator:"；")).font(.caption).foregroundStyle(PortfolioStyle.warn).lineLimit(2)}}.width(min:180,ideal:250)
+                TableColumn(L("标的 / 账户")){p in VStack(alignment:.leading){Text(p["symbol"].s).bold();Text(p["broker"].s).font(.caption).foregroundStyle(.secondary)}}.width(min:80,ideal:100)
+                TableColumn(L("Delta 美元")){p in VStack(alignment:.leading){Text(usd(p["dollar_delta"])).monospacedDigit();Text("Delta "+num(p["position_delta"])).font(.caption)}}.width(min:100,ideal:120)
+                TableColumn(L("净值 / 权重")){p in VStack(alignment:.leading){Text(pct(p["nlv_pct"]));Text("绝对 "+pct(p["gross_share_pct"])).font(.caption)}}.width(min:90,ideal:100)
+                TableColumn(L("Beta / R²")){p in VStack(alignment:.leading){Text(num(p["beta"]));Text("R² "+num(p["r_squared"])).font(.caption)}}.width(85)
+                TableColumn(L("年化波动")){p in Text(pct(p["annualized_vol_pct"]))}.width(90)
+                TableColumn(L("时间 / 缺口")){p in VStack(alignment:.leading){Text(p["price_asof"].s);Text(p["issues"].strings.joined(separator:"；")).font(.caption).foregroundStyle(PortfolioStyle.warn).lineLimit(2)}}.width(min:180,ideal:250)
             }.frame(height:420)
             if let p=model.positions.first(where:{$0.id==selected}){HStack{Text(p["sym"].s+" · "+p["label"].s);Spacer();Button("补充风险数据"){model.editor = .exposure(p,state:model.state)}}}
             Text(exposure["method"].s).font(.caption).foregroundStyle(.secondary)

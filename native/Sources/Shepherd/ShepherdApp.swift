@@ -9,11 +9,11 @@ final class ShepherdDelegate: NSObject, NSApplicationDelegate {
     weak var model: DeskModel?
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         if model?.busy == true {
-            let alert = NSAlert(); alert.messageText = "操作正在保存，请稍后退出"; alert.runModal(); return .terminateCancel
+            let alert = NSAlert(); alert.messageText = L("操作正在保存，请稍后退出"); alert.runModal(); return .terminateCancel
         }
         if model?.editor != nil {
-            let alert = NSAlert(); alert.messageText = "还有打开的编辑表单"; alert.informativeText = "返回保存，或放弃这次输入。已保存的记录不会受影响。"
-            alert.addButton(withTitle: "返回"); alert.addButton(withTitle: "放弃并退出")
+            let alert = NSAlert(); alert.messageText = L("还有打开的编辑表单"); alert.informativeText = L("返回保存，或放弃这次输入。已保存的记录不会受影响。")
+            alert.addButton(withTitle: L("返回")); alert.addButton(withTitle: L("放弃并退出"))
             if alert.runModal() != .alertSecondButtonReturn { return .terminateCancel }
         }
         return .terminateNow
@@ -28,7 +28,7 @@ final class ShepherdDelegate: NSObject, NSApplicationDelegate {
         Window("Shepherd", id: "main") {
             RootView().environmentObject(model)
                 .frame(minWidth: 1000, minHeight: 700)
-                .onAppear { delegate.model = model }
+                .onAppear { delegate.model = model; model.appearance.apply() }
                 .task { await model.refresh() }
         }
         .defaultSize(width: 1360, height: 900)
@@ -41,10 +41,10 @@ final class ShepherdDelegate: NSObject, NSApplicationDelegate {
                 Button("导出账本与快照备份") { model.backup() }.disabled(model.busy)
                 Divider()
                 Button("认识 R…") { model.onboarding = 0 }.disabled(!model.ready)
-                Button("选择模块…") { model.onboarding = 2 }.disabled(!model.ready)
                 Button("打开演示（虚构数据）") { model.openDemo() }.disabled(Engine.demo)
             }
         }
+        Settings { SettingsView().environmentObject(model) }
     }
 }
 
@@ -163,6 +163,7 @@ struct RootView: View {
                     if model.busy { ProgressView().controlSize(.small) }
                     Button { Task { await model.refresh() } } label: { Label("重新读取", systemImage: "arrow.clockwise") }.disabled(model.busy)
                     Button { model.editor = .plan() } label: { Label("新建计划", systemImage: "plus") }.disabled(!model.ready)
+                    SettingsLink { Label("设置", systemImage: "gearshape") }.help("设置")
                 }
             }
             .safeAreaInset(edge: .bottom) {

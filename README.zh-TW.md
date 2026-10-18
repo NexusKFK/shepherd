@@ -11,13 +11,13 @@
 
 Shepherd 是一個 macOS 本機 App。它幫你在開倉之前把風險算清楚：先定好每筆願意虧的錢（1R），再按停損距離算出該買多少；開倉之後，隨時告訴你"所有停損同時被打到，一共會虧多少 R"。
 
-App 介面目前只有簡體中文，下面提到的選單和按鈕名稱都照介面原文的意思翻成繁體。
-
 它只記帳、算數、提醒。它不下單，不登入券商，不給買賣建議，也不呼叫任何 AI 模型。所有記錄都存在你自己的電腦上。
 
-<p align="center"><img src="docs/img/overview.png" width="900" alt="Shepherd 總覽頁：新開倉預算、需要處理、接下來、淨值與 1R"></p>
+介面有繁體中文、簡體中文和英文三種，預設跟隨系統語言，可以在設定（⌘,）裡改。
 
-> 截圖全部來自演示模式，帳戶、持倉和行情都是隨機生成的。
+<p align="center"><img src="docs/img/overview-zh-TW.png" width="900" alt="Shepherd 總覽頁：新開倉預算、需要處理、接下來、淨值與 1R"></p>
+
+> 截圖全部來自示範模式，帳戶、持倉和行情都是隨機生成的。
 
 ## 先搞懂 R
 
@@ -33,7 +33,7 @@ R 是你每一筆交易願意虧的錢。Shepherd 裡的一切都圍著它轉。
 
 停損近就多買，停損遠就少買。這樣無論哪一筆被停損，虧的都是同樣的 1R。第一次開啟 App 時，會先用一個能拖曳的例子講這件事，再讓你定自己的 1R。沒有定好 1R，App 不會給出計畫數量。
 
-<p align="center"><img src="docs/img/onboarding-r.png" width="760" alt="首次引導：認識 R"></p>
+<p align="center"><img src="docs/img/onboarding-r-zh-TW.png" width="760" alt="首次引導：認識 R"></p>
 
 ## 一張圖看懂
 
@@ -46,11 +46,12 @@ R 是你每一筆交易願意虧的錢。Shepherd 裡的一切都圍著它轉。
 
 ## 快速開始
 
-1. 到 [Releases](../../releases) 下載 `Shepherd-v1.3.0-macOS-arm64.zip`，解壓縮後把 `Shepherd.app` 拖進「應用程式」。目前只提供 Apple 晶片版本，需要 macOS 14 或更新。
+1. 到 [Releases](../../releases) 下載 `Shepherd-v1.4.0-macOS-arm64.zip`，解壓縮後把 `Shepherd.app` 拖進「應用程式」。目前只提供 Apple 晶片版本，需要 macOS 14 或更新。
 2. 第一次開啟時，macOS 會提示無法驗證開發者，因為這個 App 沒有做蘋果公證。開啟「系統設定 → 隱私權與安全性」，在頁面下方點選「強制打開」。
    如果還是無法開啟，在終端機執行 `xattr -dr com.apple.quarantine /Applications/Shepherd.app`，再開啟一次。
 3. 跟著首次引導走三步：認識 R，定你的 R，選模組。
-4. 想先看看完整的樣子：選單「檔案（File）→ 打開演示（虛構資料）」。演示會另開一個視窗，用一套虛構的帳戶和行情，關掉就丟棄，不碰你的帳本。
+4. 想先看看完整的樣子：選單「檔案（File）→ 開啟示範（虛構資料）」。示範會另開一個視窗，用一套虛構的帳戶和行情，關掉就丟棄，不碰你的帳本。
+5. 之後要改語言、外觀、1R 或模組，開啟設定：按 ⌘,，或點工具列右上角的齒輪。
 
 ## 一直開著的核心部分
 
@@ -63,13 +64,13 @@ R 是你每一筆交易願意虧的錢。Shepherd 裡的一切都圍著它轉。
 | 成交與覆盤 | 登記券商裡已經發生的成交（分批進出都行），誤登記可以撤銷，原記錄留痕。 |
 | 資料與留存 | 帳本位置、匯入持倉、快照歷史版本、一鍵匯出完整備份。 |
 
-<p align="center"><img src="docs/img/risk.png" width="900" alt="風險頁"></p>
+<p align="center"><img src="docs/img/risk-zh-TW.png" width="900" alt="風險頁"></p>
 
 ## 依需求開啟的模組
 
-第一次開啟時選，之後在選單「檔案（File）→ 選擇模組…」裡隨時改。沒開的模組不出現在側邊欄，也不會在總覽報提醒，左下角也不顯示它的資料燈。
+第一次開啟時選，之後在「設定 → 模組」裡隨時改。沒開的模組不出現在側邊欄，也不會在總覽報提醒，左下角也不顯示它的資料燈。
 
-<p align="center"><img src="docs/img/onboarding-modules.png" width="760" alt="首次引導：選模組"></p>
+<p align="center"><img src="docs/img/onboarding-modules-zh-TW.png" width="760" alt="首次引導：選模組"></p>
 
 | 模組 | 做什麼 | 需要什麼 | 新使用者預設 |
 |---|---|---|---|
@@ -81,7 +82,7 @@ R 是你每一筆交易願意虧的錢。Shepherd 裡的一切都圍著它轉。
 | 紙盤 | 只觀察、不下單的模擬交易，按收盤估值，不進真實帳本和風險統計。 | 紙盤估值資料檔案。 | 關 |
 | 券商確認單匯入 | 把 Schwab 的成交確認郵件解析成提案，核對後入帳。 | 把確認郵件存進投餵資料夾（可配 Mail 規則自動存）。 | 關 |
 
-<p align="center"><img src="docs/img/option-plans.png" width="900" alt="期權計畫頁：可拖曳的盈虧圖"></p>
+<p align="center"><img src="docs/img/option-plans-zh-TW.png" width="900" alt="期權計畫頁：可拖曳的盈虧圖"></p>
 
 ## 資料從哪來
 
@@ -95,7 +96,7 @@ Shepherd 自己不連網抓資料。你可以從最簡單的用法開始，需�
    python3 tools/fetch_market_data.py AAPL MSFT NVDA   # 換成你持有的代碼；SPY 和標普指數會自動加上
    ```
 
-4. **接模組的資料檔案。** 宏觀燈、週線觀察、紙盤、盤前觀察、日曆都讀一個約定格式的 JSON 檔案。格式見 [docs/data-formats.md](docs/data-formats.md)。最完整的範例是演示資料：執行 `python3 -m workbench.demo --out /tmp/shepherd-demo`，然後看 `sources/` 下面的每個檔案。
+4. **接模組的資料檔案。** 宏觀燈、週線觀察、紙盤、盤前觀察、日曆都讀一個約定格式的 JSON 檔案。格式見 [docs/data-formats.md](docs/data-formats.md)。最完整的範例是示範資料：執行 `python3 -m workbench.demo --out /tmp/shepherd-demo`，然後看 `sources/` 下面的每個檔案。
 
 作者自己用一套獨立的蒐集腳本每天生成這些檔案。那套腳本和個人帳戶綁得太緊，沒有放進這個儲存庫。
 
@@ -132,7 +133,7 @@ python3 -m unittest discover -p 'test_*.py'
 
 ```
 native/Sources/Shepherd/   SwiftUI 介面
-workbench/                 計算引擎：帳本、定倉、風險、選擇權、模組、演示資料
+workbench/                 計算引擎：帳本、定倉、風險、選擇權、模組、示範資料
 workbench/macos/           打包內建 Python、PDF 文字提取、Mail 規則腳本
 examples/                  持倉 JSON 範例
 tools/fetch_market_data.py 補日線的小腳本

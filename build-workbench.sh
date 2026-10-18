@@ -14,13 +14,13 @@ from pathlib import Path
 p=Path(sys.argv[1])
 package=p/'Contents/Resources/workbench'
 if package.exists(): shutil.rmtree(package)
-shutil.copytree('workbench',package,ignore=shutil.ignore_patterns('__pycache__','macos','qa_browser.py','static','server.py','__main__.py'))
+shutil.copytree('workbench',package,ignore=shutil.ignore_patterns('__pycache__','macos','qa_browser.py','static','server.py','__main__.py','source.json','*.next.json'))
 # Native UI communicates over stdio; the engine runtime is embedded below.
 legacy=p/'Contents/Resources/runtime.json'
 if legacy.exists(): legacy.unlink()
 with (p/'Contents/Info.plist').open('wb') as f:
     plistlib.dump({'CFBundleName':'Shepherd','CFBundleDisplayName':'Shepherd',
-        'CFBundleIdentifier':'local.shepherd.tradingdesk','CFBundleVersion':'5','CFBundleShortVersionString':'1.3.0',
+        'CFBundleIdentifier':'local.shepherd.tradingdesk','CFBundleVersion':'6','CFBundleShortVersionString':'1.4.0',
         'CFBundleExecutable':'Shepherd','CFBundlePackageType':'APPL','LSMinimumSystemVersion':'14.0',
         'NSHighResolutionCapable':True,
         'CFBundleIconFile':'AppIcon'},f)
