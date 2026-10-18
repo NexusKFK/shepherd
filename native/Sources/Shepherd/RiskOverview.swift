@@ -134,6 +134,36 @@ struct FactorOverview: View {
         guard let pnl = member["stress_pnl"].n, let oneR = value["one_r"].n, oneR > 0 else { return nil }
         return -pnl / oneR
     }
+    // Pieces of the inspector, kept out of one long view builder so older Swift compilers can type-check it.
+    var uncoveredNames: String { "未计入：" + active["uncovered"].items.map { $0["symbol"].s }.joined(separator: "、") }
+    var contributionLower: Double { members.contains { (contribution($0) ?? 0) < 0 } ? -contributionRange : 0 }
+    func contributionText(_ member: J) -> String { contribution(member).map { num(.number($0)) + " R" } ?? "—" }
+    func hedgeLine(_ sl: J) -> String {
+        let size: String = "约 " + usd(sl["hedge_proxy_dollars"]) + " " + sl["proxy"].s
+        return "若全由" + sl["name"].s + "补：" + size + " 空头 Delta（如 put 的 Delta 名义）"
+    }
+    func excessBlock(_ excess: Double) -> some View {
+        let hedges: [J] = active["sleeves"].items.filter { $0["hedge_proxy_dollars"].n != nil }
+        let title: String = "超出上限 " + num(.number(excess)) + " R：减仓或买保护补齐，时点看 PA"
+        return VStack(alignment: .leading, spacing: 2) {
+            Label(title, systemImage: "shield.lefthalf.filled").font(.caption).foregroundStyle(.red)
+            ForEach(Array(hedges.enumerated()), id: \.offset) { _, sl in
+                Text(hedgeLine(sl)).font(.caption).foregroundStyle(.secondary)
+            }
+        }
+    }
+    func memberRow(_ member: J) -> some View {
+        let name: String = member["symbol"].s + " · " + member["broker"].s
+        return VStack(alignment: .leading, spacing: 2) {
+            HStack {
+                Text(name).font(.callout)
+                Spacer()
+                Text(contributionText(member)).font(.callout).monospacedDigit()
+            }
+            RiskScaleBar(value: contribution(member), lower: contributionLower, upper: contributionRange)
+            Text(member["sleeve"].s).font(.caption2).foregroundStyle(.secondary)
+        }
+    }
     var contributionRange: Double { max(0.1, members.compactMap { contribution($0).map(abs) }.max() ?? 0.1) }
     var inspector: some View {
         PortfolioPanel(title: active["factor"].s + " · 持仓贡献") {
@@ -143,30 +173,12 @@ struct FactorOverview: View {
                 Text(status(active)).font(.caption).foregroundStyle(.secondary)
             }
             Text("净敞口 " + usd(active["net_dollar_delta"])).font(.caption).foregroundStyle(.secondary)
-            if let excess = active["excess_r"].n, excess > 0 {
-                VStack(alignment: .leading, spacing: 2) {
-                    Label("超出上限 " + num(.number(excess)) + " R：减仓或买保护补齐，时点看 PA", systemImage: "shield.lefthalf.filled").font(.caption).foregroundStyle(.red)
-                    ForEach(Array(active["sleeves"].items.filter { $0["hedge_proxy_dollars"].n != nil }.enumerated()), id: \.offset) { _, sl in
-                        Text("若全由" + sl["name"].s + "补：约 " + usd(sl["hedge_proxy_dollars"]) + " " + sl["proxy"].s + " 空头 Delta（如 put 的 Delta 名义）")
-                            .font(.caption).foregroundStyle(.secondary)
-                    }
-                }
-            }
+            if let excess = active["excess_r"].n, excess > 0 { excessBlock(excess) }
             if members.isEmpty { Text("暂无可展示的持仓贡献").font(.callout).foregroundStyle(.secondary).padding(.vertical, 20) }
-            ForEach(Array(members.prefix(6).enumerated()), id: \.offset) { _, member in
-                VStack(alignment: .leading, spacing: 2) {
-                    HStack {
-                        Text(member["symbol"].s + " · " + member["broker"].s).font(.callout)
-                        Spacer()
-                        Text(contribution(member).map { num(.number($0)) + " R" } ?? "—").font(.callout).monospacedDigit()
-                    }
-                    RiskScaleBar(value: contribution(member), lower: members.contains { (contribution($0) ?? 0) < 0 } ? -contributionRange : 0, upper: contributionRange)
-                    Text(member["sleeve"].s).font(.caption2).foregroundStyle(.secondary)
-                }
-            }
+            ForEach(Array(members.prefix(6).enumerated()), id: \.offset) { _, member in memberRow(member) }
             if members.count > 6 { Text("其余 \(members.count - 6) 条见下方大类明细").font(.caption).foregroundStyle(.secondary) }
             if !active["uncovered"].items.isEmpty {
-                Label("未计入：" + active["uncovered"].items.map { $0["symbol"].s }.joined(separator: "、"), systemImage: "exclamationmark.triangle").font(.caption).foregroundStyle(PortfolioStyle.warn)
+                Label(uncoveredNames, systemImage: "exclamationmark.triangle").font(.caption).foregroundStyle(PortfolioStyle.warn)
             }
             Divider()
             Text("贡献按本大类自适应刻度展示。\n已有数据的估算余量不等于可加仓额度。")

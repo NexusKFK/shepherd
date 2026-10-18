@@ -76,6 +76,12 @@ struct FreshnessChip: View {
         let day: String = row["day"].s.isEmpty ? "无" : shortDay(row["day"].s)
         return row["label"].s + " " + day
     }
+    var chipFill: Color { row["level"].s == "ok" ? Color.secondary.opacity(0.10) : PortfolioStyle.level(row["level"].s).opacity(0.16) }
+    var chipTint: Color { row["level"].s == "ok" ? Color.secondary : PortfolioStyle.level(row["level"].s) }
+    var spoken: String {
+        let note: String = row["note"].s.isEmpty ? "" : "，" + row["note"].s
+        return row["label"].s + " " + row["day"].s + note
+    }
     var body: some View {
         let level = row["level"].s
         HStack(spacing: 5) {
@@ -83,11 +89,11 @@ struct FreshnessChip: View {
             Text(chipText).font(.caption).monospacedDigit()
         }
         .padding(.horizontal, 9).padding(.vertical, 4)
-        .background(level == "ok" ? Color.secondary.opacity(0.10) : PortfolioStyle.level(level).opacity(0.16), in: Capsule())
-        .foregroundStyle(level == "ok" ? Color.secondary : PortfolioStyle.level(level))
+        .background(chipFill, in: Capsule())
+        .foregroundStyle(chipTint)
         .help(freshnessHelp(row))
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(row["label"].s + " " + row["day"].s + (row["note"].s.isEmpty ? "" : "，" + row["note"].s))
+        .accessibilityLabel(spoken)
     }
 }
 

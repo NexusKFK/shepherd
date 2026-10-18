@@ -101,40 +101,84 @@ struct PortfolioHeatPanel:View {
 }
 struct FactorTechnicalDetails:View {
     let value:J
-    func tone(_ status:String)->Color{status=="over" ? .red : status=="near" ? PortfolioStyle.warn : .secondary}
-    func stateText(_ status:String)->String{["over":"已超上限","near":"接近上限（≥75%）","ok":"上限以内","r_unavailable":"未确认净值，无法折算 R","unclustered":"未分簇 · 不计压力"][status] ?? status}
+    // Strings are built outside the view builder: older Swift compilers time out type-checking long concatenations inline.
+    var denominator:String {
+        if value["one_r"].n == nil { return "R 分母：未确认净值" }
+        return "R 分母：全局定仓 1R " + usd(value["one_r"]) + " · 余量按各子项代理 ETF 名义（敏感度 1）折算"
+    }
+    var linkedTitle:String { "\(value["linked_pairs"].items.count) 对跨大类高联动（相关 ≥ " + num(value["pair_thresholds"]["linked"]) + "）· 可能其实是同一类" }
+    var weakTitle:String { "\(value["weak_pairs"].items.count) 对同子项联动弱（相关 < " + num(value["pair_thresholds"]["weak"]) + "）· 标签可能不准" }
+    func linkedLine(_ x:J)->String {
+        let a:String = x["a"].s + "（" + x["sleeve_a"].s + "）"
+        let b:String = x["b"].s + "（" + x["sleeve_b"].s + "）"
+        return a + "↔ " + b + "· 相关 " + num(x["correlation"])
+    }
+    func weakLine(_ x:J)->String {
+        let pair:String = x["a"].s + " ↔ " + x["b"].s
+        return pair + "（" + x["sleeve_a"].s + "）· 相关 " + num(x["correlation"])
+    }
     var body:some View {Panel(title:"大类跳空压力 · 按 R 读 · 只提示不拦截"){
         Text("大类（科技 / 非科技 / 黄金 / 利率 / 宽基）设上限，子项各用自己的代理与冲击后相加；压力 = 代理 ETF 历史最差单日 × 敏感度 × Delta 美元，模拟隔夜跳空、止损来不及成交。").font(.callout).foregroundStyle(.secondary)
-
         DisclosureGroup("逐大类明细 · 子项、成员、敏感度与未计入仓位"){
-        LazyVGrid(columns:[GridItem(.adaptive(minimum:260))],spacing:12){ForEach(Array(value["clusters"].items.enumerated()),id:\.offset){_,g in
-            VStack(alignment:.leading,spacing:6){
-                HStack{Text(g["factor"].s).font(.headline);Spacer();Text(stateText(g["status"].s)).font(.caption).foregroundStyle(tone(g["status"].s))}
-                Text(g["stress_loss_r"].n == nil ? "—" : num(g["stress_loss_r"])+"R"+(g["cap_r"].n == nil ? "" : " / 上限 "+num(g["cap_r"])+"R")).font(.title2.weight(.semibold)).monospacedDigit().foregroundStyle(g["status"].s=="over" ? Color.red : g["status"].s=="near" ? PortfolioStyle.warn : Color.primary)
-                Text("净敞口 "+usd(g["net_dollar_delta"])+" · 占净值 "+pct(g["net_nlv_pct"])+(g["headroom_r"].n == nil ? "" : " · 余量 "+num(g["headroom_r"])+"R")).font(.caption).monospacedDigit()
-                if !g["note"].s.isEmpty {Text(g["note"].s).font(.caption).foregroundStyle(.secondary)}
-                ForEach(Array(g["sleeves"].items.enumerated()),id:\.offset){_,sl in VStack(alignment:.leading,spacing:1){
-                    HStack{Text(sl["name"].s).font(.callout.weight(.medium));Spacer();Text(num(sl["stress_loss_r"])+"R").font(.callout).monospacedDigit()}
-                    Text("冲击 "+num(sl["shock_pct"])+"% · 代理 "+sl["proxy"].s+(sl["headroom_proxy_dollars"].n == nil ? "" : " · 还可加约 "+usd(sl["headroom_proxy_dollars"])+" 代理名义")).font(.caption).foregroundStyle(.secondary)
-                }}
-                if !g["uncovered"].items.isEmpty {Text("\(g["uncovered"].items.count) 条未计入："+g["uncovered"].items.map{$0["symbol"].s}.joined(separator:"、")+" · 不是零风险").font(.caption).foregroundStyle(PortfolioStyle.warn)}
-                DisclosureGroup("\(g["members"].items.count) 条仓位"){ForEach(Array(g["members"].items.enumerated()),id:\.offset){_,m in VStack(alignment:.leading,spacing:2){
-                    HStack{Text(m["symbol"].s+" · "+m["broker"].s+" · "+m["sleeve"].s).font(.callout);Spacer();Text(usd(m["stress_pnl"])).font(.callout).monospacedDigit()}
-                    Text(usd(m["dollar_delta"])+" × 敏感度 "+num(m["sensitivity"])+" · "+m["sensitivity_method"].s).font(.caption).foregroundStyle(.secondary)
-                }}
-                ForEach(Array(g["uncovered"].items.enumerated()),id:\.offset){_,u in Text("未计入 "+u["symbol"].s+" · "+u["broker"].s+"："+u["reason"].s).font(.caption).foregroundStyle(PortfolioStyle.warn).lineLimit(2)}}
-            }.padding(14).background(.quaternary.opacity(0.45),in:RoundedRectangle(cornerRadius:12))
-        }}
+            LazyVGrid(columns:[GridItem(.adaptive(minimum:260))],spacing:12){
+                ForEach(Array(value["clusters"].items.enumerated()),id:\.offset){_,g in ClusterCard(g:g)}
+            }
         }
-        Text(value["one_r"].n == nil ? "R 分母：未确认净值" : "R 分母：全局定仓 1R "+usd(value["one_r"])+" · 余量按各子项代理 ETF 名义（敏感度 1）折算").font(.caption).foregroundStyle(.secondary)
-        if !value["linked_pairs"].items.isEmpty {DisclosureGroup("\(value["linked_pairs"].items.count) 对跨大类高联动（相关 ≥ "+num(value["pair_thresholds"]["linked"])+"）· 可能其实是同一类"){
-            ForEach(Array(value["linked_pairs"].items.enumerated()),id:\.offset){_,x in Text(x["a"].s+"（"+x["sleeve_a"].s+"）↔ "+x["b"].s+"（"+x["sleeve_b"].s+"）· 相关 "+num(x["correlation"])).font(.caption).monospacedDigit()}
+        Text(denominator).font(.caption).foregroundStyle(.secondary)
+        if !value["linked_pairs"].items.isEmpty {DisclosureGroup(linkedTitle){
+            ForEach(Array(value["linked_pairs"].items.enumerated()),id:\.offset){_,x in Text(linkedLine(x)).font(.caption).monospacedDigit()}
         }}
-        if !value["weak_pairs"].items.isEmpty {DisclosureGroup("\(value["weak_pairs"].items.count) 对同子项联动弱（相关 < "+num(value["pair_thresholds"]["weak"])+"）· 标签可能不准"){
-            ForEach(Array(value["weak_pairs"].items.enumerated()),id:\.offset){_,x in Text(x["a"].s+" ↔ "+x["b"].s+"（"+x["sleeve_a"].s+"）· 相关 "+num(x["correlation"])).font(.caption).monospacedDigit()}
+        if !value["weak_pairs"].items.isEmpty {DisclosureGroup(weakTitle){
+            ForEach(Array(value["weak_pairs"].items.enumerated()),id:\.offset){_,x in Text(weakLine(x)).font(.caption).monospacedDigit()}
         }}
         Notes(values:value["notices"].strings)
     }}
+}
+/// One bucket of the gap-stress table: headline R, exposure, sleeves, uncovered positions and members.
+struct ClusterCard:View {
+    let g:J
+    static func tone(_ status:String)->Color{status=="over" ? .red : status=="near" ? PortfolioStyle.warn : .secondary}
+    static func stateText(_ status:String)->String{["over":"已超上限","near":"接近上限（≥75%）","ok":"上限以内","r_unavailable":"未确认净值，无法折算 R","unclustered":"未分簇 · 不计压力"][status] ?? status}
+    var status:String { g["status"].s }
+    var headline:String {
+        if g["stress_loss_r"].n == nil { return "—" }
+        let cap:String = g["cap_r"].n == nil ? "" : " / 上限 " + num(g["cap_r"]) + "R"
+        return num(g["stress_loss_r"]) + "R" + cap
+    }
+    var headlineColor:Color { status == "over" ? Color.red : (status == "near" ? PortfolioStyle.warn : Color.primary) }
+    var exposureLine:String {
+        let room:String = g["headroom_r"].n == nil ? "" : " · 余量 " + num(g["headroom_r"]) + "R"
+        return "净敞口 " + usd(g["net_dollar_delta"]) + " · 占净值 " + pct(g["net_nlv_pct"]) + room
+    }
+    var uncoveredLine:String {
+        let names:String = g["uncovered"].items.map { $0["symbol"].s }.joined(separator: "、")
+        return "\(g["uncovered"].items.count) 条未计入：" + names + " · 不是零风险"
+    }
+    func sleeveLine(_ sl:J)->String {
+        let room:String = sl["headroom_proxy_dollars"].n == nil ? "" : " · 还可加约 " + usd(sl["headroom_proxy_dollars"]) + " 代理名义"
+        return "冲击 " + num(sl["shock_pct"]) + "% · 代理 " + sl["proxy"].s + room
+    }
+    func memberTitle(_ m:J)->String { m["symbol"].s + " · " + m["broker"].s + " · " + m["sleeve"].s }
+    func memberDetail(_ m:J)->String { usd(m["dollar_delta"]) + " × 敏感度 " + num(m["sensitivity"]) + " · " + m["sensitivity_method"].s }
+    func uncoveredItem(_ u:J)->String { "未计入 " + u["symbol"].s + " · " + u["broker"].s + "：" + u["reason"].s }
+    var body:some View {
+        VStack(alignment:.leading,spacing:6){
+            HStack{Text(g["factor"].s).font(.headline);Spacer();Text(Self.stateText(status)).font(.caption).foregroundStyle(Self.tone(status))}
+            Text(headline).font(.title2.weight(.semibold)).monospacedDigit().foregroundStyle(headlineColor)
+            Text(exposureLine).font(.caption).monospacedDigit()
+            if !g["note"].s.isEmpty {Text(g["note"].s).font(.caption).foregroundStyle(.secondary)}
+            ForEach(Array(g["sleeves"].items.enumerated()),id:\.offset){_,sl in VStack(alignment:.leading,spacing:1){
+                HStack{Text(sl["name"].s).font(.callout.weight(.medium));Spacer();Text(num(sl["stress_loss_r"])+"R").font(.callout).monospacedDigit()}
+                Text(sleeveLine(sl)).font(.caption).foregroundStyle(.secondary)
+            }}
+            if !g["uncovered"].items.isEmpty {Text(uncoveredLine).font(.caption).foregroundStyle(PortfolioStyle.warn)}
+            DisclosureGroup("\(g["members"].items.count) 条仓位"){ForEach(Array(g["members"].items.enumerated()),id:\.offset){_,m in VStack(alignment:.leading,spacing:2){
+                HStack{Text(memberTitle(m)).font(.callout);Spacer();Text(usd(m["stress_pnl"])).font(.callout).monospacedDigit()}
+                Text(memberDetail(m)).font(.caption).foregroundStyle(.secondary)
+            }}
+            ForEach(Array(g["uncovered"].items.enumerated()),id:\.offset){_,u in Text(uncoveredItem(u)).font(.caption).foregroundStyle(PortfolioStyle.warn).lineLimit(2)}}
+        }.padding(14).background(.quaternary.opacity(0.45),in:RoundedRectangle(cornerRadius:12))
+    }
 }
 struct StrategyPanel:View {
     @EnvironmentObject var model:DeskModel
