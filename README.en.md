@@ -9,7 +9,7 @@
   <a href="https://github.com/NexusKFK/shepherd/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/NexusKFK/shepherd/actions/workflows/ci.yml/badge.svg"></a>
 </p>
 
-Shepherd is a native macOS app that does the arithmetic of position sizing before you trade. You decide how much one trade may lose (1R); Shepherd turns the distance to your stop into a share count, and afterwards keeps telling you how many R you would lose if every stop were hit at once ("heat").
+Shepherd is a native macOS app that does the arithmetic of position sizing before you trade. You decide how much one trade may lose (1R); Shepherd turns the distance to your stop into a share count, and afterwards keeps telling you how many R you would lose if every stop were hit at once ("heat"). Its Chinese name, 牧羊犬, means sheepdog: you choose where the flock goes, and it keeps the flock together and barks when one strays.
 
 It records, calculates and reminds. It never places orders, never logs in to a broker, gives no buy/sell advice and calls no AI model. Everything stays on your Mac. The interface is in English, Simplified Chinese and Traditional Chinese; it follows the system language and can be changed in Settings (⌘,).
 
