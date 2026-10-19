@@ -51,7 +51,7 @@ Before the trade you set 1R and write the plan, and the app sizes it. You place 
 
 ## Getting started
 
-1. Download `Shepherd-v1.4.0-macOS-arm64.zip` from [Releases](../../releases), unzip, and drag `Shepherd.app` into Applications. Apple silicon only, macOS 14 or later.
+1. Download `Shepherd-v1.4.1-macOS-arm64.zip` from [Releases](../../releases), unzip, and drag `Shepherd.app` into Applications. Apple silicon only, macOS 14 or later.
 2. The app is not notarized. On first launch open **System Settings → Privacy & Security** and click **Open Anyway**. If it still refuses, run `xattr -dr com.apple.quarantine /Applications/Shepherd.app`.
 3. Follow the three-step walkthrough: what R is, set your R, pick modules.
 4. To see everything populated: **File → Open demo (invented data)** opens a second window on invented data that is discarded when closed.

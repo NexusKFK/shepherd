@@ -57,7 +57,7 @@ R 是你每一筆交易願意虧的錢。Shepherd 裡的一切都圍著它轉。
 
 ## 快速開始
 
-1. 到 [Releases](../../releases) 下載 `Shepherd-v1.4.0-macOS-arm64.zip`，解壓縮後把 `Shepherd.app` 拖進「應用程式」。目前只提供 Apple 晶片版本，需要 macOS 14 或更新。
+1. 到 [Releases](../../releases) 下載 `Shepherd-v1.4.1-macOS-arm64.zip`，解壓縮後把 `Shepherd.app` 拖進「應用程式」。目前只提供 Apple 晶片版本，需要 macOS 14 或更新。
 2. 第一次開啟時，macOS 會提示無法驗證開發者，因為這個 App 沒有做蘋果公證。開啟「系統設定 → 隱私權與安全性」，在頁面下方點選「強制打開」。
    如果還是無法開啟，在終端機執行 `xattr -dr com.apple.quarantine /Applications/Shepherd.app`，再開啟一次。
 3. 跟著首次引導走三步：認識 R，定你的 R，選模組。

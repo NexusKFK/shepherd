@@ -20,7 +20,7 @@ legacy=p/'Contents/Resources/runtime.json'
 if legacy.exists(): legacy.unlink()
 with (p/'Contents/Info.plist').open('wb') as f:
     plistlib.dump({'CFBundleName':'Shepherd','CFBundleDisplayName':'Shepherd',
-        'CFBundleIdentifier':'local.shepherd.tradingdesk','CFBundleVersion':'6','CFBundleShortVersionString':'1.4.0',
+        'CFBundleIdentifier':'local.shepherd.tradingdesk','CFBundleVersion':'7','CFBundleShortVersionString':'1.4.1',
         'CFBundleExecutable':'Shepherd','CFBundlePackageType':'APPL','LSMinimumSystemVersion':'14.0',
         'NSHighResolutionCapable':True,
         'CFBundleIconFile':'AppIcon'},f)

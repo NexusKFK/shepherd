@@ -1234,6 +1234,13 @@
   ]
  },
  {
+  "key": "关闭详情（Esc）",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
   "key": "到期 ",
   "placeholders": 0,
   "where": [

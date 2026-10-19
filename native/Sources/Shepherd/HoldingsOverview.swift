@@ -106,13 +106,20 @@ struct HoldingsView: View {
                 if geometry.size.width >= 1110, let p = selectedRow {
                     HStack(alignment: .top, spacing: 16) {
                         holdingsTable
-                        ScrollView { HoldingInspector(position: p).environmentObject(model) }.frame(width: 310)
+                        ScrollView { HoldingInspector(position: p, onClose: { selected = nil }).environmentObject(model) }.frame(width: 310)
                     }
                 } else {
-                    holdingsTable
-                    if let p = selectedRow {
-                        ScrollView { HoldingInspector(position: p).environmentObject(model) }.frame(maxHeight: 285)
-                    }
+                    // Narrow window: the detail floats over the right side of the table, so the table and footer keep their size.
+                    holdingsTable.overlay(alignment: .trailing) {
+                        if let p = selectedRow {
+                            ScrollView { HoldingInspector(position: p, onClose: { selected = nil }).environmentObject(model) }
+                                .frame(width: 340)
+                                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
+                                .shadow(color: .black.opacity(0.35), radius: 14, x: -4, y: 0)
+                                .padding(.vertical, 6)
+                                .transition(.move(edge: .trailing))
+                        }
+                    }.animation(.easeOut(duration: 0.15), value: selected)
                 }
                 HStack {
                     Text(nodes.isEmpty ? "没有匹配的持仓" : "点选查看详情 · 点表头排序 · 展开组合查看合约腿")
@@ -120,6 +127,7 @@ struct HoldingsView: View {
                     Text("浮盈按快照价 · 组合汇总不重复计量")
                 }.font(.caption).foregroundStyle(.secondary)
             }.padding(24)
+                .onKeyPress(.escape) { if selected == nil { return .ignored }; selected = nil; return .handled }
                 .onChange(of: search) { _, _ in clearHiddenSelection() }
                 .onChange(of: account) { _, _ in clearHiddenSelection() }
                 .onChange(of: model.state["generated_at"].s) { _, _ in clearHiddenSelection() }
@@ -190,13 +198,16 @@ struct HoldingsView: View {
 
 struct HoldingInspector: View {
     let position: J
+    var onClose: () -> Void = {}
     @EnvironmentObject var model: DeskModel
     var exposure: J { model.state["exposure"]["rows"].items.first { $0.id == position.id } ?? .null }
     var heat: J { model.state["exposure"]["portfolio_heat"] }
     var heatItem: J? { heat["items"].items.first { $0.id.split(separator: ",").map(String.init).contains(position.id) } }
     var body: some View {
         VStack(alignment: .leading, spacing: 13) {
-            HStack { Text(position["sym"].s).font(.title2.weight(.semibold)); Spacer(); Text(position["broker"].s).font(.callout).foregroundStyle(.secondary) }
+            HStack { Text(position["sym"].s).font(.title2.weight(.semibold)); Spacer(); Text(position["broker"].s).font(.callout).foregroundStyle(.secondary)
+                Button(action: onClose) { Image(systemName: "xmark.circle.fill").font(.title3).foregroundStyle(.secondary) }
+                    .buttonStyle(.plain).keyboardShortcut(.cancelAction).help("关闭详情（Esc）") }
             Text(position["label"].s).font(.headline)
             if position["display_only"].b {
                 Label(position["summary_note"].s, systemImage: "square.stack.3d.up").font(.callout).foregroundStyle(.secondary)

@@ -1,7 +1,8 @@
 # Changelog
 
-## Unreleased
+## 1.4.1 (2026-10-20)
 
+- Holdings: the detail panel has a close button and closes with Esc. In a narrow window it floats over the right side of the table instead of pushing the table and footer down.
 - Docs: a "What it does" overview in the READMEs, a guide to working with a coding agent (`docs/agent-guide.md`, `docs/agent-guide.en.md`) and `AGENTS.md` with development rules for agents.
 - `tools/check_sources.py` checks every data file the app reads, with the app's own loaders, and exits with status 1 when a file is unusable.
 
