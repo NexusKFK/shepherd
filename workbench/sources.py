@@ -28,7 +28,6 @@ class Sources:
         self.home = Path(root or os.environ.get("TRADING_SOURCE_HOME", Path.home()))
         self.holdings = self.home / "tools/holdings_local"
         self.digest = self.home / "tools/daily_digest"
-        self.shepherd = self.home / "workspace/Shepherd"
         self.snapshot_path = self.holdings / "state.json"
         # Optional module files: one environment variable each, otherwise the same layout under the source home.
         self.macro_state = self._optional("SHEPHERD_MACRO_STATE", "tools/macro_panel/out/state.json")
@@ -36,6 +35,7 @@ class Sources:
         self.paper_state = self._optional("SHEPHERD_PAPER_STATE", "tools/paper_book/out/state.json")
         self.option_plans = self._optional("SHEPHERD_OPTION_PLANS", "tools/option_plans")
         self.econf_inbox = self._optional("SHEPHERD_ECONF_INBOX", "tools/schwab_confirms/inbox")
+        self.core_earnings = self._optional("SHEPHERD_CORE_EARNINGS", "tools/daily_digest/core_earnings.json")
 
     def _optional(self, env, relative):
         value = os.environ.get(env)
@@ -89,7 +89,8 @@ class Sources:
                 "source_fingerprint": hashlib.sha256(json.dumps(raw, sort_keys=True, ensure_ascii=False).encode()).hexdigest(),
                 "status": "stale" if stale else "available", "errors": errors,
                 "quotes": raw.get("quotes", {}), "legacy_plans": raw.get("plans", []),
-                "benchmark_quote": raw.get("benchmarkQuote") if isinstance(raw.get("benchmarkQuote"), dict) else None}
+                "benchmark_quote": raw.get("benchmarkQuote") if isinstance(raw.get("benchmarkQuote"), dict) else None,
+                "realized": raw.get("realized") if isinstance(raw.get("realized"), dict) else None}
 
     def history(self):
         """只读已存在的 TradingView 日线包，不在 App 打开时发起行情请求。"""
@@ -160,6 +161,16 @@ class Sources:
             result["error"] = "盘前资料日期无法识别，不能视作今日资料"
         return result
 
+    def _core_earnings(self, errors):
+        """大科技名单（M7、博通、台积电、SpaceX 等）：{代码: 一行}。文件不存在就是没有这个名单，不算错；读坏了要说。"""
+        if not self.core_earnings.exists():
+            return {}
+        raw, error = read_json(self.core_earnings)
+        if error or not isinstance(raw, dict) or not isinstance(raw.get("symbols"), dict):
+            errors.append("大科技财报名单读取失败：" + (error or "格式不正确"))
+            return {}
+        return {str(k).upper(): v for k, v in raw["symbols"].items() if isinstance(v, dict)}
+
     def calendar(self, plans, custom, snapshot):
         today = datetime.now(ET).date()
         lo, hi = today - timedelta(days=7), today + timedelta(days=90)
@@ -180,17 +191,41 @@ class Sources:
                     errors.append("宏观日历存在无效记录")
             if not dates or max(dates) < hi:
                 errors.append("宏观日历未完整覆盖未来 90 天，空白日期不代表没有事件")
+        held = {}
+        for p in snapshot["positions"]:
+            if p.get("sym") and not p.get("display_only") and p.get("delta_status") != "combo":
+                held.setdefault(str(p["sym"]).upper(), []).append(p)
+        core = self._core_earnings(errors)
         earnings, error = read_json(self.digest / "cache/earnings.json")
+        cache_dates = {}
         if not error and isinstance(earnings, dict):
             for sym, day in (earnings.get("data") or {}).items():
                 try:
-                    if lo <= date.fromisoformat(day) <= hi:
-                        events.append({"id": "earnings-"+sym, "day": day, "name": sym+" 财报日期待确认", "time": "", "kind": "财报",
-                                       "source": "已有财报缓存 · 需核对公司公告", "symbol": sym})
+                    cache_dates[str(sym).upper()] = date.fromisoformat(day)
                 except (ValueError, TypeError):
-                    pass
-        else:
+                    continue
+        elif not core:
             errors.append("尚无财报日缓存，可手动登记已确认日期")
+        far = today + timedelta(days=200)          # 大科技名单的财报看得更远，不受 90 天窗口限制
+        for sym in sorted(set(cache_dates) | set(core)):
+            row = core.get(sym)
+            pick = pick_earnings(row, cache_dates.get(sym), today, lo)
+            limit = far if row else hi
+            if pick is None or pick["day"] > limit:
+                if row:
+                    errors.append(f"{sym} 财报日期缺失或已过期，名单文件里的日期需要重新导入")
+                continue
+            mine = held.get(sym)
+            event = {"id": "earnings-"+sym, "day": pick["day"].isoformat(), "time": pick["time"], "kind": "财报",
+                     "source": pick["source"], "symbol": sym, "name": sym+" 财报" if (mine or row) else sym+" 财报日期待确认"}
+            if row:
+                event.update(core=True, core_name=row.get("name") or sym, confirmed=pick["confirmed"])
+            if mine:
+                # 我持有的公司：写清持仓和期权有没有跨过这次财报
+                event.update(held=True, held_note=held_note(mine, pick["day"]))
+            if not (mine or row):
+                event["source"] = "已有财报缓存 · 需核对公司公告"
+            events.append(event)
         for p in snapshot["positions"]:
             expiry = p.get("expiry")
             try:
@@ -210,13 +245,132 @@ class Sources:
         return {"events": sorted(events, key=lambda e: (e["day"], e.get("time", ""))), "errors": errors}
 
 
+def pick_earnings(row, cache_day, today, lo):
+    """一家公司这次该用哪个财报日：名单文件的日期没过期就用它（TradingView，带是否已公告和具体时间），
+    过期了改用日报缓存里的下一次日期（雅虎财经预估）；两样都没有才用名单里刚过去的那天。返回字典或 None。"""
+    overlay = None
+    if row:
+        try:
+            overlay = date.fromisoformat(row.get("date"))
+        except (ValueError, TypeError):
+            overlay = None
+    if overlay and overlay >= today:
+        time = ""
+        if row.get("time_known") and row.get("at"):
+            try:
+                time = datetime.fromisoformat(row["at"].replace("Z", "+00:00")).astimezone(ET).strftime("%H:%M")
+            except ValueError:
+                time = ""
+        confirmed = bool(row.get("confirmed"))
+        return {"day": overlay, "time": time, "confirmed": confirmed,
+                "source": "公司已公告日期（TradingView）" if confirmed else "预估日期（TradingView），以公司公告为准"}
+    if cache_day and cache_day >= lo:
+        return {"day": cache_day, "time": "", "confirmed": False, "source": "预估日期（雅虎财经），以公司公告为准"}
+    if overlay and overlay >= lo:
+        return {"day": overlay, "time": "", "confirmed": bool(row.get("confirmed")), "source": "刚发布过的财报（名单文件）"}
+    return None
+
+
+def held_note(positions, earnings_day):
+    """一句话写清我在这家公司持有什么；有期权在财报日当天或之后才到期的，单独提醒。"""
+    parts, crosses = [], []
+    for p in positions:
+        qty = p.get("qty")
+        if not finite(qty):
+            continue
+        if p.get("kind") == "option":
+            parts.append(f"{p.get('label') or '期权'} {'卖出' if p.get('side') == 'short' else '买入'} {qty:g} 张")
+            try:
+                if date.fromisoformat(p.get("expiry")) >= earnings_day:
+                    crosses.append(p["expiry"][5:])
+            except (ValueError, TypeError):
+                pass
+        else:
+            parts.append(f"{'空头' if p.get('side') == 'short' else '持有'}正股 {qty:g} 股")
+    text = "；".join(parts) or "持仓数量未知"
+    if crosses:
+        text += f"。注意：期权 {'、'.join(sorted(set(crosses)))} 到期，这次财报在到期之前（含到期当天）"
+    return text
+
+
+def broker_key(name):
+    return "schwab" if str(name).lower() in ("tos", "schwab", "thinkorswim", "charles schwab") else name
+
+
+def _leg_claimable(leg):
+    qty, cost = leg.get("qty"), leg.get("open")
+    return (leg.get("side") in ("long", "short")
+            and all(isinstance(v, (int, float)) and not isinstance(v, bool) and finite(v) for v in (qty, cost))
+            and qty > 0 and qty == int(qty))
+
+
+def _structure_row(plan, legs):
+    """已入账多腿计划的组合汇总行：仅展示，风险仍按各腿计量（与组合汇总同一约定）。"""
+    unit = 0
+    for leg in legs:
+        unit = math.gcd(unit, int(leg["qty"]))
+    sign = lambda leg: 1 if leg.get("side") == "long" else -1
+    ratio = [(int(leg["qty"]) // unit) * sign(leg) for leg in legs]
+    marks = [leg.get("mark") for leg in legs]
+    net_open = sum(r * leg["open"] for r, leg in zip(ratio, legs))
+    net_mark = (sum(r * leg["mark"] for r, leg in zip(ratio, legs))
+                if all(finite(m) for m in marks) else None)
+    first = legs[0]
+    row = {"id": "planstruct-" + plan["id"], "plan_id": plan["id"], "sym": plan["symbol"],
+           "label": plan["title"], "kind": "option", "side": "long" if net_open >= 0 else "short",
+           "qty": unit, "mult": first.get("mult") or plan.get("mult") or 100,
+           "open": plan["avg_entry"], "mark": net_mark, "broker": plan["broker"], "expiry": plan["expiry"],
+           "delta_status": "combo", "component_ids": [leg["id"] for leg in legs],
+           "source": "derived", "confirm": False}
+    for key in ("account_id", "account", "broker_account", "underlying_price", "underlying_price_asof"):
+        if first.get(key) is not None:
+            row[key] = first[key]
+    if finite(plan.get("stop")):
+        row["trigs"] = [{"kind": "止损", "basis": "und", "level": plan["stop"], "dir": "<=" if plan["side"] == "long" else ">=",
+                         "text": f"计划失效价 {plan['stop']:g}", "level0": plan["stop"], "moves": [], "source": "plan"}]
+    return row
+
+
+def _plan_structures(snapshot, plans, bound):
+    """同标的、同到期、已入账的多腿期权计划自动认领快照腿（同日到期基本就是一个策略）。
+
+    认领成功返回组合汇总行，占位行随之剔除；同一到期挂两张计划分不清腿、或腿不足两条/缺多空两向时
+    不认领，保持原占位行与待核对提醒。真腿不带 plan_id——期权演算靠这个字段过滤占位行。
+    """
+    claims = {}
+    for p in plans:
+        if p["status"] == "holding" and p.get("kind") == "option" and not p.get("snapshot_id") and p.get("expiry"):
+            key = (str(p["symbol"]).upper(), broker_key(p.get("broker")), p["expiry"])
+            claims.setdefault(key, []).append(p)
+    summaries, linked = [], set()
+    for (sym, broker, expiry), group in claims.items():
+        if len(group) != 1:
+            continue
+        legs = [s for s in snapshot["positions"]
+                if s["id"] not in bound and s.get("kind") == "option" and s.get("delta_status") != "combo"
+                and str(s.get("sym") or "").upper() == sym
+                and broker_key(s.get("broker")) == broker and s.get("expiry") == expiry]
+        if (len(legs) < 2 or len({s.get("side") for s in legs}) < 2
+                or not all(_leg_claimable(s) for s in legs)):
+            continue
+        plan = group[0]
+        linked.add(plan["id"])
+        summaries.append(_structure_row(plan, legs))
+    return summaries, linked
+
+
 def merged_positions(snapshot, plans):
-    """接管持仓仅覆盖显式关联的快照条目，不按标的自动吞并多个账户或合约。"""
+    """显式关联照旧接管快照条目；此外同标的同到期的已入账多腿计划自动认领快照腿并剔除占位行，
+    其余情形不按标的自动吞并。"""
     bound = {p.get("snapshot_id") for p in plans if p.get("snapshot_id")}
+    structures, linked = _plan_structures(snapshot, plans, bound)
     result = [dict(p) for p in snapshot["positions"] if p["id"] not in bound]
+    result.extend(structures)
     conflicts = []
     by_id = {p["id"]: p for p in snapshot["positions"]}
     for p in plans:
+        if p["id"] in linked:
+            continue
         source = by_id.get(p.get("snapshot_id"), {})
         if p["status"] != "holding":
             if p["status"] == "closed" and source and source.get("qty") and source.get("fingerprint") != p.get("snapshot_fingerprint"):
@@ -248,8 +402,6 @@ def merged_positions(snapshot, plans):
         elif p.get("snapshot_id") and source and source.get("fingerprint") != p.get("snapshot_fingerprint") and source.get("qty") != q:
             item["confirm"] = True
             conflicts.append(f"{p['symbol']}：新快照数量与本机成交记录不一致，请核对")
-        def broker_key(name):
-            return "schwab" if str(name).lower() in ("tos", "schwab", "thinkorswim", "charles schwab") else name
         if not p.get("snapshot_id") and any(s.get("sym") == p["symbol"] and broker_key(s.get("broker")) == broker_key(p["broker"]) and s.get("kind") == p["kind"] for s in snapshot["positions"]):
             item["confirm"] = True
             conflicts.append(f"{p['symbol']}：快照与本机计划均有持仓，尚未关联；风险暂不计入该计划")

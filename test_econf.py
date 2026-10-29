@@ -114,6 +114,28 @@ class NumberTests(unittest.TestCase):
         self.assertIsNone(quantity("一堆字"))
 
 
+# (买卖, 张数或股数, 价格, 是否期权, 预期费用合计)：虚构的成交，覆盖买卖、最低 0.01 和期权三种情况。
+# 用真实确认单逐笔核对的版本在私有测试 test_local_fees.py 里，不进公开版。
+SAMPLE_FEES = [
+    ("sell", 40, 52.10, False, 0.04), ("buy", 15, 120.0, False, 0.0), ("sell", 3, 98.5, False, 0.01),
+    ("sell", 25, 410.0, False, 0.21), ("sell", 1, 3.2, True, 0.67), ("buy", 3, 1.5, True, 1.98),
+    ("sell", 2, 12.0, True, 1.37),
+]
+
+
+class FeeEstimateTests(unittest.TestCase):
+    def test_default_schedule(self):
+        from workbench.econf import estimate_fee
+        for side, qty, price, option, expected in SAMPLE_FEES:
+            self.assertEqual(estimate_fee(side, qty, price, option), expected, (side, qty, price, option))
+
+    def test_unusable_leg_has_no_estimate(self):
+        from workbench.econf import estimate_fee
+        self.assertIsNone(estimate_fee(None, 1, 1.0, False))
+        self.assertIsNone(estimate_fee("buy", None, 1.0, False))
+        self.assertIsNone(estimate_fee("sell", 1, None, False))
+
+
 class ParseTests(unittest.TestCase):
     def test_single_option_leg_from_html_layout(self):
         p = parse_text(html_to_text(SINGLE_EML.split("\n\n", 1)[1]))
@@ -171,13 +193,16 @@ class ParseTests(unittest.TestCase):
         self.assertEqual(leg["qty"], 3)
         self.assertEqual(leg["price"], 152.40)
         self.assertEqual(leg["description"], "AMD")
-        self.assertTrue(any("开仓/平仓" in w for w in p["warnings"]))
+        # 通知类邮件本来就没有 eConf# 单号、没写开平仓、没给费用：这三样都正常，不再当成提示（owner 2026-10-27）
+        self.assertEqual(p["warnings"], [])
+        self.assertEqual(p["fee_basis"], "默认费率估算")
+        self.assertEqual(leg["fee_estimate"], 0.0)                    # 股票买入不收费
 
     def test_missing_fields_reported_loudly(self):
         p = parse_text("some random email body without confirmation")
         self.assertIsNone(p["conf"])
         self.assertEqual(p["legs"], [])
-        self.assertTrue(any("eConf#" in w for w in p["warnings"]))
+        self.assertFalse(any("eConf#" in w for w in p["warnings"]))     # 没有单号很正常，不报
         self.assertTrue(any("成交腿" in w for w in p["warnings"]))
 
     def test_option_description_variants(self):

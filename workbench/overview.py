@@ -9,6 +9,7 @@ from __future__ import annotations
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
+from . import local_modules
 from . import paper as paper_book
 from . import weekly_watch
 from .exposure import EXEMPT_MARK
@@ -194,8 +195,12 @@ def attention(state, today, fresh):
     if heat.get("status") == "r_unavailable":
         add("amber", "定仓净值未确认，热度与情景无法折算成 R", "", "plans")
 
+    budget = exposure.get("r_budget") or {}
+    for line in budget.get("warnings") or []:
+        add("amber", line, "目标区间与短期期权额度只提示，不拦截", "risk")
+
     no_stop = heat.get("no_stop") or []
-    chase = sum(x.get("value_usd") or 0 for x in no_stop)
+    chase =sum(x.get("value_usd") or 0 for x in no_stop)
     if chase > 0:
         add("amber", f"无止损正股 {_money(chase)}", "、".join(x["symbol"] for x in no_stop), "holdings")
 
@@ -225,6 +230,8 @@ def attention(state, today, fresh):
     if on("weekly"):
         for severity, title, detail in weekly_watch.attention(state.get("weekly_watch")):
             add(severity, title, detail, "weekly")
+    for severity, title, detail, page in local_modules.attention(state.get("local")):
+        add(severity, title, detail, page)
 
     brief = next((r for r in fresh if r["key"] == "brief"), None)
     if brief and brief["level"] == "warn":  # a missing digest is a broken job, not a quiet day

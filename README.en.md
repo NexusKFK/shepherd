@@ -63,11 +63,11 @@ Always on: Overview, Holdings, Risk (heat, a −5% market scenario, sector gap s
 
 <p align="center"><img src="docs/img/risk-en.png" width="900" alt="Risk page"></p>
 
-Optional, chosen on first run and changeable in **Settings → Modules**: Calendar, Option plans (interactive payoff charts), Pre-market checklist, Macro light (scales the heat and sector caps for new risk), Weekly watch, Paper book, Schwab confirmation import. A module that is off disappears from the sidebar, raises nothing on the overview and drops its freshness dot.
+Optional, chosen on first run and changeable in **Settings → Modules**: Calendar, Option lab (interactive payoff charts), Pre-market checklist, Macro light (scales the heat and sector caps for new risk), Weekly watch, Paper book, Schwab confirmation import. A module that is off disappears from the sidebar, raises nothing on the overview and drops its freshness dot.
 
 <p align="center"><img src="docs/img/onboarding-modules-en.png" width="760" alt="First-run walkthrough: choose modules"></p>
 
-<p align="center"><img src="docs/img/option-plans-en.png" width="900" alt="Option plans: draggable payoff chart"></p>
+<p align="center"><img src="docs/img/option-plans-en.png" width="900" alt="Option lab: draggable payoff chart"></p>
 
 ## Data
 
@@ -84,7 +84,7 @@ The author's own files are produced daily by scripts a coding agent wrote; those
 Every input is a JSON file in a documented format and the app only reads it, so Shepherd pairs well with a coding agent (Claude Code, Codex, Cursor and the like): the agent writes data files and scripts, Shepherd does the arithmetic, and you decide.
 
 - Have the agent turn a broker export into a holdings snapshot, or write daily data scripts for the macro light, weekly watch and paper book.
-- Have it draft option plan cards from live quotes; check the payoff chart and max loss on the **Option plans** page before you trade.
+- Have it draft option scratch cards from live quotes; check the payoff chart and max loss on the **Option lab** page before you trade.
 - Have it read the ledger read-only and review your trades in R.
 
 Only the app writes the ledger, and you confirm every plan and fill. After writing files the agent can run `python3 tools/check_sources.py`, which flags any file the app cannot use. The division of work, the boundaries and a ready-to-copy prompt are in [docs/agent-guide.en.md](docs/agent-guide.en.md); [AGENTS.md](AGENTS.md) holds the development rules for agents.

@@ -13,7 +13,7 @@ import os
 import re
 import subprocess
 import tempfile
-from datetime import date
+from datetime import date, datetime
 from email import policy
 from email.parser import BytesParser
 from email.utils import parseaddr
@@ -29,6 +29,9 @@ INGEST_UNSETTLED = ("pending", "review")
 
 # (side, effect)：side 是成交方向，effect 相对持仓（open=开仓 / close=平仓；通知类邮件不给 effect，为 None）。
 ACTION_PATTERNS = [
+    # 动作行自带的开平仓语义：Sold Short=卖出开仓，Bought to Cover=买入平仓
+    (re.compile(r"\bsold\s+short\b", re.I), ("sell", "open")),
+    (re.compile(r"\bbought\s+to\s+cover\b", re.I), ("buy", "close")),
     (re.compile(r"\b(?:bought|buy)\s+to\s+open\b", re.I), ("buy", "open")),
     (re.compile(r"\b(?:sold|sell)\s+to\s+open\b", re.I), ("sell", "open")),
     (re.compile(r"\b(?:bought|buy)\s+to\s+close\b", re.I), ("buy", "close")),
@@ -203,6 +206,28 @@ def _parse_trade_day(text):
     return trade_day, clock
 
 
+# Schwab / thinkorswim 默认费率。2026-10-27 用 27 笔真实正式确认单反推，全部吻合（股票卖出 12 笔、股票买入 13 笔、期权 2 笔）：
+#   股票买入 0；股票卖出只有 SEC 规费 = 成交额 × 0.0000206（最少 0.01）；
+#   期权每张佣金 0.65 + 规费 0.01，卖出再加成交额（价格 × 100 × 张数）× 0.0000206 的 SEC 规费。
+# 只用来在确认单没给费用时代填，登记表里可以改；不是账单。
+SEC_FEE_RATE = 0.0000206
+OPTION_COMMISSION = 0.65
+OPTION_REG_FEE = 0.01
+
+
+def estimate_fee(side, qty, price, is_option):
+    if side not in ("buy", "sell") or not qty or price is None:
+        return None
+    if is_option:
+        fee = qty * (OPTION_COMMISSION + OPTION_REG_FEE)
+        if side == "sell":
+            fee += qty * price * 100 * SEC_FEE_RATE
+        return round(fee, 2)
+    if side == "buy":
+        return 0.0
+    return round(max(0.01, qty * price * SEC_FEE_RATE), 2)
+
+
 def parse_text(text):
     """从纯文本（已折行的 HTML 或邮件正文）提取一份提案；缺什么明说。"""
     text = text.replace("\r\n", "\n").replace("\r", "\n")
@@ -218,8 +243,6 @@ def parse_text(text):
     m = re.search(r"eConf\s*#?\s*:?\s*([\d,]{6,})", text, re.I)
     if m:
         conf = m.group(1).replace(",", "")
-    else:
-        warnings.append("没有找到 eConf# 单号")
 
     account = None
     m = re.search(r"account\s+ending(?:\s+in)?\s*[:：]?\s*(\d{3,})", text, re.I)
@@ -264,10 +287,9 @@ def parse_text(text):
         missing = [name for name, v in (("数量", qty), ("价格", price), ("描述", description)) if not v]
         if missing:
             warnings.append(f"第 {i + 1} 腿缺{'、'.join(missing)}，登记前请手工核对")
-        if effect is None:
-            warnings.append(f"第 {i + 1} 腿没写开仓/平仓（通知类邮件常见），入账时请人工指定方向")
         legs.append({"index": i, "side": side, "effect": effect, "qty": qty, "price": price,
                      "description": description, "option": option,
+                     "fee_estimate": estimate_fee(side, qty, price, bool(option)),
                      "raw": snippet.split("\n", 1)[0].strip()[:160]})
 
     # 转发邮件常把原件引用两遍：同参数的腿不静默合并，标记出来让人工裁决
@@ -297,16 +319,16 @@ def parse_text(text):
 
     net = _search_money(text, r"(?:net\s+amount|total\s+amount|amount\s+(?:due|paid))")
     principal = _search_money(text, r"principal\s+amount")
-    if commission is None or fees is None:
-        warnings.append("费用信息不完整；请核对正式确认单并填写费用，不能把未提供的费用当成零")
-    if len(legs) > 1:
+    real_fee = commission is not None and fees is not None
+    if len(legs) > 1 and real_fee:
         warnings.append("多腿费用需要人工分配到各腿，整单佣金和费用不可在每腿重复计入")
 
     if not re.search(r"schwab", text, re.I):
         warnings.append("正文没有出现 Schwab 字样，请确认这是 Schwab 确认单而不是其他来源的邮件")
     warnings.extend(review_required)
     return {"conf": conf, "account": account, "trade_day": trade_day, "executed_clock": clock,
-            "legs": legs, "commission": commission, "fees": fees, "net_amount": net,
+            "legs": legs, "commission": commission, "fees": fees, "fee_basis": "确认单" if real_fee else "默认费率估算",
+            "net_amount": net,
             "principal_amount": principal, "warnings": warnings, "review_required": review_required}
 
 
@@ -433,24 +455,22 @@ def parse_file(path):
 
 
 def leg_action(leg, plan_side):
-    """按计划方向把成交腿翻译成 entry/exit；翻译不了（方向冲突或缺开平信息）必须人工裁决。"""
+    """按计划方向把成交腿翻译成 entry/exit。
+    通知类邮件不写开仓/平仓，计划方向已知时买卖方向就够了：多头计划买入=入场、卖出=退出，空头计划反过来。
+    确认单明确写了开平仓、又与计划方向相反的（例如卖出开仓对多头计划），才要人工核对。"""
     side, effect = leg.get("side"), leg.get("effect")
     if plan_side == "long":
-        if side == "buy" and effect == "open":
+        if side == "buy" and effect in (None, "open"):
             return "entry"
         if side == "sell":
-            if effect == "close":
+            if effect in (None, "close"):
                 return "exit"
-            if effect is None:
-                raise Invalid("确认单没写开仓/平仓，请人工指定这一腿是入场还是退出")
             raise Invalid("这一腿是卖出开仓，与多头计划不符；请人工核对")
     if plan_side == "short":
-        if side == "sell" and effect == "open":
+        if side == "sell" and effect in (None, "open"):
             return "entry"
-        if side == "buy" and effect == "close":
+        if side == "buy" and effect in (None, "close"):
             return "exit"
-        if effect is None:
-            raise Invalid("确认单没写开仓/平仓，请人工指定这一腿是入场还是退出")
     raise Invalid("这一腿与计划的登记方向不符；请人工核对")
 
 
@@ -505,6 +525,57 @@ def validate_direction(leg, side, action):
         raise Invalid("成交买卖及开平方向与所选计划操作冲突，不能强行改为入场或退出")
 
 
+MAIL_EXPORT_JOB = os.environ.get("SHEPHERD_MAIL_EXPORT_JOB", "com.schwab.mail-export")
+
+
+def mail_job_installed(job=None, agents=None):
+    """邮件收取任务是本机自建的 launchd 任务，不随 App 提供；没装就不显示「收取邮件」按钮。"""
+    agents = Path(agents) if agents else Path.home() / "Library" / "LaunchAgents"
+    return (agents / f"{job or MAIL_EXPORT_JOB}.plist").exists()
+
+
+def mail_fetch_status(log_path, now=None):
+    """读导出任务日志的最后一轮：什么时候跑的、收了几封、标了几封已读、有没有顺手开关 Mail、现在是不是还在跑。"""
+    try:
+        lines = Path(log_path).read_text(encoding="utf-8", errors="replace").splitlines()[-200:]
+    except OSError:
+        return {"known": False, "text": "还没有收取记录"}
+    stamp = re.compile(r"^\[([^\]]+)\] (START|END) .*?$")
+    started = ended = end_line = None
+    for line in lines:
+        m = stamp.match(line)
+        if not m:
+            continue
+        try:
+            when = datetime.fromisoformat(m.group(1))
+        except ValueError:
+            continue
+        if m.group(2) == "START":
+            started = when
+        else:
+            ended, end_line, started = when, line, None          # 这一轮有结束行了
+    if ended is None:
+        return {"known": False, "text": "还没有收取记录"}
+    now = now or datetime.now(ended.tzinfo)
+    running = started is not None and (now - started).total_seconds() < 900   # 起跑 15 分钟还没结束就不算在跑
+    fields = dict(re.findall(r"(\w+)=(\d+)", end_line))
+    exit_code = int(fields.get("exit", 0))
+    when = ended.strftime("%m-%d %H:%M")
+    if exit_code != 0:
+        text = f"上次收取 {when} 失败（退出码 {exit_code}）"
+    else:
+        text = f"上次收取 {when}：新收 {fields.get('exported', '0')} 封，标已读 {fields.get('read', '0')} 封"
+        if fields.get("launched") == "1":
+            text += "，Mail 是任务后台拉起的"
+        if fields.get("closed") == "1":
+            text += "，读完已关闭 Mail"
+    if running:
+        text = "正在收取邮件……（Mail 没开时会先在后台拉起，约半分钟）"
+    return {"known": True, "at": ended.isoformat(), "exit": exit_code, "exported": int(fields.get("exported", 0)),
+            "read": int(fields.get("read", 0)), "launched": fields.get("launched") == "1",
+            "closed": fields.get("closed") == "1", "running": running, "text": text}
+
+
 class EconfBox:
     """Read-only inbox; each accepted execution and its receipt commit together."""
 
@@ -550,6 +621,18 @@ class EconfBox:
 
     def summary(self):
         return self.view()
+
+    def fetch(self):
+        """让邮件收取任务现在就跑一轮（Mail 没开会后台拉起，读完标已读，再关掉）。
+        任务本身在 launchd 里，已有它的邮件自动化授权；这里只是叫它起跑，立刻返回。"""
+        job = f"gui/{os.getuid()}/{MAIL_EXPORT_JOB}"
+        try:
+            r = subprocess.run(["/bin/launchctl", "kickstart", job], capture_output=True, text=True, timeout=15)
+        except (OSError, subprocess.SubprocessError) as e:
+            raise Invalid(f"启动邮件收取任务失败：{type(e).__name__}")
+        if r.returncode != 0:
+            raise Invalid("邮件收取任务没装或没加载：" + (r.stderr.strip() or f"launchctl 退出码 {r.returncode}")[:200])
+        return {"started": True, "job": MAIL_EXPORT_JOB}
 
     @staticmethod
     def _fills(c):
@@ -633,7 +716,7 @@ class EconfBox:
                 status = ("corrected" if any(l["status"] == "voided" for l in proposal["legs"]) else "recorded") if not todo else "partial" if todo < len(proposal["legs"]) else "pending"
             files.append(dict(parsed, status=status, recorded=recorded, at=stored.get("at")))
         self._parsed = cache
-        return {"inbox": str(self.inbox), "files": files,
+        return {"inbox": str(self.inbox), "files": files, "mail": dict(mail_fetch_status(self.inbox.parent / "logs" / "export.log"), installed=mail_job_installed()),
                 "pending": sum(f["status"] in ("pending", "partial") for f in files),
                 "pending_legs": sum(l["status"] == "pending" for f in files if f["status"] in ("pending", "partial") for l in f.get("proposal", {}).get("legs", [])),
                 "errors": errors}
@@ -677,8 +760,9 @@ class EconfBox:
             raise Invalid("请先核对数量、价格、费用、账户与合约，再确认登记")
         qty = number(data.get("qty") if data.get("qty") is not None else leg.get("qty"), "成交数量", 0.000001)
         price = number(data.get("price") if data.get("price") is not None else leg.get("price"), "成交价", 0)
-        default_fee = proposal["commission"] + proposal["fees"] if len(proposal["legs"]) == 1 and proposal["commission"] is not None and proposal["fees"] is not None else None
-        fee = number(data.get("fee", default_fee), "已核对费用（未知时请补充，确认为零时填 0）", 0)
+        real_total = proposal["commission"] + proposal["fees"] if len(proposal["legs"]) == 1 and proposal["commission"] is not None and proposal["fees"] is not None else None
+        default_fee = real_total if real_total is not None else leg.get("fee_estimate")
+        fee = number(data.get("fee", default_fee), "费用（没给就按默认费率估算；确认为零时填 0）", 0)
         day = iso_day(data.get("day") or proposal.get("trade_day"))
         note = text(data.get("note"), "来源说明", 400) or f"{('eConf#' + proposal['conf']) if proposal['conf'] else '成交通知'} · 腿{leg_index + 1} · {leg['description']}"[:400]
         rid = f"econf-{proposal['conf'] or '无单号'}-{sha}-{leg_index}"

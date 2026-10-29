@@ -15,12 +15,24 @@ struct HoldingDisplayRow: Identifiable {
     var pnlSort: Double { pnl ?? -.greatestFiniteMagnitude }
 }
 
+enum HoldingsMode: String, CaseIterable { case grouped, flat, symbols }
+
 struct HoldingsView: View {
     @EnvironmentObject var model: DeskModel
     @ViewState private var search = ""
     @ViewState private var account = "全部账户"
     @ViewState private var selected: String?
-    @ViewState private var grouped = true
+    @ViewState private var mode = HoldingsMode.grouped
+    var grouped: Bool { mode == .grouped }
+    var realized: J { model.state["snapshot"]["realized"] }
+    /// 「本轮」= 这个正股仓位从空仓买入到现在的这一轮；今年的汇总只放「今年盈亏」页，两者不混。
+    func roundLine(_ p: J) -> (text: String, value: Double, help: String)? {
+        guard p["kind"].s == "stock", p["broker"].s == "IBKR" else { return nil }
+        let round = realized["by_sym"][p["sym"].s]["round"]
+        guard (round["count"].n ?? 0) > 0, let value = round["realized"].n else { return nil }
+        let lines = round["events"].items.prefix(6).map { shortDay($0["date"].s) + " " + $0["text"].s + " " + signedUSD($0["realized"].n) }
+        return ("本轮落袋 " + signedUSD(value), value, "自 " + shortDay(round["since"].s) + " 买入起：\n" + lines.joined(separator: "\n"))
+    }
     @ViewState private var sortOrder = [KeyPathComparator(\HoldingDisplayRow.absDelta, order: .reverse)]
     var selectedRow: J? { model.positions.first { $0.id == selected } }
     var exposureRows: [J] { model.state["exposure"]["rows"].items }
@@ -95,7 +107,9 @@ struct HoldingsView: View {
                     TextField("搜索标的、合约或组合", text: $search).textFieldStyle(.roundedBorder).frame(maxWidth: 300)
                     Picker("账户", selection: $account) { Text("全部账户").tag("全部账户"); ForEach(accounts, id: \.self) { Text($0).tag($0) } }.frame(width: 185)
                     Spacer(minLength: 0)
-                    Picker("显示", selection: $grouped) { Text("组合展开").tag(true); Text("全部记录").tag(false) }.pickerStyle(.segmented).labelsHidden().frame(width: 180)
+                    if !model.state["econf"]["disabled"].b { MailFetchControl() }
+                    Picker("显示", selection: $mode) { Text("组合展开").tag(HoldingsMode.grouped); Text("全部记录").tag(HoldingsMode.flat); Text("今年盈亏").tag(HoldingsMode.symbols) }
+                        .pickerStyle(.segmented).labelsHidden().frame(width: 270)
                 }
                 if model.state["snapshot"]["status"].s != "available" || model.state["snapshot"]["cached"].b {
                     Label("当前显示历史持仓，请核对来源日期。", systemImage: "exclamationmark.triangle.fill").font(.callout).foregroundStyle(PortfolioStyle.warn)
@@ -103,7 +117,9 @@ struct HoldingsView: View {
                 if !model.state["snapshot"]["errors"].items.isEmpty || !model.state["conflicts"].items.isEmpty {
                     Notes(values: model.state["snapshot"]["errors"].strings + model.state["conflicts"].strings)
                 }
-                if geometry.size.width >= 1110, let p = selectedRow {
+                if mode == .symbols {
+                    SymbolPnlTable(rows: SymbolPnlBook.rows(positions: model.positions, realized: realized), realized: realized)
+                } else if geometry.size.width >= 1110, let p = selectedRow {
                     HStack(alignment: .top, spacing: 16) {
                         holdingsTable
                         ScrollView { HoldingInspector(position: p, onClose: { selected = nil }).environmentObject(model) }.frame(width: 310)
@@ -128,6 +144,7 @@ struct HoldingsView: View {
                 }.font(.caption).foregroundStyle(.secondary)
             }.padding(24)
                 .onKeyPress(.escape) { if selected == nil { return .ignored }; selected = nil; return .handled }
+                .onChange(of: mode) { _, _ in selected = nil }
                 .onChange(of: search) { _, _ in clearHiddenSelection() }
                 .onChange(of: account) { _, _ in clearHiddenSelection() }
                 .onChange(of: model.state["generated_at"].s) { _, _ in clearHiddenSelection() }
@@ -140,9 +157,14 @@ struct HoldingsView: View {
             TableColumn(L("持仓 / 账户"), value: \.sym) { row in
                 VStack(alignment: .leading, spacing: 3) {
                     Text(row.position["sym"].s).font(.callout.weight(.semibold))
-                    Text(row.position["broker"].s).font(.caption).foregroundStyle(.secondary)
+                    HStack(spacing: 4) {
+                        Text(row.position["broker"].s).font(.caption).foregroundStyle(.secondary)
+                        if let line = roundLine(row.position) {
+                            Text(line.text).font(.caption2).foregroundStyle(pnlTint(line.value)).help(line.help)
+                        }
+                    }
                 }.padding(.vertical, 4)
-            }.width(min: 90, ideal: 105)
+            }.width(min: 90, ideal: 140)
             TableColumn(L("合约 / 到期")) { row in
                 VStack(alignment: .leading, spacing: 3) {
                     Text(row.position["label"].s.isEmpty ? "股票 / ETF" : row.position["label"].s).lineLimit(2).help(row.position["label"].s)
@@ -192,7 +214,7 @@ struct HoldingsView: View {
                         .help(exposure(row.position)["issues"].strings.joined(separator: "；"))
                 }
             }.width(58)
-        }.frame(minHeight: 200)
+        }.alternatingRowBackgrounds(.disabled).frame(minHeight: 200)   // 斑马纹会在最后一行下面多画一条空行色带，滚到底很显眼；行间有分隔线，不靠它
     }
 }
 
@@ -229,6 +251,11 @@ struct HoldingInspector: View {
                 if position["kind"].s == "stock" { PositionPriceLevels(position: position) }
                 if !position["expiry"].s.isEmpty { Label("到期 " + position["expiry"].s, systemImage: "calendar").font(.callout) }
                 Notes(values: exposure["issues"].strings)
+                if position["kind"].s == "stock", position["broker"].s == "IBKR",
+                   (model.state["snapshot"]["realized"]["by_sym"][position["sym"].s]["round"]["count"].n ?? 0) > 0 {
+                    Divider()
+                    RoundSection(round: model.state["snapshot"]["realized"]["by_sym"][position["sym"].s]["round"])
+                }
                 if !exposure["price_asof"].s.isEmpty { Text("风险价格日期 " + exposure["price_asof"].s).font(.caption).foregroundStyle(.secondary) }
             }
             Divider()

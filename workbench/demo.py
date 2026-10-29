@@ -55,7 +55,7 @@ def option_label(expiry, strike, right):
 
 # symbol: (exchange, last close, beta to the market factor, own daily vol)
 UNIVERSE = {
-    "SPX": ("TVC", 6480.0, 1.0, 0.0), "SPY": ("AMEX", 646.0, 1.0, 0.0005), "VOO": ("AMEX", 594.0, 1.0, 0.0006),
+    "SPX": ("TVC", 6475.0, 1.0, 0.0), "SPY": ("AMEX", 646.0, 1.0, 0.0005), "VOO": ("AMEX", 594.0, 1.0, 0.0006),
     "IWM": ("AMEX", 231.0, 1.2, 0.006), "QQQ": ("NASDAQ", 562.0, 1.15, 0.004),
     "XLF": ("AMEX", 52.4, 1.05, 0.006), "XLP": ("AMEX", 81.2, 0.55, 0.006), "XLV": ("AMEX", 146.0, 0.7, 0.007),
     "XLE": ("AMEX", 91.5, 0.8, 0.012), "XLI": ("AMEX", 141.0, 1.05, 0.006), "XLY": ("AMEX", 214.0, 1.15, 0.007),

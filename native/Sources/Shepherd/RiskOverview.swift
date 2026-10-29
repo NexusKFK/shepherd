@@ -46,6 +46,7 @@ struct RiskView: View {
                                     detail: cash.amount.map { usd(.number($0)) + " · 资金比例，非风险余量" } ?? "账户现金数据不完整",
                                     fraction: cash.percent.map { $0 / 100 })
                             }.fixedSize(horizontal: false, vertical: true)
+                            RBudgetPanel(value: exposure["r_budget"])
                             dataStatus
                             MacroLightCard(value: exposure["macro_panel"])
                             FactorOverview(value: exposure["factor_clusters"], compact: geometry.size.width < 1050)
@@ -231,6 +232,61 @@ struct ScenarioComparison: View {
             HStack(spacing: 18) { Spacer().frame(width: 115); RiskScaleLabels(lower: -magnitude, upper: magnitude, unit: useR ? "R" : "$"); Spacer().frame(width: 115) }
             Text("参与 \(num(value["coverage"]["used"])) / \(num(value["coverage"]["total"])) 条 · 线性近似，不含 Gamma / Vega / 跳空 / 指派，不是最大损失或 VaR。")
                 .font(.caption).foregroundStyle(.secondary)
+        }
+    }
+}
+
+/// Core R in use against the 3–5R target band, plus the separate allowance for options expiring within two weeks.
+struct RBudgetPanel: View {
+    let value: J
+    var band: String { value["band_r"].items.map { num($0, digits: 0) }.joined(separator: "–") }
+    var bandFraction: Double? {
+        guard let used = value["core_r"].n, let high = value["band_r"].items.last?.n, high > 0 else { return nil }
+        return used / high
+    }
+    var bandColor: Color { value["status"].s == "ok" ? .green : PortfolioStyle.warn }
+    var bandDetail: String {
+        switch value["status"].s {
+        case "below": return "还差 " + num(value["core_gap_r"]) + "R 到下限 · 短期期权不算在内"
+        case "above": return "超过上限 · 短期期权不算在内"
+        case "ok": return "在目标区间内 · 还可加 " + num(value["core_room_r"]) + "R"
+        default: return "定仓净值未确认"
+        }
+    }
+    var body: some View {
+        if value["status"].s.isEmpty { EmptyView() } else {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(alignment: .top, spacing: 12) {
+                    DashboardMetric(title: "核心占用", value: num(value["core_r"]), suffix: "R · 目标 " + band + "R",
+                        detail: bandDetail, fraction: bandFraction, color: bandColor)
+                    DashboardMetric(title: "两周内到期的期权", value: num(value["short_r"]), suffix: "/ " + num(value["short_cap_r"], digits: 1) + " R",
+                        detail: "还剩 " + num(value["short_room_r"]) + "R · 单笔 ≤" + num(value["short_single_cap_r"], digits: 1) + "R"
+                            + (value["expiring_r"].n ?? 0 > 0 ? " · \(num(value["expiring_days"], digits: 0)) 天内到期 " + num(value["expiring_r"]) + "R" : ""),
+                        fraction: value["short_r"].n.flatMap { used in value["short_cap_r"].n.map { used / $0 } },
+                        color: (value["short_r"].n ?? 0) > (value["short_cap_r"].n ?? 0) ? PortfolioStyle.warn : .blue)
+                    DashboardMetric(title: "其中价外彩票", value: num(value["lottery_r"]), suffix: "/ " + num(value["lottery_cap_r"], digits: 1) + " R",
+                        detail: "多头腿 Delta 低于 " + num(value["lottery_delta"]) + " · 单笔 ≤" + num(value["lottery_single_cap_r"], digits: 1) + "R",
+                        fraction: value["lottery_r"].n.flatMap { used in value["lottery_cap_r"].n.map { used / $0 } },
+                        color: (value["lottery_r"].n ?? 0) > (value["lottery_cap_r"].n ?? 0) ? PortfolioStyle.warn : .blue)
+                }.fixedSize(horizontal: false, vertical: true)
+                ForEach(value["warnings"].strings, id: \.self) { line in
+                    Label(line, systemImage: "exclamationmark.triangle").font(.callout).foregroundStyle(PortfolioStyle.warn)
+                }
+                if !value["short"].items.isEmpty || !value["locked"].items.isEmpty {
+                    DisclosureGroup("短期期权与不占 R 的持仓") {
+                        VStack(alignment: .leading, spacing: 4) {
+                            ForEach(Array(value["short"].items.enumerated()), id: \.offset) { _, row in
+                                Text(row["name"].s + " · 剩 \(num(row["dte"], digits: 0)) 天 · Delta " + num(row["delta"]) + " · " + num(row["r"]) + "R"
+                                     + (row["lottery"].b ? " · 彩票" : "")).font(.caption).monospacedDigit()
+                            }
+                            ForEach(Array(value["locked"].items.enumerated()), id: \.offset) { _, row in
+                                Text(row["name"].s + " · " + row["reason"].s).font(.caption).foregroundStyle(.secondary)
+                            }
+                            Notes(values: value["notices"].strings)
+                        }.padding(.top, 6)
+                    }
+                }
+            }
         }
     }
 }

@@ -56,8 +56,13 @@ class ParserReviewTests(unittest.TestCase):
     def test_buy_to_close_cannot_enter_long_plan(self):
         with self.assertRaises(Invalid):
             leg_action({'side': 'buy', 'effect': 'close'}, 'long')
-        with self.assertRaises(Invalid):
-            leg_action({'side': 'buy', 'effect': None}, 'long')
+        # 通知类邮件不写开平仓：计划方向已知，买卖方向就决定入场还是退出（owner 2026-10-27）
+        self.assertEqual(leg_action({'side': 'buy', 'effect': None}, 'long'), 'entry')
+        self.assertEqual(leg_action({'side': 'sell', 'effect': None}, 'long'), 'exit')
+        self.assertEqual(leg_action({'side': 'sell', 'effect': None}, 'short'), 'entry')
+        self.assertEqual(leg_action({'side': 'buy', 'effect': None}, 'short'), 'exit')
+        with self.assertRaises(Invalid):                      # 明确写了卖出开仓，与多头计划相反，仍要人工核对
+            leg_action({'side': 'sell', 'effect': 'open'}, 'long')
 
 
 class ReceiptReviewTests(unittest.TestCase):
@@ -115,13 +120,17 @@ class ReceiptReviewTests(unittest.TestCase):
         with self.assertRaisesRegex(Invalid, '合约'):
             self.box.record(self.request(f, plan=p, instrument_confirmed=True))
 
-    def test_unknown_fee_requires_user_value(self):
+    def test_missing_fee_defaults_to_the_estimate_and_can_still_be_overridden(self):
         f = self.drop()
         r = self.request(f)
         del r['fee']
-        with self.assertRaisesRegex(Invalid, '费用'):
-            self.box.record(r)
-        self.assertEqual(self.store.plans(), [])
+        self.box.record(r)
+        plan = self.store.plans()[0]
+        entry = [x for x in plan['fills'] if x['action'] == 'entry'][0]
+        self.assertEqual(entry['fee'], f['proposal']['legs'][0]['fee_estimate'])     # 买入股票的默认费用是 0
+        with self.assertRaisesRegex(Invalid, '费用'):                                # 乱填的费用仍然拒收
+            self.box.record(dict(self.request(self.drop(ALERT_TEXT.replace('3\nSymbol', '4\nSymbol'), 'other.txt'),
+                                              new_plan=False, plan_id=plan['id'], version=plan['version']), fee=-1))
 
     def test_changed_forward_headers_require_duplicate_ack(self):
         f = self.drop()

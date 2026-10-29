@@ -83,8 +83,9 @@ struct EditorSpec: Identifiable {
         choices += candidates.map { ($0.id,$0["broker"].s + " · " + $0["symbol"].s + " · " + $0["title"].s) }
         var seed: [String:J] = ["target": candidates.count == 1 ? .string(candidates[0].id) : .string(""),"kind":.string(isOption ? "option" : "stock"),"symbol":isOption ? option["root"] : .string(String(leg["description"].s.split(separator:" ").first ?? "")),"title":leg["description"],"contract":leg["description"],"side":.string(leg["side"].s == "sell" ? "short" : "long"),"broker":.string("Schwab"),"mult":.number(isOption ? 100 : 1),"expiry":option["expiry"],"qty":leg["qty"],"price":leg["price"],"day":file["proposal"]["trade_day"],"action":.string("")]
         if file["proposal"]["legs"].items.count == 1, let c = file["proposal"]["commission"].n, let f = file["proposal"]["fees"].n { seed["fee"] = .number(c+f) }
+        else if let estimate = leg["fee_estimate"].n { seed["fee"] = .number(estimate) }
         var fields: [InputField] = [.init(key:"target",label:"登记到",kind:.choice(choices)),.init(key:"action",label:"已有计划的成交方向",kind:.choice([("","根据真实买卖方向判断"),("entry","入场"),("exit","退出")]))]
-        fields += instruments + [.init(key:"qty",label:"成交数量",kind:.number),.init(key:"price",label:"成交价格",kind:.number),.init(key:"fee",label:"已核对费用（未知不能填 0）",kind:.number),.init(key:"day",label:"成交日期",kind:.date),.init(key:"confirmed",label:"已核对账户、完整证券/合约、方向、数量、价格、费用与日期",kind:.toggle)]
+        fields += instruments + [.init(key:"qty",label:"成交数量",kind:.number),.init(key:"price",label:"成交价格",kind:.number),.init(key:"fee",label:"费用（确认单没给就按默认费率估算，可改）",kind:.number),.init(key:"day",label:"成交日期",kind:.date),.init(key:"confirmed",label:"已核对账户、完整证券/合约、方向、数量、价格、费用与日期",kind:.toggle)]
         if leg["dupe"].b { fields.append(.init(key:"duplicate_confirmed",label:"已核对这是另一笔真实成交，不是重复邮件",kind:.toggle)) }
         var fixed: [String:J] = ["sha":file["sha"],"file":file["file"],"leg":leg["index"]]
         for p in candidates { fixed["version:"+p.id] = p["version"] }

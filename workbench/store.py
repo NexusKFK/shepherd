@@ -112,6 +112,8 @@ def clean_plan(raw):
     p["review_day"] = iso_day(raw.get("review_day"), optional=True)
     p["expiry"] = iso_day(raw.get("expiry"), optional=True)
     p["status"] = "draft"
+    if raw.get("source"):  # 溯源标记（assistant/econf），有则透传
+        p["source"] = str(raw["source"]).strip()[:40]
     return p
 
 
@@ -326,11 +328,30 @@ class Store:
                     raise Invalid("已有成交的计划保留原始依据；请在交易记录中补充复盘")
                 if old["status"] == "ready":
                     raise Invalid("待执行计划已冻结原始 1R 与依据；需要改变计划请取消后另建")
+                if old.get("source") and not p.get("source"):
+                    p["source"] = old["source"]  # 来源（assistant/econf）是溯源元数据，编辑不洗掉
                 self.audit(c, "plan_edited", id, {"before": old, "after": p})
                 c.execute("UPDATE plans SET body=?, version=version+1, updated_at=? WHERE id=?", (json.dumps(p, ensure_ascii=False), now(), id))
             else:
                 c.execute("INSERT INTO plans(id,body,created_at,updated_at) VALUES(?,?,?,?)", (id, json.dumps(p, ensure_ascii=False), now(), now()))
                 self.audit(c, "plan_created", id, p)
+            return self._get(c, id)
+
+    def import_plan(self, raw):
+        """助手起草的交易计划：按 clean_plan 校验后以 pending（待核对）入库，owner 在 app 里核对通过或退回。
+
+        助手（coding agent）写进来的计划一律先进「待核对」，核对通过（→draft）才进入
+        正常编辑/待执行流程；source=assistant 便于区分人工新建。
+        """
+        with self.connection() as c:
+            c.execute("BEGIN IMMEDIATE")
+            p = clean_plan(raw)
+            p["status"] = "pending"
+            p["source"] = "assistant"
+            id = raw.get("id") or uuid.uuid4().hex
+            c.execute("INSERT INTO plans(id,body,created_at,updated_at) VALUES(?,?,?,?)",
+                      (id, json.dumps(p, ensure_ascii=False), now(), now()))
+            self.audit(c, "plan_imported", id, {"status": "pending", "source": "assistant"})
             return self._get(c, id)
 
     def transition(self, id, raw):
@@ -356,7 +377,9 @@ class Store:
                 sizing.update(schema="fixed-r/1", frozen_at=now())
                 p.update(nlv=policy["nlv"], risk_pct=policy["risk_pct"], planned_qty=sizing["planned_qty"])
                 p["sizing"] = sizing
-            elif status == "cancelled" and p["status"] in ("draft", "ready"):
+            elif status == "draft" and p["status"] == "pending":
+                pass  # 核对通过：待核对 → 草稿，之后走正常编辑/待执行流程
+            elif status == "cancelled" and p["status"] in ("draft", "ready", "pending"):
                 pass
             else:
                 raise Invalid("当前状态不能执行此操作")
@@ -397,7 +420,12 @@ class Store:
             if f["action"] == "entry":
                 if f["price"] <= 0:
                     raise Invalid("入场成交价必须大于零")
-                if p["status"] not in ("ready", "holding"):
+                # 助手起草、owner 已核对（draft）的计划允许补登记已发生的真实成交：
+                # 定仓闸门（1R/0.9R）是为新开计划设计的，已开仓的交易按实际成交入账，
+                # 超预算只告警不拦截（期权风险按「全损与止损取较小」口径在计划里自记）。
+                if p["status"] == "draft" and p.get("source") == "assistant" and not active_fills:
+                    pass
+                elif p["status"] not in ("ready", "holding"):
                     raise Invalid("请先完成计划和定仓，再登记入场成交")
                 # 真实成交不拦截超预算事实，超出时单独告警，不能伪装没有成交。
                 p["status"] = "holding"

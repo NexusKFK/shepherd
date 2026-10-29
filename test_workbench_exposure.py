@@ -5,7 +5,7 @@ import unittest
 from datetime import datetime, timedelta
 
 from workbench.exposure import (FACTOR_BUCKETS, FACTOR_CLUSTERS, R_UNAVAILABLE, analyze_exposure, estimate_beta,
-                                factor_clusters, market_scenario, portfolio_heat, standard_r)
+                                factor_clusters, market_scenario, portfolio_heat, r_budget, standard_r)
 from workbench.sources import ET
 from workbench.position_display import partition_positions
 
@@ -621,3 +621,64 @@ class PortfolioHeatTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RBudgetTests(unittest.TestCase):
+    """owner 2026-10-27: core 3-5R; options expiring within two weeks have their own allowance."""
+    def heat(self, items, one_r=2000):
+        for i in items:
+            i.setdefault("heat_r", i["heat_usd"] / one_r)
+        return {"one_r": one_r, "items": items}
+
+    def day(self, n):
+        return (TODAY + timedelta(days=n)).isoformat()
+
+    def test_short_dated_options_are_split_from_the_core(self):
+        positions = [position(id="s"), option(id="far", expiry=self.day(45), delta=.7),
+                     option(id="wk", expiry=self.day(5), delta=.5)]
+        heat = self.heat([{"id": "s", "symbol": "TEST", "label": "正股", "heat_usd": 4000, "cost_result_usd": -500},
+                          {"id": "far", "symbol": "TEST", "label": "45 天", "heat_usd": 2000},
+                          {"id": "wk", "symbol": "TEST", "label": "周档", "heat_usd": 300}])
+        b = r_budget(heat, positions, TODAY)
+        self.assertAlmostEqual(b["core_r"], 3.0)
+        self.assertAlmostEqual(b["short_r"], .15)
+        self.assertAlmostEqual(b["expiring_r"], .15)
+        self.assertEqual(b["status"], "ok")
+        self.assertEqual(b["lottery_r"], 0)
+
+    def test_locked_stock_takes_zero_r_and_low_core_warns(self):
+        heat = self.heat([{"id": "s", "symbol": "NOW", "label": "正股", "heat_usd": 1000, "cost_result_usd": 200}])
+        b = r_budget(heat, [position(id="s")], TODAY)
+        self.assertEqual(b["core_r"], 0)
+        self.assertEqual(len(b["locked"]), 1)
+        self.assertEqual(b["status"], "below")
+        self.assertAlmostEqual(b["core_gap_r"], 3.0)
+        self.assertIn("低于目标下限", b["warnings"][0])
+
+    def test_otm_short_dated_is_a_lottery_with_tighter_caps(self):
+        positions = [option(id="a", expiry=self.day(3), delta=.15), option(id="b", expiry=self.day(3), delta=.2),
+                     option(id="c", expiry=self.day(10), delta=.55)]
+        heat = self.heat([{"id": "a", "symbol": "HAL", "label": "45C", "heat_usd": 300},
+                          {"id": "b", "symbol": "PFE", "label": "32C", "heat_usd": 160},
+                          {"id": "c", "symbol": "SMH", "label": "SMH 价差", "heat_usd": 500}])
+        b = r_budget(heat, positions, TODAY)
+        self.assertAlmostEqual(b["lottery_r"], .23)
+        self.assertAlmostEqual(b["short_r"], .48)
+        text = " ".join(b["warnings"])
+        self.assertIn("彩票额度", text)          # 0.23R > 0.2R
+        self.assertIn("HAL 45C", text)         # 0.15R > 0.1R single lottery
+        self.assertIn("SMH 价差 占 0.25R", text)  # 0.25R > 0.2R single short; name not doubled
+        self.assertNotIn("两周内到期的期权合计", text)  # 0.48R within 0.5R
+        self.assertEqual(b["lottery_room_r"], 0)
+
+    def test_spread_group_uses_long_leg_delta_and_nearest_expiry(self):
+        positions = [option(id="l", expiry=self.day(12), delta=.45, group="g"),
+                     option(id="s", side="short", expiry=self.day(12), delta=.2, group="g")]
+        b = r_budget(self.heat([{"id": "l,s", "symbol": "QCOM", "label": "150/160", "heat_usd": 500}]), positions, TODAY)
+        self.assertEqual(b["short"][0]["dte"], 12)
+        self.assertFalse(b["short"][0]["lottery"])
+
+    def test_without_one_r_there_are_no_warnings(self):
+        b = r_budget({"one_r": None, "items": []}, [], TODAY)
+        self.assertEqual(b["status"], "r_unavailable")
+        self.assertEqual(b["warnings"], [])

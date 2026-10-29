@@ -24,6 +24,6 @@
     }
   ],
   "quotes": {"KO": 68.00, "BIL": 91.50, "AMD": 165.00, "SPY": 646.00},
-  "benchmarkQuote": {"symbol": "SPX", "price": 6480.0, "day": "2026-10-16", "source": "手工"},
+  "benchmarkQuote": {"symbol": "SPX", "price": 6475.0, "day": "2026-10-16", "source": "手工"},
   "plans": []
 }

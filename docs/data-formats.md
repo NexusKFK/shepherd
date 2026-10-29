@@ -44,7 +44,7 @@ open -n --env SHEPHERD_SOURCE_HOME=/path/to/sources /Applications/Shepherd.app
   "accounts": [{"id": "券商A", "name": "券商 A 主账户", "nlv": 60000, "cash": 21000}],
   "positions": [ ... ],
   "quotes": {"KO": 68.0},
-  "benchmarkQuote": {"symbol": "SPX", "price": 6480.0, "day": "2026-10-16"}
+  "benchmarkQuote": {"symbol": "SPX", "price": 6475.0, "day": "2026-10-16"}
 }
 ```
 
@@ -78,6 +78,17 @@ open -n --env SHEPHERD_SOURCE_HOME=/path/to/sources /Applications/Shepherd.app
 
 `basis: "und"` 表示按标的价格判断；`dir` 多头用 `<=`，空头用 `>=`；`level0` 是第一次设的止损，`moves` 每上移一次加一条。风险页用 `level0` 算"初始风险"，用 `level` 算热度。
 
+
+已平仓盈亏（可选）：快照顶层可以带一个 `realized` 块，持仓页的「今年盈亏」和正股行的「本轮落袋」从这里读。不写就不显示。
+
+```json
+"realized": {"asof": "2026-10-27", "note": "IBKR 自 2026-01-02", "by_sym": {
+  "KO": {"realized": 312.5, "count": 2, "held": true,
+         "events": [{"date": "2026-09-12", "text": "卖出 50 股", "realized": 180.0}],
+         "round": {"since": "2026-08-01", "count": 1, "realized": 180.0, "events": [ ... ]}}}}
+```
+
+`realized` 是含佣金的已实现盈亏（美元），`round` 是这一轮建仓以来的部分，可以不写。
 ## 补充日线 market-data.json（推荐）
 
 用 [`tools/fetch_market_data.py`](../tools/fetch_market_data.py) 生成，或者自己写：
@@ -85,7 +96,7 @@ open -n --env SHEPHERD_SOURCE_HOME=/path/to/sources /Applications/Shepherd.app
 ```json
 {"schema": "shepherd-market-data/1", "price_basis": "regular_split_adjusted", "source": "你的数据来源",
  "collected_at": "2026-10-17T00:00:00Z",
- "series": {"SPX": [{"day": "2026-10-15", "close": 6450.1}, {"day": "2026-10-16", "close": 6480.0}], "KO": [ ... ]}}
+ "series": {"SPX": [{"day": "2026-10-15", "close": 6450.1}, {"day": "2026-10-16", "close": 6475.0}], "KO": [ ... ]}}
 ```
 
 - 收盘价要是常规时段、只做拆股调整、不含分红的口径。
@@ -125,6 +136,14 @@ open -n --env SHEPHERD_SOURCE_HOME=/path/to/sources /Applications/Shepherd.app
 
 宏观日历应覆盖未来 90 天，否则日历页会提示"空白日期不代表没有事件"。财报日期标成"待确认"。
 
+大科技财报名单（可选，`tools/daily_digest/core_earnings.json`，或用环境变量 `SHEPHERD_CORE_EARNINGS` 指定）：名单里的公司不管持不持有都列进日历主列表，最远看到 200 天。
+
+```json
+{"symbols": {"AAPL": {"name": "苹果", "date": "2026-11-02", "confirmed": true}}}
+```
+
+`confirmed` 为 `true` 表示公司已公告，`false` 是预估。名单里的日期过了，就改用财报缓存里的下一次日期。
+
 ## 宏观灯
 
 ```json
@@ -133,7 +152,7 @@ open -n --env SHEPHERD_SOURCE_HOME=/path/to/sources /Applications/Shepherd.app
  "trends": [{"name": "宽基", "proxy": "SPY", "state": "顺风", "close": 646.0, "vs_ma200_pct": 3.3, "ma200_rising": true, "rule": "逢低买"}],
  "families": [{"key": "F1", "name": "估值", "role": "出事时能跌多深", "grade": "红", "reading": "…"}],
  "history": [{"week": "2026-10-09", "raw": "黄", "effective": "黄"}],
- "disarm": {"rel1": "…", "rel2": "…", "ma50": 6420.0, "ma200": 6100.0, "spx": 6480.0},
+ "disarm": {"rel1": "…", "rel2": "…", "ma50": 6420.0, "ma200": 6100.0, "spx": 6475.0},
  "notes": ["…"]}
 ```
 

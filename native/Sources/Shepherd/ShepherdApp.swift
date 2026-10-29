@@ -49,7 +49,7 @@ final class ShepherdDelegate: NSObject, NSApplicationDelegate {
 }
 
 enum Page: String, CaseIterable, Identifiable {
-    case overview = "总览", weekly = "周线观察", holdings = "持仓", risk = "风险", plans = "交易计划", journal = "成交与复盘", paper = "纸盘", optionPlans = "期权计划", calendar = "日历", preparation = "盘前准备", data = "数据与留存"
+    case overview = "总览", weekly = "周线观察", holdings = "持仓", risk = "风险", plans = "交易计划", journal = "成交与复盘", paper = "纸盘", optionPlans = "期权演算", calendar = "日历", preparation = "盘前准备", data = "数据与留存"
     var id: String { rawValue }
     /// Name shared with the engine (`attention[].page`, `modules.hidden_pages`).
     var engineKey: String {
@@ -61,7 +61,7 @@ enum Page: String, CaseIterable, Identifiable {
     }
     /// Sidebar order: what to look at today, the book, the paperwork, then housekeeping.
     static let groups: [(title: String, pages: [Page])] = [
-        ("今日", [.overview, .weekly, .preparation, .calendar]), ("组合", [.holdings, .risk]), ("交易", [.plans, .optionPlans, .journal, .paper]), ("系统", [.data])
+        ("今日", [.overview, .weekly, .preparation, .calendar]), ("组合", [.holdings, .risk]), ("交易", [.plans, .journal, .optionPlans, .paper]), ("系统", [.data])
     ]
     var icon: String {
         switch self { case .overview: "square.grid.2x2"; case .weekly: "chart.bar.xaxis"; case .holdings: "square.stack.3d.up"; case .risk: "chart.xyaxis.line"; case .plans: "list.bullet.rectangle"; case .journal: "book.closed"; case .paper: "flask"; case .optionPlans: "chart.line.uptrend.xyaxis"; case .calendar: "calendar"; case .preparation: "sun.horizon"; case .data: "externaldrive" }
@@ -88,7 +88,9 @@ private enum Presentation: Identifiable {
 }
 struct RootView: View {
     @EnvironmentObject var model: DeskModel
-    @ViewState private var page: Page? = .overview
+    @ViewState private var destination: Destination? = .page(.overview)
+    private var page: Page? { if case .page(let p) = destination { return p }; return nil }
+    private var localTitle: String? { if case .local(let id) = destination { return LocalRegistry.pages.first { $0.id == id }?.title }; return nil }
     private var presentation: Binding<Presentation?> {
         Binding(get: {
             if let step = model.onboarding { return .onboarding(step) }
@@ -109,14 +111,29 @@ struct RootView: View {
         default: return 0
         }
     }
+    /// The built-in pages of a group that are not hidden, each followed by the local pages that ask to come after it.
+    private func sidebarEntries(_ pages: [Page]) -> [Destination] {
+        var out: [Destination] = []
+        for item in pages {
+            if !model.hiddenPages.contains(item.engineKey) { out.append(.page(item)) }
+            out += LocalRegistry.pages.filter { $0.after == item.engineKey }.map { .local($0.id) }
+        }
+        return out
+    }
     var body: some View {
         NavigationSplitView {
-            List(selection: $page) {
+            List(selection: $destination) {
                 ForEach(Page.groups, id: \.title) { group in
-                    let pages = group.pages.filter { !model.hiddenPages.contains($0.engineKey) }
-                    if !pages.isEmpty {
+                    let entries = sidebarEntries(group.pages)
+                    if !entries.isEmpty {
                         Section(group.title) {
-                            ForEach(pages) { item in Label(item.rawValue, systemImage: item.icon).badge(badge(item)).tag(item) }
+                            ForEach(entries, id: \.self) { entry in
+                                switch entry {
+                                case .page(let item): Label(item.rawValue, systemImage: item.icon).badge(badge(item)).tag(entry)
+                                case .local(let id):
+                                    if let extra = LocalRegistry.pages.first(where: { $0.id == id }) { Label(extra.title, systemImage: extra.icon).tag(entry) }
+                                }
+                            }
                         }
                     }
                 }
@@ -134,8 +151,11 @@ struct RootView: View {
             Group {
                 if !model.ready { VStack(spacing: 16) { ProgressView(); Text("正在读取本机持仓与账本") } }
                 else {
+                    if case .local(let id) = destination {
+                        if let extra = LocalRegistry.pages.first(where: { $0.id == id }) { extra.view() } else { OverviewView(go: { destination = .page($0) }, goLocal: { destination = .local($0) }) }
+                    } else {
                     switch page ?? .overview {
-                    case .overview: OverviewView(go: { page = $0 })
+                    case .overview: OverviewView(go: { destination = .page($0) }, goLocal: { destination = .local($0) })
                     case .weekly: WeeklyWatchView()
                     case .holdings: HoldingsView()
                     case .risk: RiskView()
@@ -147,10 +167,11 @@ struct RootView: View {
                     case .preparation: PreparationView()
                     case .data: DataView()
                     }
+                    }
                 }
             }
-            .navigationTitle(page?.rawValue ?? "总览")
-            .onChange(of: model.hiddenPages) { _, hidden in if let page, hidden.contains(page.engineKey) { self.page = .overview } }
+            .navigationTitle(localTitle ?? page?.rawValue ?? "总览")
+            .onChange(of: model.hiddenPages) { _, hidden in if let page, hidden.contains(page.engineKey) { self.destination = .page(.overview) } }
             .safeAreaInset(edge: .top, spacing: 0) {
                 if Engine.demo {
                     Label("演示模式：账户、持仓、行情和计划全是虚构的，关闭窗口即丢弃，不碰你的真实账本。", systemImage: "theatermasks")

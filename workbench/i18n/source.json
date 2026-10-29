@@ -1,5 +1,178 @@
 [
  {
+  "key": " · 已过",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift",
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": " 到期",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": " 财报",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift",
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0} 年 {1} 月",
+  "placeholders": 2,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "◆ 大科技财报",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "★ 持仓财报",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "今天",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift",
+   "OptionPlansView.swift",
+   "PortfolioUI.swift",
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "到期",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift",
+   "OptionPlansView.swift",
+   "TradingViews.swift",
+   "sources.py"
+  ]
+ },
+ {
+  "key": "周一",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "周三",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "周二",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "周五",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "周六",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "周四",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "周日",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "复核",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift",
+   "sources.py"
+  ]
+ },
+ {
+  "key": "复核 / 自定义",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "宏观 / 其他财报",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "自定义",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift",
+   "TradingViews.swift",
+   "store.py"
+  ]
+ },
+ {
+  "key": "财报",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift",
+   "sources.py"
+  ]
+ },
+ {
+  "key": "还有 {0} 条",
+  "placeholders": 1,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "这一天没有事件",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
+  "key": "这个月没有事件。日历数据覆盖最近 7 天到未来 90 天（大科技财报看到 200 天）。",
+  "placeholders": 0,
+  "where": [
+   "CalendarGrid.swift"
+  ]
+ },
+ {
   "key": " 条",
   "placeholders": 0,
   "where": [
@@ -521,13 +694,6 @@
   ]
  },
  {
-  "key": "已核对费用（未知不能填 0）",
-  "placeholders": 0,
-  "where": [
-   "Editors.swift"
-  ]
- },
- {
   "key": "已核对这是另一笔真实成交，不是重复邮件",
   "placeholders": 0,
   "where": [
@@ -948,6 +1114,13 @@
   ]
  },
  {
+  "key": "费用（确认单没给就按默认费率估算，可改）",
+  "placeholders": 0,
+  "where": [
+   "Editors.swift"
+  ]
+ },
+ {
   "key": "资产类型",
   "placeholders": 0,
   "where": [
@@ -1155,6 +1328,13 @@
   ]
  },
  {
+  "key": " 买入起：\n",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
   "key": "% 净值",
   "placeholders": 0,
   "where": [
@@ -1193,6 +1373,13 @@
  {
   "key": "{0} 笔已接入账本",
   "placeholders": 1,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "今年盈亏",
+  "placeholders": 0,
   "where": [
    "HoldingsOverview.swift"
   ]
@@ -1408,6 +1595,13 @@
   ]
  },
  {
+  "key": "本轮落袋 ",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
   "key": "来源未标注",
   "placeholders": 0,
   "where": [
@@ -1499,7 +1693,8 @@
   "key": "空头",
   "placeholders": 0,
   "where": [
-   "HoldingsOverview.swift"
+   "HoldingsOverview.swift",
+   "sources.py"
   ]
  },
  {
@@ -1512,6 +1707,13 @@
  },
  {
   "key": "组合展开",
+  "placeholders": 0,
+  "where": [
+   "HoldingsOverview.swift"
+  ]
+ },
+ {
+  "key": "自 ",
   "placeholders": 0,
   "where": [
    "HoldingsOverview.swift"
@@ -1905,6 +2107,20 @@
   ]
  },
  {
+  "key": "把券商邮件全读一遍并标已读；Mail 没开会先在后台拉起，读完关掉",
+  "placeholders": 0,
+  "where": [
+   "MailFetch.swift"
+  ]
+ },
+ {
+  "key": "收取邮件",
+  "placeholders": 0,
+  "where": [
+   "MailFetch.swift"
+  ]
+ },
+ {
   "key": "1R = 定仓净值 × 单笔风险比例。之后每一笔新计划都按这个 1R 反推数量：打到止损，亏的就是 1R。",
   "placeholders": 0,
   "where": [
@@ -2236,6 +2452,13 @@
   ]
  },
  {
+  "key": "临时卡（{0}）",
+  "placeholders": 1,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
   "key": "买",
   "placeholders": 0,
   "where": [
@@ -2247,15 +2470,6 @@
   "placeholders": 0,
   "where": [
    "OptionPlansView.swift"
-  ]
- },
- {
-  "key": "今天",
-  "placeholders": 0,
-  "where": [
-   "OptionPlansView.swift",
-   "PortfolioUI.swift",
-   "optionviz.py"
   ]
  },
  {
@@ -2293,15 +2507,6 @@
   "placeholders": 0,
   "where": [
    "OptionPlansView.swift"
-  ]
- },
- {
-  "key": "到期",
-  "placeholders": 0,
-  "where": [
-   "OptionPlansView.swift",
-   "TradingViews.swift",
-   "sources.py"
   ]
  },
  {
@@ -2411,13 +2616,6 @@
   ]
  },
  {
-  "key": "把计划卡和已持有的期权画成盈亏图：拖动日期、波动率和价格范围，鼠标移到图上读数",
-  "placeholders": 0,
-  "where": [
-   "OptionPlansView.swift"
-  ]
- },
- {
   "key": "报价 ",
   "placeholders": 0,
   "where": [
@@ -2425,7 +2623,7 @@
   ]
  },
  {
-  "key": "持仓期权（{0}）",
+  "key": "持仓结构（{0}）",
   "placeholders": 1,
   "where": [
    "OptionPlansView.swift"
@@ -2467,7 +2665,14 @@
   ]
  },
  {
-  "key": "期权计划",
+  "key": "期权专用的可视化：选持仓结构或临时卡，拖日期、波动率和价格范围，鼠标移到图上读数；计划与成交在「交易计划」页",
+  "placeholders": 0,
+  "where": [
+   "OptionPlansView.swift"
+  ]
+ },
+ {
+  "key": "期权演算",
   "placeholders": 0,
   "where": [
    "OptionPlansView.swift",
@@ -2476,7 +2681,7 @@
   ]
  },
  {
-  "key": "期权计划数据不可用",
+  "key": "期权演算数据不可用",
   "placeholders": 0,
   "where": [
    "OptionPlansView.swift"
@@ -2638,13 +2843,6 @@
   ]
  },
  {
-  "key": "计划卡（{0}）",
-  "placeholders": 1,
-  "where": [
-   "OptionPlansView.swift"
-  ]
- },
- {
   "key": "账本里没有可以画图的期权持仓。",
   "placeholders": 0,
   "where": [
@@ -2652,7 +2850,7 @@
   ]
  },
  {
-  "key": "还没有计划卡。把计划卡 JSON 放进 {0} 以后会出现在这里。",
+  "key": "还没有临时卡。这只是不进计划库的演算草稿，正式计划在「交易计划」里建；JSON 放进 {0} 就会出现。",
   "placeholders": 1,
   "where": [
    "OptionPlansView.swift"
@@ -3339,7 +3537,8 @@
   "key": "还差 ",
   "placeholders": 0,
   "where": [
-   "PaperView.swift"
+   "PaperView.swift",
+   "RiskOverview.swift"
   ]
  },
  {
@@ -3483,6 +3682,13 @@
   ]
  },
  {
+  "key": " · {0} 天内到期 ",
+  "placeholders": 1,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
   "key": " · 上限只作提示",
   "placeholders": 0,
   "where": [
@@ -3491,6 +3697,27 @@
  },
  {
   "key": " · 不设止损，不计热度",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": " · 剩 {0} 天 · Delta ",
+  "placeholders": 1,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": " · 单笔 ≤",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": " · 彩票",
   "placeholders": 0,
   "where": [
    "RiskOverview.swift"
@@ -3525,6 +3752,27 @@
   ]
  },
  {
+  "key": "R · 单笔 ≤",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "R · 目标 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "R 到下限 · 短期期权不算在内",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
   "key": "{0} 条已关联组合汇总仅展示，合约腿参与计算。",
   "placeholders": 1,
   "where": [
@@ -3546,7 +3794,21 @@
   ]
  },
  {
+  "key": "两周内到期的期权",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
   "key": "免判据持仓 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "其中价外彩票",
   "placeholders": 0,
   "where": [
    "RiskOverview.swift"
@@ -3592,6 +3854,20 @@
  },
  {
   "key": "同一组合 · 不同市场情景",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "在目标区间内 · 还可加 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "多头腿 Delta 低于 ",
   "placeholders": 0,
   "where": [
    "RiskOverview.swift"
@@ -3671,6 +3947,13 @@
   ]
  },
  {
+  "key": "核心占用",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
   "key": "点选大类查看持仓贡献",
   "placeholders": 0,
   "where": [
@@ -3686,6 +3969,13 @@
  },
  {
   "key": "现金 / 快照净值",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "短期期权与不占 R 的持仓",
   "placeholders": 0,
   "where": [
    "RiskOverview.swift"
@@ -3739,7 +4029,8 @@
   "key": "视图",
   "placeholders": 0,
   "where": [
-   "RiskOverview.swift"
+   "RiskOverview.swift",
+   "TradingViews.swift"
   ]
  },
  {
@@ -3758,6 +4049,20 @@
  },
  {
   "key": "超出上限 ",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "超过上限 · 短期期权不算在内",
+  "placeholders": 0,
+  "where": [
+   "RiskOverview.swift"
+  ]
+ },
+ {
+  "key": "还剩 ",
   "placeholders": 0,
   "where": [
    "RiskOverview.swift"
@@ -4844,7 +5149,91 @@
   ]
  },
  {
-  "key": " · 已过",
+  "key": "{0} 笔平仓",
+  "placeholders": 1,
+  "where": [
+   "SymbolPnl.swift"
+  ]
+ },
+ {
+  "key": "今年合计",
+  "placeholders": 0,
+  "where": [
+   "SymbolPnl.swift"
+  ]
+ },
+ {
+  "key": "今年的盈亏看「今年盈亏」页",
+  "placeholders": 0,
+  "where": [
+   "SymbolPnl.swift"
+  ]
+ },
+ {
+  "key": "已清仓",
+  "placeholders": 0,
+  "where": [
+   "SymbolPnl.swift"
+  ]
+ },
+ {
+  "key": "已落袋盈亏汇总失败：",
+  "placeholders": 0,
+  "where": [
+   "SymbolPnl.swift"
+  ]
+ },
+ {
+  "key": "已落袋（含佣金）",
+  "placeholders": 0,
+  "where": [
+   "SymbolPnl.swift"
+  ]
+ },
+ {
+  "key": "持有中",
+  "placeholders": 0,
+  "where": [
+   "SymbolPnl.swift"
+  ]
+ },
+ {
+  "key": "最近一笔平仓",
+  "placeholders": 0,
+  "where": [
+   "SymbolPnl.swift"
+  ]
+ },
+ {
+  "key": "本轮已落袋（自 {0} 买入起）",
+  "placeholders": 1,
+  "where": [
+   "SymbolPnl.swift"
+  ]
+ },
+ {
+  "key": "现仓浮盈",
+  "placeholders": 0,
+  "where": [
+   "SymbolPnl.swift"
+  ]
+ },
+ {
+  "key": "票",
+  "placeholders": 0,
+  "where": [
+   "SymbolPnl.swift"
+  ]
+ },
+ {
+  "key": " · 公司已公告",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": " · 日期是预估",
   "placeholders": 0,
   "where": [
    "TradingViews.swift"
@@ -4964,6 +5353,13 @@
   ]
  },
  {
+  "key": "列表",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
   "key": "删除",
   "placeholders": 0,
   "where": [
@@ -5021,6 +5417,20 @@
   ]
  },
  {
+  "key": "大科技财报",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "大科技：",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
   "key": "完整计划 0.9R–1R",
   "placeholders": 0,
   "where": [
@@ -5058,6 +5468,13 @@
  {
   "key": "尚未填写盘前笔记",
   "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "已处理 {0} 份（已自动入账、已登记或已忽略）",
+  "placeholders": 1,
   "where": [
    "TradingViews.swift"
   ]
@@ -5120,6 +5537,20 @@
   ]
  },
  {
+  "key": "我的持仓：",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "所有计划的家（股票/期权/结构）：先定义失效条件，再用统一 1R 计算完整仓位；成交登记与复盘也在计划卡里。",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
   "key": "执行留痕",
   "placeholders": 0,
   "where": [
@@ -5135,6 +5566,13 @@
  },
  {
   "key": "投喂箱暂时没有确认单。文件来源见“数据与留存”。",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "持仓财报",
   "placeholders": 0,
   "where": [
    "TradingViews.swift"
@@ -5162,10 +5600,25 @@
   ]
  },
  {
+  "key": "月历",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
   "key": "期初余额",
   "placeholders": 0,
   "where": [
    "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "期权",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift",
+   "sources.py"
   ]
  },
  {
@@ -5190,7 +5643,7 @@
   ]
  },
  {
-  "key": "每笔计划先定义失效条件，再用统一 1R 计算完整仓位。",
+  "key": "核对通过",
   "placeholders": 0,
   "where": [
    "TradingViews.swift"
@@ -5198,6 +5651,13 @@
  },
  {
   "key": "没有可显示的观察",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "没有需要处理的确认单。",
   "placeholders": 0,
   "where": [
    "TradingViews.swift"
@@ -5274,6 +5734,13 @@
   ]
  },
  {
+  "key": "股票",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
   "key": "背景",
   "placeholders": 0,
   "where": [
@@ -5285,14 +5752,6 @@
   "placeholders": 0,
   "where": [
    "TradingViews.swift"
-  ]
- },
- {
-  "key": "自定义",
-  "placeholders": 0,
-  "where": [
-   "TradingViews.swift",
-   "store.py"
   ]
  },
  {
@@ -5325,6 +5784,13 @@
  },
  {
   "key": "进行中",
+  "placeholders": 0,
+  "where": [
+   "TradingViews.swift"
+  ]
+ },
+ {
+  "key": "退回作废",
   "placeholders": 0,
   "where": [
    "TradingViews.swift"
@@ -6748,6 +7214,13 @@
   ]
  },
  {
+  "key": "launchctl 退出码 {0}",
+  "placeholders": 1,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
   "key": "{0} · 腿{1} · {2}",
   "placeholders": 3,
   "where": [
@@ -6757,6 +7230,20 @@
  {
   "key": "{0}：{1}",
   "placeholders": 2,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "上次收取 {0} 失败（退出码 {1}）",
+  "placeholders": 2,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "上次收取 {0}：新收 {1} 封，标已读 {2} 封",
+  "placeholders": 3,
   "where": [
    "econf.py"
   ]
@@ -6783,14 +7270,14 @@
   ]
  },
  {
-  "key": "多腿费用需要人工分配到各腿，整单佣金和费用不可在每腿重复计入",
-  "placeholders": 0,
+  "key": "启动邮件收取任务失败：{0}",
+  "placeholders": 1,
   "where": [
    "econf.py"
   ]
  },
  {
-  "key": "已核对费用（未知时请补充，确认为零时填 0）",
+  "key": "多腿费用需要人工分配到各腿，整单佣金和费用不可在每腿重复计入",
   "placeholders": 0,
   "where": [
    "econf.py"
@@ -6911,14 +7398,14 @@
   ]
  },
  {
-  "key": "正文没有出现 Schwab 字样，请确认这是 Schwab 确认单而不是其他来源的邮件",
+  "key": "正在收取邮件……（Mail 没开时会先在后台拉起，约半分钟）",
   "placeholders": 0,
   "where": [
    "econf.py"
   ]
  },
  {
-  "key": "没有找到 eConf# 单号",
+  "key": "正文没有出现 Schwab 字样，请确认这是 Schwab 确认单而不是其他来源的邮件",
   "placeholders": 0,
   "where": [
    "econf.py"
@@ -6933,6 +7420,13 @@
  },
  {
   "key": "没有解析出成交日期（需要 MM/DD/YY 格式），登记前请手工补",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "确认单",
   "placeholders": 0,
   "where": [
    "econf.py"
@@ -6974,13 +7468,6 @@
   ]
  },
  {
-  "key": "确认单没写开仓/平仓，请人工指定这一腿是入场还是退出",
-  "placeholders": 0,
-  "where": [
-   "econf.py"
-  ]
- },
- {
   "key": "确认单账户与计划账户不一致",
   "placeholders": 0,
   "where": [
@@ -6990,13 +7477,6 @@
  {
   "key": "第 {0} 腿与第 {1} 腿参数完全相同（转发邮件常把原件引用两遍），登记时注意别重复入账",
   "placeholders": 2,
-  "where": [
-   "econf.py"
-  ]
- },
- {
-  "key": "第 {0} 腿没写开仓/平仓（通知类邮件常见），入账时请人工指定方向",
-  "placeholders": 1,
   "where": [
    "econf.py"
   ]
@@ -7052,7 +7532,14 @@
   ]
  },
  {
-  "key": "费用信息不完整；请核对正式确认单并填写费用，不能把未提供的费用当成零",
+  "key": "费用（没给就按默认费率估算；确认为零时填 0）",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "还没有收取记录",
   "placeholders": 0,
   "where": [
    "econf.py"
@@ -7101,6 +7588,13 @@
   ]
  },
  {
+  "key": "邮件收取任务没装或没加载：",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
   "key": "邮件有多份 PDF，请分别保存附件后逐份导入",
   "placeholders": 0,
   "where": [
@@ -7112,6 +7606,48 @@
   "placeholders": 0,
   "where": [
    "econf.py"
+  ]
+ },
+ {
+  "key": "默认费率估算",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "，Mail 是任务后台拉起的",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "，读完已关闭 Mail",
+  "placeholders": 0,
+  "where": [
+   "econf.py"
+  ]
+ },
+ {
+  "key": "{0} 到期自动结算：到期收盘 {1}，行权 {2}，{3}；没有平仓成交，按到期收盘价算。",
+  "placeholders": 4,
+  "where": [
+   "expiry.py"
+  ]
+ },
+ {
+  "key": "作废",
+  "placeholders": 0,
+  "where": [
+   "expiry.py"
+  ]
+ },
+ {
+  "key": "内在价值 %.2f",
+  "placeholders": 0,
+  "where": [
+   "expiry.py"
   ]
  },
  {
@@ -7262,6 +7798,20 @@
   ]
  },
  {
+  "key": "{0} 占 {1}R，超过短期期权单笔上限 {2}R",
+  "placeholders": 3,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "{0} 是价外短期期权（Delta {1}），占 {2}R，超过彩票单笔上限 {3}R",
+  "placeholders": 4,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
   "key": "{0} 股 × 距止损 {1}（{2} → {3}）",
   "placeholders": 4,
   "where": [
@@ -7290,6 +7840,20 @@
   ]
  },
  {
+  "key": "两周内到期的期权单独一个额度：合计 ≤{0}R、单笔 ≤{1}R；其中多头腿 Delta 低于 {2} 的算彩票：合计 ≤{3}R、单笔 ≤{4}R。",
+  "placeholders": 5,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "两周内到期的期权合计 {0}R，超过额度 {1}R",
+  "placeholders": 2,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
   "key": "两层结构：大类（科技 / 非科技 / 黄金 / 利率 / 宽基）设上限；子项（软件、硬件、M7、金融、消费……）各用自己的代理与冲击，只展示不单独设上限。标签可在“补充风险数据”里逐个改（填子项名）。",
   "placeholders": 0,
   "where": [
@@ -7313,6 +7877,13 @@
  {
   "key": "代理本身",
   "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "价外短期期权合计 {0}R，超过彩票额度 {1}R",
+  "placeholders": 2,
   "where": [
    "exposure.py"
   ]
@@ -7656,7 +8227,42 @@
   ]
  },
  {
+  "key": "核心占用 = 热度里去掉两周内到期的期权、去掉止损已在成本之上的正股；目标 {0}–{1}R。",
+  "placeholders": 2,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "核心占用 {0}R，低于目标下限 {1}R（短期期权不算在内）",
+  "placeholders": 2,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "核心占用 {0}R，高于目标上限 {1}R",
+  "placeholders": 2,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "止损已在成本之上，按 0R 计",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
   "key": "没有止损的正股不计入热度（它们的风险在跳空压力里），单独列出；标了「免判据」的持仓按你的裁定不设止损，另列一栏。",
+  "placeholders": 0,
+  "where": [
+   "exposure.py"
+  ]
+ },
+ {
+  "key": "没设止损的正股不在热度里，也不算核心占用。只提示，不拦截。",
   "placeholders": 0,
   "where": [
    "exposure.py"
@@ -7979,7 +8585,7 @@
   ]
  },
  {
-  "key": "已持有的期权自动画；计划卡是你自己写的 JSON 文件（可选）。",
+  "key": "已持有的期权自动画；临时卡是你自己写的 JSON 文件（可选）。",
   "placeholders": 0,
   "where": [
    "modules.py"
@@ -7993,7 +8599,7 @@
   ]
  },
  {
-  "key": "把期权计划卡和已持有的期权画成可拖动的盈亏图（日期、波动率、价格范围）。",
+  "key": "把持有的期权结构和临时卡画成可拖动的盈亏图（日期、波动率、价格范围）。",
   "placeholders": 0,
   "where": [
    "modules.py"
@@ -8098,7 +8704,7 @@
   ]
  },
  {
-  "key": "{0} 持仓期权（{1}，{2}）",
+  "key": "{0} 持仓结构（{1}，{2}）",
   "placeholders": 3,
   "where": [
    "optionviz.py"
@@ -8114,6 +8720,13 @@
  {
   "key": "{0}{1} 没有波动率，也无法由报价反推",
   "placeholders": 2,
+  "where": [
+   "optionviz.py"
+  ]
+ },
+ {
+  "key": "临时卡文件夹还不存在，目前只显示持仓结构。",
+  "placeholders": 0,
   "where": [
    "optionviz.py"
   ]
@@ -8147,14 +8760,14 @@
   ]
  },
  {
-  "key": "持仓快照里没有标的价格",
+  "key": "持仓快照里没有标的价格（仓位与 quotes 都没给）",
   "placeholders": 0,
   "where": [
    "optionviz.py"
   ]
  },
  {
-  "key": "持仓期权图生成失败：{0}",
+  "key": "持仓结构图生成失败：{0}",
   "placeholders": 1,
   "where": [
    "optionviz.py"
@@ -8239,13 +8852,6 @@
  },
  {
   "key": "缺少 entry_price，且各腿没有 price 或 bid/ask 可合成",
-  "placeholders": 0,
-  "where": [
-   "optionviz.py"
-  ]
- },
- {
-  "key": "计划卡文件夹还不存在，目前只显示持仓期权。",
   "placeholders": 0,
   "where": [
    "optionviz.py"
@@ -8512,6 +9118,13 @@
   ]
  },
  {
+  "key": "目标区间与短期期权额度只提示，不拦截",
+  "placeholders": 0,
+  "where": [
+   "overview.py"
+  ]
+ },
+ {
   "key": "空头 {0} 张 · 临近到期留意指派",
   "placeholders": 1,
   "where": [
@@ -8594,6 +9207,13 @@
   "placeholders": 0,
   "where": [
    "paper.py"
+  ]
+ },
+ {
+  "key": "由各腿现价合成",
+  "placeholders": 0,
+  "where": [
+   "position_display.py"
   ]
  },
  {
@@ -8681,6 +9301,13 @@
   ]
  },
  {
+  "key": "{0} {1} {2} 张",
+  "placeholders": 3,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
   "key": "{0} 到期日无效",
   "placeholders": 1,
   "where": [
@@ -8697,6 +9324,20 @@
  {
   "key": "{0} 有重复市场代码，未合并",
   "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0} 财报日期缺失或已过期，名单文件里的日期需要重新导入",
+  "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "{0}正股 {1} 股",
+  "placeholders": 2,
   "where": [
    "sources.py"
   ]
@@ -8737,7 +9378,36 @@
   ]
  },
  {
+  "key": "。注意：期权 {0} 到期，这次财报在到期之前（含到期当天）",
+  "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "买入",
+  "placeholders": 0,
+  "where": [
+   "sources.py",
+   "strategies.py"
+  ]
+ },
+ {
   "key": "价格或日期不合法",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "公司已公告日期（TradingView）",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "刚发布过的财报（名单文件）",
   "placeholders": 0,
   "where": [
    "sources.py"
@@ -8751,7 +9421,15 @@
   ]
  },
  {
-  "key": "复核",
+  "key": "卖出",
+  "placeholders": 0,
+  "where": [
+   "sources.py",
+   "strategies.py"
+  ]
+ },
+ {
+  "key": "大科技财报名单读取失败：",
   "placeholders": 0,
   "where": [
    "sources.py"
@@ -8814,8 +9492,22 @@
   ]
  },
  {
+  "key": "持仓数量未知",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
   "key": "持仓第 {0} 行损坏",
   "placeholders": 1,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "持有",
+  "placeholders": 0,
   "where": [
    "sources.py"
   ]
@@ -8843,6 +9535,13 @@
  },
  {
   "key": "未读取",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "格式不正确",
   "placeholders": 0,
   "where": [
    "sources.py"
@@ -8919,14 +9618,21 @@
   ]
  },
  {
-  "key": "财报",
+  "key": "账户净值未齐全，风险占总净值比例暂不可用",
   "placeholders": 0,
   "where": [
    "sources.py"
   ]
  },
  {
-  "key": "账户净值未齐全，风险占总净值比例暂不可用",
+  "key": "预估日期（TradingView），以公司公告为准",
+  "placeholders": 0,
+  "where": [
+   "sources.py"
+  ]
+ },
+ {
+  "key": "预估日期（雅虎财经），以公司公告为准",
   "placeholders": 0,
   "where": [
    "sources.py"
@@ -9493,13 +10199,6 @@
   ]
  },
  {
-  "key": "买入",
-  "placeholders": 0,
-  "where": [
-   "strategies.py"
-  ]
- },
- {
   "key": "仅描述当前持仓形态；不代表同一时间建仓，不合并原始交易或重置风险预算。",
   "placeholders": 0,
   "where": [
@@ -9515,13 +10214,6 @@
  },
  {
   "key": "券商、账户或标的不完整，不能证明属于同一操作",
-  "placeholders": 0,
-  "where": [
-   "strategies.py"
-  ]
- },
- {
-  "key": "卖出",
   "placeholders": 0,
   "where": [
    "strategies.py"

@@ -11,15 +11,17 @@ from .sources import ET, Sources, merged_positions
 from .store import Invalid, Store, iso_day, now, text, number
 from .econf import EconfBox
 from .context import enrich_positions, operation_positions, supplemental_history
-from .exposure import FACTOR_BUCKETS, HEAT_CAP_R, analyze_exposure, factor_clusters, market_scenario, portfolio_heat, standard_r
+from .exposure import FACTOR_BUCKETS, HEAT_CAP_R, analyze_exposure, factor_clusters, market_scenario, portfolio_heat, r_budget, standard_r
 from . import macro as macro_panel
 from . import paper as paper_book
 from . import weekly_watch
 from . import optionviz
 from . import overview
 from . import modules
+from . import local_modules
 from .strategies import recognize_operations
 from .position_display import display_positions, partition_positions
+from .expiry import settle_expired
 
 class Application:
     def __init__(self, directory, source_home=None, econf_inbox=None):
@@ -42,6 +44,8 @@ class Application:
                              errors=snap["errors"] + ["上游持仓不可用，展示最近留存的历史快照；不是当前账户。"])
                 snap = saved
         history = supplemental_history(self.sources.history(), self.store.directory / "market-data.json")
+        if settle_expired(self.store, plans, history, datetime.now(ET).date()):
+            plans = self.store.plans()
         positions, conflicts = merged_positions(snap, plans)
         inputs = self.store.get("risk:inputs", {})
         positions = display_positions(enrich_positions(positions, snap, inputs))
@@ -70,6 +74,7 @@ class Application:
                                                       buckets=macro_panel.scaled_buckets(FACTOR_BUCKETS, macro))
         exposure["portfolio_heat"] = portfolio_heat(positions, exposure, self.store.risk_policy(),
                                                     cap_r=macro_panel.heat_cap(HEAT_CAP_R, macro))
+        exposure["r_budget"] = r_budget(exposure["portfolio_heat"], positions)
         if conflicts:
             exposure["market_scenario"]["notices"].insert(0, "持仓对账存在冲突，情景覆盖范围尚不完整。")
         risk = calculate(measured_positions, history, snap["nlv"], snap["day"])
@@ -100,8 +105,12 @@ class Application:
                             "local_fills": sum(len(p["fills"]) for p in plans),
                             "snapshot_positions": len(snap["positions"])}}
         try:
+            result["local"] = local_modules.load_all(self.sources)
+        except Exception:  # one broken local module must not stop the engine
+            result["local"] = {}
+        try:
             result["option_plans"] = optionviz.build(positions, datetime.now(ET).date(), standard_r(self.store.risk_policy()),
-                                                     directory=self.sources.option_plans)
+                                                     directory=self.sources.option_plans, quotes=snap.get("quotes"))
         except Exception as error:  # the page must say it failed, not show an empty list
             result["option_plans"] = {"status": "error", "cards": [], "held": [], "notices": [f"期权计划页生成失败：{type(error).__name__}"]}
         try:
@@ -162,6 +171,8 @@ class Application:
             return self.refresh()
         if path == "/api/econf-scan":
             return self.econf.view(force=True)
+        if path == "/api/econf-fetch":
+            return self.econf.fetch()
         if path == "/api/econf-record":
             return self.econf.record(data)
         if path == "/api/econf-dismiss":

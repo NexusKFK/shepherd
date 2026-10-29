@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.4.2 (2026-10-29)
+
+- Trade plans are now the home of every plan, option structures included. Plans drafted by a coding agent come in as "Pending verification"; you approve them into a draft or reject them. A trade that is already open can record its real fills straight from a draft, without the 1R check, and a plan keeps its source when edited.
+- The option plans page is now **Option lab**: a pure OptionStrat-style visualizer that opens on your held structures. Scratch cards only show when there are any. Spot prices fall back to the snapshot's quotes, and a plan's placeholder row no longer breaks a structure chart.
+- Holdings: legs you put in one group (same broker, underlying and expiry, at least one long and one short) get a single combo summary row. A holding option plan without a snapshot link claims its same-expiry legs automatically, so the structure is not shown twice; ambiguous cases still ask you to confirm.
+- Holdings: options past expiry with no closing fill are settled at the expiry close's intrinsic value (reversible). A "This year" tab shows realized and open P&L per symbol, and stock rows show what was banked this round, from an optional `realized` block in the snapshot.
+- Risk: an R budget panel. Core R in use (heat minus options expiring within two weeks and minus stocks whose stop is above cost) is compared with a 3–5R target band; short-dated options get their own allowance (0.5R total, 0.2R each) and long legs with |Delta| below 0.30 count as lotteries (0.2R total, 0.1R each). Prompts only; the defaults live in `workbench/exposure.py`.
+- Calendar: a month view (now the default) beside the list. Earnings of held companies are starred, say what you hold, and warn when an option expires on or after the report. An optional big-tech list keeps those companies on the calendar whether held or not.
+- Fills & review: notification mails no longer warn about a missing confirmation number, open/close word or fees; missing fees are estimated at default Schwab rates and stay editable. "Sold Short" reads as an opening sale, same-day same-expiry buy and sell legs group into one strategy, and settled files collapse into one group.
+- A "Fetch mail" button on the holdings and fills pages runs a locally installed mail-export launchd job. It only shows when that job is installed.
+- Local-only modules: pages placed in `workbench/local/` and `native/Sources/Shepherd/Local/` load automatically and are never part of the public export.
+- The calendar's month grid, the R budget and the new pages are translated into English and Traditional Chinese.
+
+中文：交易计划成为所有计划（含期权结构）的归处；助手起草的计划先进「待核对」，由你通过或退回；已开仓的交易可以直接从草稿登记真实成交。期权计划页改为「期权演算」，只做可视化，默认显示持仓结构。持仓页：同组多腿合成一行，持仓期权计划自动认领同到期的腿；到期未平仓的期权按到期收盘内在价值结算；新增「今年盈亏」页和「本轮落袋」。风险页新增 R 预算：核心占用对照 3–5R 目标区间，两周内到期的期权和价外彩票各有单独额度，只提示不拦截。日历新增月历视图，持仓公司财报加星并提示期权到期，可选的大科技财报名单。成交与复盘：通知邮件不再误报，缺失费用按默认费率估算，已处理的文件收起。持仓页和成交页新增「收取邮件」按钮（只在本机装了收取任务时显示）。支持只在本机加载、不进公开版的本地模块。新页面补齐英文和繁体中文。
+
 ## 1.4.1 (2026-10-20)
 
 - Holdings: the detail panel has a close button and closes with Esc. In a narrow window it floats over the right side of the table instead of pushing the table and footer down.

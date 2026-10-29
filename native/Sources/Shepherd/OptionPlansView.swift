@@ -1,35 +1,37 @@
 import SwiftUI
 
-// 期权计划：计划卡（~/tools/option_plans/*.json，用户自己写的 JSON）与账本里已持有的期权，
-// 经 workbench/optionviz.py 整理后放进 state["option_plans"]。
+// 期权演算：期权专用的可视化工具（参考 OptionStrat）。股票是线性的用不着它；（~/tools/option_plans/*.json，
+// 临时卡（不进计划库的演算草稿）与账本里已持有的期权结构，经 workbench/optionviz.py 整理后放进 state["option_plans"]。
+// 计划与成交一律在「交易计划」页，本页只做可视化，不拥有内容。
 // 图上的曲线在界面里用 OptionMath 现算（日期、波动率、价格范围滑块即时生效，鼠标悬停读数），
 // Python 只给出腿、成本、波动率这些原料。计划卡只是「可能做的计划」，持仓期权来自账本；
 // 两者都不改账本、不进热度。曲线是 Black-Scholes 估算（不含波动率偏斜与提前行权），不是成交价。
 struct OptionPlansView: View {
     @EnvironmentObject var model: DeskModel
-    @ViewState private var mode = 0
+    @ViewState private var mode = -1   // -1 = 没手动选过：默认持仓结构；有临时卡时才默认临时卡
     var plans: J { model.state["option_plans"] }
     var cards: [J] { plans["cards"].items }
     var held: [J] { plans["held"].items }
-    var shown: [J] { mode == 0 ? cards : held }
-    var emptyCardsNote: String { let dir = plans["dir"].s; return "还没有计划卡。把计划卡 JSON 放进 \(dir) 以后会出现在这里。" }
+    var currentMode: Int { mode >= 0 ? mode : (cards.isEmpty ? 1 : 0) }
+    var shown: [J] { currentMode == 0 ? cards : held }
+    var emptyCardsNote: String { let dir = plans["dir"].s; return "还没有临时卡。这只是不进计划库的演算草稿，正式计划在「交易计划」里建；JSON 放进 \(dir) 就会出现。" }
     var oneRNote: String { let oneR = usd0(plans["one_r"].n); return "1R 取自设置里的定仓净值和单笔风险（现在是 \(oneR)），不随账户每天的市值自动变。" }
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                PageHeading(title: "期权计划", subtitle: "把计划卡和已持有的期权画成盈亏图：拖动日期、波动率和价格范围，鼠标移到图上读数")
-                Picker("", selection: $mode) {
-                    Text("计划卡（\(cards.count)）").tag(0)
-                    Text("持仓期权（\(held.count)）").tag(1)
+                PageHeading(title: "期权演算", subtitle: "期权专用的可视化：选持仓结构或临时卡，拖日期、波动率和价格范围，鼠标移到图上读数；计划与成交在「交易计划」页")
+                Picker("", selection: Binding(get: { currentMode }, set: { mode = $0 })) {
+                    if !cards.isEmpty { Text("临时卡（\(cards.count)）").tag(0) }   // 空的时候连分段都不显示
+                    Text("持仓结构（\(held.count)）").tag(1)
                 }.pickerStyle(.segmented).frame(maxWidth: 380)
                 if plans["status"].s == "error" || plans["status"].s.isEmpty {
-                    Label("期权计划数据不可用", systemImage: "exclamationmark.triangle").font(.callout).foregroundStyle(PortfolioStyle.warn)
+                    Label("期权演算数据不可用", systemImage: "exclamationmark.triangle").font(.callout).foregroundStyle(PortfolioStyle.warn)
                 }
                 ForEach(Array(plans["notices"].strings.enumerated()), id: \.offset) { _, text in
                     Label(text, systemImage: "info.circle").font(.callout).foregroundStyle(.secondary)
                 }
                 if shown.isEmpty {
-                    Text(mode == 0 ? emptyCardsNote : "账本里没有可以画图的期权持仓。")
+                    Text(currentMode == 0 ? emptyCardsNote : "账本里没有可以画图的期权持仓。")
                         .font(.callout).foregroundStyle(.secondary).card()
                 }
                 ForEach(shown, id: \.id) { OptionCard(card: $0, today: plans["today"].s) }

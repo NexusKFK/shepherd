@@ -86,6 +86,14 @@ FACTOR_DEFAULTS = {
 }
 # Portfolio heat: loss if every stop hits at once, from current prices. Prompt only.
 HEAT_CAP_R = 8
+# R budget: keep a core of 3-5R working; options expiring within two weeks get their own
+# small allowance and do not count toward the core, so a few expiries cannot empty the book overnight.
+R_TARGET_BAND = (3.0, 5.0)
+SHORT_DTE_DAYS = 14
+SHORT_BUCKET_CAP_R, SHORT_SINGLE_CAP_R = .5, .2
+LOTTERY_DELTA = .30            # long leg below this |Delta| = out-of-the-money lottery
+LOTTERY_BUCKET_CAP_R, LOTTERY_SINGLE_CAP_R = .2, .1
+EXPIRY_WARN_DAYS = 7
 EXEMPT_MARK = "免判据"  # in a stock group name: the user chose no stop by design (cash parking, long-hold baskets)
 UNCLUSTERED = "未分簇"
 PAIR_LINKED, PAIR_WEAK = .7, .3
@@ -821,3 +829,76 @@ def portfolio_heat(positions, exposure, policy, cap_r=HEAT_CAP_R):
             "exempt": sorted(exempt, key=lambda x: -(x["value_usd"] or 0)),
             "exempt_usd": round(sum(x["value_usd"] or 0 for x in exempt), 2),
             "unbounded": unbounded, "unknown": unknown, "display_summaries": summaries, "notices": notices}
+
+
+def r_budget(heat, positions, today=None):
+    """Split the heat into the core book and the short-dated option allowance, and check both against the
+    owner's target band and caps. Prompt only: nothing here blocks an order.
+
+    A stock whose stop already sits at or above its cost is locked and takes 0R. An item is short-dated when
+    any option leg expires within SHORT_DTE_DAYS; it is a lottery when its strongest long leg has |Delta| below
+    LOTTERY_DELTA now (current Delta, not the Delta at entry).
+    """
+    today = today or datetime.now(ET).date()
+    one_r = (heat or {}).get("one_r")
+    by_id = {str(p.get("id")): p for p in positions or []}
+    core, short, locked = [], [], []
+    for item in (heat or {}).get("items") or []:
+        legs = [by_id[i] for i in str(item.get("id", "")).split(",") if i in by_id]
+        r = item.get("heat_r") or 0
+        sym, label = item.get("symbol") or "", item.get("label") or ""
+        row = {"id": item.get("id"), "symbol": sym, "label": label,
+               "name": label if sym and sym in label else f"{sym} {label}".strip(),
+               "heat_usd": item.get("heat_usd"), "r": _round(r, 3)}
+        if (item.get("cost_result_usd") is not None and item["cost_result_usd"] >= 0):
+            locked.append(dict(row, r=0, reason="止损已在成本之上，按 0R 计"))
+            continue
+        days = []
+        for p in legs:
+            if p.get("kind") != "option":
+                continue
+            try:
+                days.append((date.fromisoformat(p.get("expiry")) - today).days)
+            except (TypeError, ValueError):
+                pass
+        if days and min(days) <= SHORT_DTE_DAYS:
+            deltas = [abs(p["delta"]) for p in legs if p.get("side") == "long" and finite(p.get("delta"))]
+            short.append(dict(row, dte=min(days), delta=_round(max(deltas), 3) if deltas else None,
+                              lottery=bool(deltas) and max(deltas) < LOTTERY_DELTA))
+        else:
+            core.append(row)
+    total = lambda rows: _round(sum(r["r"] or 0 for r in rows), 3)
+    core_r, short_r = total(core), total(short)
+    lottery = [r for r in short if r["lottery"]]
+    lottery_r = total(lottery)
+    expiring = [r for r in short if r["dte"] <= EXPIRY_WARN_DAYS]
+    low, high = R_TARGET_BAND
+    warnings = []
+    if one_r:
+        if core_r < low:
+            warnings.append(f"核心占用 {core_r:.2f}R，低于目标下限 {low:g}R（短期期权不算在内）")
+        elif core_r > high:
+            warnings.append(f"核心占用 {core_r:.2f}R，高于目标上限 {high:g}R")
+        if short_r > SHORT_BUCKET_CAP_R:
+            warnings.append(f"两周内到期的期权合计 {short_r:.2f}R，超过额度 {SHORT_BUCKET_CAP_R:g}R")
+        warnings += [f"{r['name']} 占 {r['r']:.2f}R，超过短期期权单笔上限 {SHORT_SINGLE_CAP_R:g}R"
+                     for r in short if r["r"] > SHORT_SINGLE_CAP_R + 1e-9]
+        if lottery_r > LOTTERY_BUCKET_CAP_R:
+            warnings.append(f"价外短期期权合计 {lottery_r:.2f}R，超过彩票额度 {LOTTERY_BUCKET_CAP_R:g}R")
+        warnings += [f"{r['name']} 是价外短期期权（Delta {r['delta']:.2f}），占 {r['r']:.2f}R，"
+                     f"超过彩票单笔上限 {LOTTERY_SINGLE_CAP_R:g}R" for r in lottery if r["r"] > LOTTERY_SINGLE_CAP_R + 1e-9]
+    status = ("r_unavailable" if not one_r else "below" if core_r < low else "above" if core_r > high else "ok")
+    return {"one_r": one_r, "band_r": [low, high], "core_r": core_r, "short_r": short_r, "lottery_r": lottery_r,
+            "expiring_r": total(expiring), "expiring_days": EXPIRY_WARN_DAYS, "status": status,
+            "core_gap_r": _round(max(0.0, low - core_r), 3), "core_room_r": _round(max(0.0, high - core_r), 3),
+            "short_room_r": _round(max(0.0, SHORT_BUCKET_CAP_R - short_r), 3),
+            "lottery_room_r": _round(max(0.0, min(LOTTERY_BUCKET_CAP_R - lottery_r, SHORT_BUCKET_CAP_R - short_r)), 3),
+            "short_cap_r": SHORT_BUCKET_CAP_R, "short_single_cap_r": SHORT_SINGLE_CAP_R,
+            "lottery_cap_r": LOTTERY_BUCKET_CAP_R, "lottery_single_cap_r": LOTTERY_SINGLE_CAP_R,
+            "short_dte_days": SHORT_DTE_DAYS, "lottery_delta": LOTTERY_DELTA,
+            "core": sorted(core, key=lambda r: -(r["r"] or 0)), "short": sorted(short, key=lambda r: r["dte"]),
+            "locked": locked, "warnings": warnings,
+            "notices": [f"核心占用 = 热度里去掉两周内到期的期权、去掉止损已在成本之上的正股；目标 {low:g}–{high:g}R。",
+                        f"两周内到期的期权单独一个额度：合计 ≤{SHORT_BUCKET_CAP_R:g}R、单笔 ≤{SHORT_SINGLE_CAP_R:g}R；"
+                        f"其中多头腿 Delta 低于 {LOTTERY_DELTA:.2f} 的算彩票：合计 ≤{LOTTERY_BUCKET_CAP_R:g}R、单笔 ≤{LOTTERY_SINGLE_CAP_R:g}R。",
+                        "没设止损的正股不在热度里，也不算核心占用。只提示，不拦截。"]}

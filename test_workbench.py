@@ -266,3 +266,38 @@ class HTTPTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+
+def test_assistant_plan_records_opened_fill_from_draft(tmp_path):
+    """助手起草（source=assistant）的计划：核对通过后停在 draft，允许补登记已发生的真实入场成交。
+
+    owner 2026-10-28：定仓闸门（1R/0.9R）只约束新开计划；已开仓交易按实际成交入账，超预算告警不拦截。
+    """
+    from workbench.store import Store, Invalid
+    s = Store(tmp_path)
+    p = s.import_plan({"symbol": "TEST", "title": "t", "thesis": "x", "invalidation": "y",
+                       "exit_rule": "z", "broker": "ToS", "kind": "option", "side": "long",
+                       "entry": 42.2, "stop": 29.5, "max_loss": 4220.0, "planned_qty": 1, "mult": 100})
+    assert p["status"] == "pending" and p["source"] == "assistant"
+    d = s.transition(p["id"], {"version": p["version"], "status": "draft"})
+    # 编辑不洗掉 source
+    upd = {k: d[k] for k in ("symbol", "title", "thesis", "invalidation", "exit_rule", "broker",
+                             "review_note", "contract", "kind", "side", "entry", "stop",
+                             "max_loss", "planned_qty", "estimated_costs", "mult", "expiry")}
+    upd.update(id=d["id"], version=d["version"])
+    d2 = s.save_plan(upd)
+    assert d2.get("source") == "assistant"
+    # draft + assistant + 无成交 → 补登记入场 → holding
+    h = s.fill(d2["id"], {"request_id": "r1", "action": "entry", "qty": 1, "price": 42.2,
+                          "fee": 0, "day": "2026-10-27", "note": "n", "version": d2["version"]})
+    assert h["status"] == "holding" and h["open_qty"] == 1 and h["avg_entry"] == 42.2
+    # 普通新建（无 source）的 draft 仍然被定仓闸门拦住
+    q = s.save_plan({"symbol": "TEST2", "title": "t", "thesis": "x", "invalidation": "y",
+                     "exit_rule": "z", "broker": "ToS", "kind": "stock", "side": "long",
+                     "entry": 100, "stop": 90, "planned_qty": 10})
+    try:
+        s.fill(q["id"], {"request_id": "r2", "action": "entry", "qty": 10, "price": 100,
+                         "fee": 0, "day": "2026-10-27", "note": "n", "version": q["version"]})
+        raise SystemExit("应当被定仓闸门拦住")
+    except Invalid as e:
+        assert "请先完成计划和定仓" in str(e)

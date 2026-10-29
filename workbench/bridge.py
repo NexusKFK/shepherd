@@ -11,7 +11,7 @@ import sys
 from .application import Application
 from .store import Invalid
 
-METHODS = frozenset(("appearance", "refresh", "econf-scan", "econf-record", "econf-dismiss", "econf-restore",
+METHODS = frozenset(("appearance", "refresh", "econf-scan", "econf-fetch", "econf-record", "econf-dismiss", "econf-restore",
                     "size", "risk-policy", "exposure-input", "plans", "status", "fills", "void-fill", "review",
                     "adopt", "preparation", "events", "event-delete", "backup", "import-snapshot", "use-local-source", "modules"))
 

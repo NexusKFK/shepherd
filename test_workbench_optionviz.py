@@ -193,3 +193,44 @@ class HeldTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_held_groups_spot_falls_back_to_quotes():
+    """腿的 underlying_price 缺失（冻结希腊字母路径）时，用快照顶层 quotes 兜底，不再整卡报错。"""
+    from datetime import date
+    from workbench import optionviz
+    legs = [
+        {"kind": "option", "broker": "ToS", "sym": "XLE", "label": "Nov20'26 95C", "qty": 1, "side": "long",
+         "mult": 100, "open": 3.6, "mark": 2.4, "expiry": "2026-11-20", "strike": 95.0, "right": "C",
+         "delta_status": "ok"},  # 没有 underlying_price
+        {"kind": "option", "broker": "ToS", "sym": "XLE", "label": "Nov20'26 100C", "qty": -1, "side": "short",
+         "mult": 100, "open": 1.7, "mark": 1.0, "expiry": "2026-11-20", "strike": 100.0, "right": "C",
+         "delta_status": "ok"},
+    ]
+    # 没有 quotes → 报错；有 quotes → 正常出图
+    out = optionviz.held_groups(legs, date(2026, 10, 28))
+    assert out[0]["status"] == "error" and "标的价格" in out[0]["error"]
+    out = optionviz.held_groups(legs, date(2026, 10, 28), quotes={"XLE": {"close": 93.0}})
+    assert out[0]["status"] == "ok" and abs(out[0]["spot"] - 93.0) < 1e-9
+    assert [(l["side"], l["qty"], l["strike"]) for l in out[0]["legs"]] == [("buy", 1.0, 95.0), ("sell", 1.0, 100.0)]
+
+
+def test_held_groups_skips_synthetic_plan_rows():
+    """plan-* 合成行（未关联快照的计划聚合占位）不是腿：画图只用快照真腿，合成行不该把整组拖成「无法识别」。"""
+    from datetime import date
+    from workbench import optionviz
+    positions = [
+        {"kind": "option", "broker": "ToS", "sym": "ADBE", "label": "Mar19'27 400C", "qty": 2, "side": "long",
+         "mult": 100, "open": 30.4, "mark": 29.8, "expiry": "2027-03-19", "strike": 400.0, "right": "C",
+         "underlying_price": 436.0, "delta_status": "ok"},
+        {"kind": "option", "broker": "ToS", "sym": "ADBE", "label": "Mar19'27 430C", "qty": 1, "side": "short",
+         "mult": 100, "open": 16.2, "mark": 15.7, "expiry": "2027-03-19", "strike": 430.0, "right": "C",
+         "underlying_price": 436.0, "delta_status": "ok"},
+        # 合成行：计划标题当标签，无行权价无方向
+        {"id": "plan-x", "plan_id": "x", "kind": "option", "broker": "ToS", "sym": "ADBE",
+         "label": "3/19 ZEBRA · 买2×400C 卖1×430C（已开仓）", "qty": 1, "side": "long",
+         "expiry": "2027-03-19", "delta_status": None},
+    ]
+    out = optionviz.held_groups(positions, date(2026, 10, 28))
+    assert len(out) == 1 and out[0]["status"] == "ok"
+    assert [(l["side"], l["qty"], l["strike"]) for l in out[0]["legs"]] == [("buy", 2.0, 400.0), ("sell", 1.0, 430.0)]

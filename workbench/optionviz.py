@@ -308,9 +308,15 @@ def _number(value):
     return n if math.isfinite(n) else None
 
 
-def held_groups(positions, today, one_r=None):
-    """One chart per (account, underlying, expiry); component legs only, never the combo summary rows."""
-    rows = [p for p in positions or [] if p.get("kind") == "option" and not p.get("display_only") and p.get("delta_status") != "combo"]
+def held_groups(positions, today, one_r=None, quotes=None):
+    """One chart per (account, underlying, expiry); component legs only, never the combo summary rows.
+
+    标的价格优先取仓位的 underlying_price（modelGreeks 顺带），缺失时退回快照顶层 quotes
+    （走冻结希腊字母路径的腿没有 undPrice，不该因此整卡报错）。"""
+    # plan-* 合成行是「交易计划」未关联快照时的聚合占位（app 约定其风险也不计入），不是腿；
+    # 真腿在快照里，画图只用真腿，合成行不能把整组拖成「无法识别」。
+    rows = [p for p in positions or [] if p.get("kind") == "option" and not p.get("display_only")
+            and p.get("delta_status") != "combo" and not p.get("plan_id")]
     groups = {}
     for p in rows:
         parsed = _parse_label(p.get("label"))
@@ -325,14 +331,17 @@ def held_groups(positions, today, one_r=None):
     out = []
     for (broker, sym, expiry), members in sorted(groups.items(), key=lambda kv: (str(kv[0][1]), str(kv[0][2]))):
         gid = f"held:{broker}:{sym}:{expiry}"
-        name = f"{sym} 持仓期权（{broker}，{expiry.isoformat() if expiry else '到期日未知'}）"
+        name = f"{sym} 持仓结构（{broker}，{expiry.isoformat() if expiry else '到期日未知'}）"
         base = {"id": gid, "name": name, "source": "held", "underlying": sym}
         try:
             if expiry is None or expiry <= today:
                 raise ValueError("到期日缺失或已过")
             spot = next((s for s in (_number(p.get("underlying_price")) for p, _, _ in members) if s), None)
+            if spot is None and quotes:
+                q = quotes.get(str(sym))
+                spot = _number(q.get("close") if isinstance(q, dict) else q)
             if spot is None:
-                raise ValueError("持仓快照里没有标的价格")
+                raise ValueError("持仓快照里没有标的价格（仓位与 quotes 都没给）")
             legs, cost, now_value = [], 0.0, 0.0
             for p, strike, right in members:
                 if not strike or right not in ("C", "P"):
@@ -407,14 +416,14 @@ def load_cards(directory=None):
     return directory, cards
 
 
-def build(positions, today=None, one_r=None, directory=None):
+def build(positions, today=None, one_r=None, directory=None, quotes=None):
     today = today or datetime.now().date()
     folder, cards = load_cards(directory)
     result = {"status": "ok", "dir": str(folder or (Path(directory) if directory else _dir())), "one_r": one_r,
               "today": today.isoformat(), "cards": [], "held": [], "notices": []}
     if folder is None:
         result["status"] = "missing"
-        result["notices"].append("计划卡文件夹还不存在，目前只显示持仓期权。")
+        result["notices"].append("临时卡文件夹还不存在，目前只显示持仓结构。")
     for card in cards:
         if card.get("_unreadable"):
             result["cards"].append({"id": card["id"], "name": card["name"], "source": "plan", "status": "error", "error": card["_unreadable"]})
@@ -423,9 +432,9 @@ def build(positions, today=None, one_r=None, directory=None):
     result["cards"].sort(key=lambda c: str(c.get("asof") or ""), reverse=True)
     result["cards"].sort(key=lambda c: c.get("status") != "ok")
     try:
-        result["held"] = held_groups(positions, today, one_r)
+        result["held"] = held_groups(positions, today, one_r, quotes=quotes)
     except Exception as error:  # the page must say it failed, not show an empty list
-        result["notices"].append(f"持仓期权图生成失败：{type(error).__name__}")
+        result["notices"].append(f"持仓结构图生成失败：{type(error).__name__}")
     if one_r is None:
         result["notices"].append("1R 不可用，图表没有折算 R。")
     return result

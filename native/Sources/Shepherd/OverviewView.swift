@@ -5,6 +5,7 @@ import SwiftUI
 struct OverviewView: View {
     @EnvironmentObject var model: DeskModel
     let go: (Page) -> Void
+    var goLocal: (String) -> Void = { _ in }
     private var overview: J { model.state["overview"] }
     private var exposure: J { model.state["exposure"] }
     private var heat: J { exposure["portfolio_heat"] }
@@ -20,7 +21,7 @@ struct OverviewView: View {
                 if model.positions.isEmpty && model.plans.isEmpty { StartCard(go: go).environmentObject(model) }
                 BudgetCard(macro: exposure["macro_panel"], heat: heat, go: go)
                 HStack(alignment: .top, spacing: 16) {
-                    AttentionCard(items: overview["attention"].items, go: go)
+                    AttentionCard(items: overview["attention"].items, go: go, goLocal: goLocal)
                     UpcomingCard(items: overview["upcoming"].items, go: go).frame(width: 320)
                 }
                 metrics
@@ -165,7 +166,7 @@ struct BudgetCard: View {
 }
 
 struct AttentionCard: View {
-    let items: [J]; let go: (Page) -> Void
+    let items: [J]; let go: (Page) -> Void; var goLocal: (String) -> Void = { _ in }
     private func count(_ severity: String) -> Int { items.filter { $0["severity"].s == severity }.count }
     private func icon(_ severity: String) -> String {
         severity == "red" ? "exclamationmark.octagon.fill" : severity == "amber" ? "exclamationmark.triangle.fill" : "info.circle"
@@ -185,7 +186,7 @@ struct AttentionCard: View {
             }
             ForEach(Array(items.enumerated()), id: \.offset) { index, item in
                 if index > 0 { Divider() }
-                Button { if let page = Page(engineKey: item["page"].s) { go(page) } } label: {
+                Button { if let page = Page(engineKey: item["page"].s) { go(page) } else { goLocal(item["page"].s) } } label: {
                     HStack(alignment: .top, spacing: 10) {
                         Image(systemName: icon(item["severity"].s)).foregroundStyle(PortfolioStyle.level(item["severity"].s)).frame(width: 18)
                         VStack(alignment: .leading, spacing: 2) {
